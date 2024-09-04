@@ -7,4 +7,3 @@ const RTKProvider = () => {
 }
 
 export default RTKProvider
-
