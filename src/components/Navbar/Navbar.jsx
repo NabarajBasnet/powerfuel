@@ -192,7 +192,6 @@ const Navbar = () => {
                             <p className="text-sm">support 24/7 time</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
