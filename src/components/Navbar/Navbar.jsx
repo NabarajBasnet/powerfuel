@@ -49,7 +49,7 @@ const Navbar = () => {
         },
         {
             page: 'CONTACT',
-            link: '/contacts'
+            link: '/contact'
         }
     ];
 
@@ -126,19 +126,15 @@ const Navbar = () => {
 
             <div className="w-full flex justify-center">
                 <div className="w-10/12 flex justify-between my-4">
-                    <div>
-                        <Link href={'/'} className="text-3xl font-bold">POWERFUEL</Link>
-                    </div>
+                    <Link href={'/'} className="text-3xl font-bold">POWERFUEL</Link>
                     <div className="flex items-center">
-                        {
-                            navPages.map((page, link) => (
-                                <div key={link} className="font-bold text-sm mx-3">
-                                    <Link href={page.link} className={pathname === page.link ? 'text-green-500' : ''}>
-                                        <h1>{page.page}</h1>
-                                    </Link>
+                        {navPages.map((page, index) => (
+                            <Link href={page.link} key={index} className="font-bold text-sm mx-3">
+                                <div className={`cursor-pointer ${pathname === page.link ? 'text-green-500' : ''}`}>
+                                    <h1>{page.page}</h1>
                                 </div>
-                            ))
-                        }
+                            </Link>
+                        ))}
                     </div>
                     <div className="flex items-center">
                         <FaHeart className="mx-1" />
