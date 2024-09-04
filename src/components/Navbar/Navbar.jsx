@@ -73,7 +73,7 @@ const Navbar = () => {
 
                     <div className="w-6/12 flex justify-start items-center">
                         <div className="flex mx-1 justify-center items-center">
-                            <MdEmail className='text-3xl' />
+                            <MdEmail className='text-md mr-1 text-green-500' />
                             <p className="text-sm">powerfuel@gmail.com</p>
                         </div>
                         <div className="mx-1 text-sm font-extralight">|</div>
@@ -97,7 +97,7 @@ const Navbar = () => {
                         <div className="mx-1 text-sm font-extralight">|</div>
                         <div className="mx-1">
                             <Select>
-                                <SelectTrigger className="w-[180px]">
+                                <SelectTrigger className="w-[120px] focus:ring-0 border-none shadow-none outline-none focus:border-none focus:outline-none">
                                     <SelectValue placeholder="Language" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -138,7 +138,7 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <FaHeart className="mx-1" />
                         <IoBagHandleSharp className="mx-1" />
-                        <p className="mx-1">item:$150.00</p>
+                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@ const Navbar = () => {
                         <div className="flex bg-green-500 p-2 items-center text-white font-bold">
                             <IoMenuSharp className="text-3xl font-bold" />
                             <Select>
-                                <SelectTrigger className="w-[220px] shadow-none border-none">
+                                <SelectTrigger className="w-[220px] shadow-none border-none outline-none focus:border-none focus:outline-none">
                                     <SelectValue className="text-2xl" placeholder="Select Departments" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -165,7 +165,7 @@ const Navbar = () => {
 
                     <div className="flex justify-center items-center border">
                         <Select>
-                            <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent">
+                            <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
                                 <SelectValue placeholder="All Categories" />
                             </SelectTrigger>
                             <SelectContent>
@@ -183,16 +183,16 @@ const Navbar = () => {
                             placeholder='What do you need?'
                         />
 
-                        <Button className='rounded-none p-6'>SERACH</Button>
+                        <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <div className="rounded-full p-4 mr-2 bg-gray-100">
+                        <div className="rounded-full p-4 mr-2 text-green-500 bg-gray-100">
                             <MdPhone className="3xl" />
                         </div>
                         <div>
-                            <h1>+65 11.188.888</h1>
-                            <p>support 24/7 time</p>
+                            <h1 className="font-extrabold text-xl">+65 11.188.888</h1>
+                            <p className="text-sm">support 24/7 time</p>
                         </div>
                     </div>
 
