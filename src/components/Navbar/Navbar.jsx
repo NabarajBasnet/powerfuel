@@ -31,7 +31,6 @@ const Navbar = () => {
 
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
-    const departments = ['Protein', 'Creatine', 'Vitamin', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
     const dispatch = useDispatch();
 
     const handleClickAllDepartments = () => {
