@@ -1,9 +1,10 @@
 'use client'
 
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMenuSharp } from "react-icons/io5";
 import { MdPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -26,8 +27,13 @@ import { Button } from "../ui/button";
 
 const Navbar = () => {
 
+    const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
-    console.log('Pathname: ', pathname)
+
+    const handleClickAllDepartments = () => {
+        setMdKeyboardArrowDownRotate(!MdKeyboardArrowDownRotate);
+    };
+
     const navPages = [
         {
             page: 'HOME',
@@ -115,7 +121,6 @@ const Navbar = () => {
                             <p className="mx-2 text-sm">Login</p>
                         </Link>
                     </div>
-
                 </div>
             </div>
 
@@ -146,20 +151,12 @@ const Navbar = () => {
             <div className="w-full flex justify-center">
                 <div className="w-10/12 flex justify-between items-center">
                     <div>
-                        <div className="flex bg-green-500 p-2 items-center text-white font-bold">
+                        <div onClick={handleClickAllDepartments} className="flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
                             <IoMenuSharp className="text-3xl font-bold" />
-                            <Select>
-                                <SelectTrigger className="w-[220px] shadow-none border-none outline-none focus:border-none focus:outline-none">
-                                    <SelectValue className="text-2xl" placeholder="Select Departments" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Select</SelectLabel>
-                                        <SelectItem value="English">English</SelectItem>
-                                        <SelectItem value="Nepali">Nepali</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
+                            <div className="flex mx-4 items-center">
+                                <h1>All Departments</h1>
+                                <MdKeyboardArrowDown className={`mx-2 ${MdKeyboardArrowDownRotate ? 'rotate-0 transition-all duration-500' : 'rotate-180 transition-all duration-500'}`} />
+                            </div>
                         </div>
                     </div>
 
