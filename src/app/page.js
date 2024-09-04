@@ -1,5 +1,10 @@
+'use client'
+
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
+  const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
+  console.log('Toggle State: ', AllDepartmentsState);
   return (
     <div className="w-full">
       <div className="w-full min-h-screen flex justify-center items-center">

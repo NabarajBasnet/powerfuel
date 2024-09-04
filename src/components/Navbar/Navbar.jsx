@@ -24,13 +24,18 @@ import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { useDispatch } from "react-redux";
+import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
 
 const Navbar = () => {
 
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
+    const departments = ['Protein', 'Creatine', 'Vitamin', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
+    const dispatch = useDispatch();
 
     const handleClickAllDepartments = () => {
+        dispatch(ToggleAllDepartmentsState());
         setMdKeyboardArrowDownRotate(!MdKeyboardArrowDownRotate);
     };
 
