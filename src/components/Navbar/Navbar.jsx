@@ -1,5 +1,7 @@
 'use client'
 
+import { IoMenuSharp } from "react-icons/io5";
+import { MdPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import React from 'react'
 import { FaFacebookF } from "react-icons/fa";
@@ -20,6 +22,7 @@ import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
 
@@ -115,6 +118,7 @@ const Navbar = () => {
 
                 </div>
             </div>
+
             <div className="w-full flex justify-center">
                 <div className="w-10/12 flex justify-between my-4">
                     <div>
@@ -136,6 +140,62 @@ const Navbar = () => {
                         <IoBagHandleSharp className="mx-1" />
                         <p className="mx-1">item:$150.00</p>
                     </div>
+                </div>
+            </div>
+
+            <div className="w-full flex justify-center">
+                <div className="w-10/12 flex justify-between items-center">
+                    <div>
+                        <div className="flex bg-green-500 p-2 items-center text-white font-bold">
+                            <IoMenuSharp className="text-3xl font-bold" />
+                            <Select>
+                                <SelectTrigger className="w-[220px] shadow-none border-none">
+                                    <SelectValue className="text-2xl" placeholder="Select Departments" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Select</SelectLabel>
+                                        <SelectItem value="English">English</SelectItem>
+                                        <SelectItem value="Nepali">Nepali</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center border">
+                        <Select>
+                            <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent">
+                                <SelectValue placeholder="All Categories" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Select</SelectLabel>
+                                    <SelectItem value="English">English</SelectItem>
+                                    <SelectItem value="Nepali">Nepali</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+
+                        <input
+                            type='text'
+                            className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
+                            placeholder='What do you need?'
+                        />
+
+                        <Button className='rounded-none p-6'>SERACH</Button>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                        <div className="rounded-full p-4 mr-2 bg-gray-100">
+                            <MdPhone className="3xl" />
+                        </div>
+                        <div>
+                            <h1>+65 11.188.888</h1>
+                            <p>support 24/7 time</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
