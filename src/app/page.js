@@ -1,38 +1,57 @@
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@/components/ui/button";
+import { useSelector } from "react-redux";
 
 export default function Home() {
 
   const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
-  const departments = ['Protein', 'Creatine', 'Vitamin', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
+  const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
 
   return (
     <div className="w-full">
-      <div className="w-full min-h-screen flex justify-center items-center">
-        <div className="flex justify-between items-start">
+      <div className="w-full flex justify-center items-center">
 
-          <div>
-            {AllDepartmentsState ? (
-              <div className="">
-                {departments.map((department) => (
-                  <div className="">
-                    <h1 className="">{department}</h1>
+        <div className="w-full flex justify-between items-start">
+          <div className="w-full flex justify-between items-start">
+            <div className="w-full flex items-start">
+              <div className="w-3/12 flex justify-start">
+                <div className="w-10/12 px-2 border shadow-md">
+                  {AllDepartmentsState ? (
+                    <div className="w-full">
+                      {departments.map((department) => (
+                        <div>
+                          <h1 className="p-1 cursor-pointer">{department}</h1>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="w-full">
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-9/12 bg-gray-200 p-8 my-10 flex justify-between items-center">
+                <div className="w-6/12 flex justify-center">
+                  <div>
+                    <p className="my-8 font-bold text-green-500">BUILD YOUR PHYSIQUE</p>
+                    <h1 className="my-8 text-5xl font-bold">Supplements 100% Authentic</h1>
+                    <p className="myy-8 text-sm">Free Pickup and Delivery Available</p>
+                    <Button className='rounded-none font-bold bg-green-600 my-8'>SHOP NOW</Button>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className="">
-              </div>
-            )}
-          </div>
+                </div>
 
-          <div>
-            <h1 className="text-8xl text-center font-bold">My Location</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d883.124526926339!2d85.33641636956494!3d27.701902998511628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1974cd39fa13%3A0x622dcab96b2b631f!2sKABELI%20GIRLS%20HOSTEL%20BANESHWOR%20HEIGHT!5e0!3m2!1sen!2snp!4v1725446731601!5m2!1sen!2snp" width="500" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div className="w-6/12 flex justify-center">
+                  <img src={`/images/kettlebell-protein.png`} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   );
 }
+

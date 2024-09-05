@@ -154,7 +154,7 @@ const Navbar = () => {
 
             <div className="w-full flex justify-center">
                 <div className="w-10/12 flex justify-between items-center">
-                    <div>
+                    <div className="w-3/12 flex justify-start">
                         <div onClick={handleClickAllDepartments} className="flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
                             <IoMenuSharp className="text-3xl font-bold" />
                             <div className="flex mx-4 items-center">
@@ -164,30 +164,32 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="flex justify-center items-center border">
-                        <Select>
-                            <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
-                                <SelectValue placeholder="All Categories" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    <SelectLabel>Select</SelectLabel>
-                                    <SelectItem value="English">English</SelectItem>
-                                    <SelectItem value="Nepali">Nepali</SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                    <div className="w-6/12 flex justify-center items-center border">
+                        <div className="w-full flex justify-between items-center">
+                            <Select>
+                                <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
+                                    <SelectValue placeholder="All Categories" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Select</SelectLabel>
+                                        <SelectItem value="English">English</SelectItem>
+                                        <SelectItem value="Nepali">Nepali</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
 
-                        <input
-                            type='text'
-                            className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
-                            placeholder='What do you need?'
-                        />
+                            <input
+                                type='text'
+                                className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
+                                placeholder='What do you need?'
+                            />
 
-                        <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
+                            <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
+                        </div>
                     </div>
 
-                    <div className="flex justify-center items-center">
+                    <div className="w-3/12 flex justify-end items-center">
                         <div className="rounded-full p-4 mr-2 text-green-500 bg-gray-100">
                             <MdPhone className="3xl" />
                         </div>
