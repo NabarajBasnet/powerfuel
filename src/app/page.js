@@ -18,7 +18,7 @@ export default function Home() {
               <div className="w-0 md:w-3/12 flex justify-start">
                 <div className={`w-10/12 hidden md:flex px-2 ${AllDepartmentsState ? 'border shadow-md' : "border-none"}`}>
                   {AllDepartmentsState ? (
-                    <div className="w-full">
+                    <div className="w-full z-50">
                       {departments.map((department, index) => (
                         <div key={index}>
                           <h1 className="p-1 cursor-pointer">{department}</h1>

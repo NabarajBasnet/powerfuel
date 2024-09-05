@@ -13,6 +13,15 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination"
 import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineFavorite } from "react-icons/md";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -47,36 +56,36 @@ const Shop = () => {
     console.log('Products: ', products);
 
     return (
-        <div>
-            <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/supplements.jpg')] text-white font-semibold flex justify-center">
-                <div className="absolute inset-0 bg-green-500 opacity-60"></div>
+        <div className="w-full my-6">
+            <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/supplements.jpg')] text-black font-semibold flex justify-center">
+                <div className="absolute inset-0 bg-green-600 opacity-80"></div>
                 <div className="relative my-16 z-10">
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                                <BreadcrumbLink href="/" className='text-black'>Home</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger className="flex items-center gap-1">
-                                        <BreadcrumbEllipsis className="h-4 w-4" />
+                                        <BreadcrumbEllipsis className="h-4text-black w-4" />
                                         <span className="sr-only">Toggle menu</span>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="start">
                                         <DropdownMenuItem>
-                                            <BreadcrumbLink href="/blogs">Blogs</BreadcrumbLink>
+                                            <BreadcrumbLink href="/blogs" className='text-black'>Blogs</BreadcrumbLink>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <BreadcrumbLink href="/aboutus">About Us</BreadcrumbLink>
+                                            <BreadcrumbLink href="/aboutus" className='text-black'>About Us</BreadcrumbLink>
                                         </DropdownMenuItem>
-                                        <DropdownMenuItem>GitHub</DropdownMenuItem>
+                                        <DropdownMenuItem className='text-black'>GitHub</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/contactme">Contact Us</BreadcrumbLink>
+                                <BreadcrumbLink href="/shop" className='text-black'>Shop</BreadcrumbLink>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -93,7 +102,7 @@ const Shop = () => {
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                             key={product.id}
-                            className='bg-gray-100 p-6'>
+                            className='bg-gray-100 shadow-md rounded-sm cursor-pointer p-6'>
                             <div className='w-full cursor-pointer flex justify-center'>
                                 <img src={product.image} alt={product.title} className='w-40 h-40 my-2' />
                             </div>
@@ -114,6 +123,27 @@ const Shop = () => {
                     ))}
                 </div>
             )}
+            <div className="my-4">
+                <Pagination>
+                    <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#">1</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#">2</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationEllipsis />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationNext href="#" />
+                        </PaginationItem>
+                    </PaginationContent>
+                </Pagination>
+            </div>
         </div>
     )
 }
