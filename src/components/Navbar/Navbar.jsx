@@ -1,5 +1,14 @@
 'use client'
 
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMenuSharp } from "react-icons/io5";
 import { MdPhone } from "react-icons/md";
@@ -156,7 +165,75 @@ const Navbar = () => {
                         <IoBagHandleSharp className="mx-1" />
                         <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
-                    <IoMenuSharp className="md:hidden flex text-4xl" />
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <IoMenuSharp className="md:hidden flex text-4xl cursor-pointer" />
+                        </SheetTrigger>
+                        <SheetContent>
+                            <SheetHeader>
+                                <SheetTitle>
+                                    <Link href={'/'}>
+                                        POWERFUEL
+                                    </Link>
+                                </SheetTitle>
+                            </SheetHeader>
+                            <div>
+                                <div>
+                                    {navPages.map((page, index) => (
+                                        <Link href={page.link} key={index} className="font-bold text-sm mx-3">
+                                            <div className={`cursor-pointer ${pathname === page.link ? 'text-green-500' : ''}`}>
+                                                <h1>{page.page}</h1>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                                <div className="my-3">
+                                    <div className="flex md:hidden items-center">
+                                        <FaHeart className="mx-1" />
+                                        <IoBagHandleSharp className="mx-1" />
+                                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                                    </div>
+                                    <div className="hidden md:flex items-center">
+                                        <FaHeart className="mx-1" />
+                                        <IoBagHandleSharp className="mx-1" />
+                                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                                    </div>
+                                </div>
+                                <div className="my-4">
+                                    <Link href={'/account'}>
+                                        <FaUser className="border border-black m-1 rounded-full p-1 text-3xl" />
+                                    </Link>
+                                </div>
+                                <div className="w-full h-0.5 bg-gray-200"></div>
+
+                                <div className="flex my-4">
+                                    {
+                                        topNavSocialIcons.map((icon, link) => (
+                                            <div key={link} className="mx-1">
+                                                <Link href={icon.link}>
+                                                    <icon.icon className="text-sm" />
+                                                </Link>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+
+                                <div>
+                                    <div className="flex mx-1 items-center">
+                                        <MdEmail className='text-md mr-1 text-green-500' />
+                                        <p className="text-sm">powerfuel@gmail.com</p>
+                                    </div>
+                                    <div className="mx-1">
+                                        <p className="text-sm">Free Shipping for all Order of $99</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <SheetFooter>
+                                <SheetClose asChild>
+                                </SheetClose>
+                            </SheetFooter>
+                        </SheetContent>
+                    </Sheet>
                 </div>
             </div>
 
@@ -245,7 +322,6 @@ const Navbar = () => {
                                 className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />
-
                             <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
                         </div>
                     </div>
