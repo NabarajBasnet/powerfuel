@@ -24,7 +24,7 @@ import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
 
 const Navbar = () => {
@@ -32,6 +32,8 @@ const Navbar = () => {
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
     const dispatch = useDispatch();
+    const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
+    const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
 
     const handleClickAllDepartments = () => {
         dispatch(ToggleAllDepartmentsState());
@@ -82,7 +84,7 @@ const Navbar = () => {
 
     return (
         <div className='w-full'>
-            <div className="w-full flex bg-gray-100 justify-center">
+            <div className="w-full hidden md:flex bg-gray-100 justify-center">
                 <div className="w-10/12 py-2 flex justify-between">
 
                     <div className="w-6/12 flex justify-start items-center">
@@ -96,7 +98,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="w-6/12 mx-1 flex justify-end items-center">
+                    <div className="w-6/12 flex mx-1 justify-end items-center">
                         <div className="flex">
                             {
                                 topNavSocialIcons.map((icon, link) => (
@@ -133,9 +135,9 @@ const Navbar = () => {
             </div>
 
             <div className="w-full flex justify-center">
-                <div className="w-10/12 flex justify-between my-4">
-                    <Link href={'/'} className="text-3xl font-bold">POWERFUEL</Link>
-                    <div className="flex items-center">
+                <div className="w-full md:w-10/12 flex justify-between my-4">
+                    <Link href={'/'} className="text-2xl md:text-3xl font-bold">POWERFUEL</Link>
+                    <div className="hidden md:flex items-center">
                         {navPages.map((page, index) => (
                             <Link href={page.link} key={index} className="font-bold text-sm mx-3">
                                 <div className={`cursor-pointer ${pathname === page.link ? 'text-green-500' : ''}`}>
@@ -144,16 +146,75 @@ const Navbar = () => {
                             </Link>
                         ))}
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex md:hidden items-center">
                         <FaHeart className="mx-1" />
                         <IoBagHandleSharp className="mx-1" />
                         <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
+                    <div className="hidden md:flex items-center">
+                        <FaHeart className="mx-1" />
+                        <IoBagHandleSharp className="mx-1" />
+                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                    </div>
+                    <IoMenuSharp className="md:hidden flex text-4xl" />
                 </div>
             </div>
 
             <div className="w-full flex justify-center">
-                <div className="w-10/12 flex justify-between items-center">
+
+                <div className="w-full md:w-10/12 md:hidden">
+                    <div className="w-full flex justify-start">
+                        <div onClick={handleClickAllDepartments} className="w-full my-2 flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
+                            <IoMenuSharp className="text-3xl font-bold" />
+                            <div className="flex mx-4 items-center">
+                                <h1>All Departments</h1>
+                                <MdKeyboardArrowDown className={`mx-2 ${MdKeyboardArrowDownRotate ? 'rotate-0 transition-all duration-500' : 'rotate-180 transition-all duration-500'}`} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`w-full px-2 ${AllDepartmentsState ? 'border shadow-md' : ''} mb-2`}>
+                        {AllDepartmentsState ? (
+                            <div className="w-full">
+                                {departments.map((department, index) => (
+                                    <div key={index}>
+                                        <h1 className="p-1 cursor-pointer">{department}</h1>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="w-full">
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="w-full flex justify-center items-center border">
+                        <div className="w-full flex justify-between items-center">
+                            <div className="hidden">
+                                <Select>
+                                    <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
+                                        <SelectValue placeholder="All Categories" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>Select</SelectLabel>
+                                            <SelectItem value="English">English</SelectItem>
+                                            <SelectItem value="Nepali">Nepali</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <input
+                                type='text'
+                                className='px-2 border-none bg-transparent focus:border-none focus:outline-none outline-none'
+                                placeholder='What do you need?'
+                            />
+                            <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="w-10/12 hidden md:flex justify-between items-center">
                     <div className="w-3/12 flex justify-start">
                         <div onClick={handleClickAllDepartments} className="flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
                             <IoMenuSharp className="text-3xl font-bold" />

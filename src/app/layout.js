@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
             </div>
 
             <div className="w-full flex justify-center">
-              <div className="w-10/12">
+              <div className="w-full md:w-10/12">
                 {children}
               </div>
             </div>
