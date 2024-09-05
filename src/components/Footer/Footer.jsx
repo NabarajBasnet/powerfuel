@@ -131,7 +131,7 @@ const Footer = () => {
                                 {
                                     topNavSocialIcons.map((icon, index) => (
                                         <Link key={index} href={icon.link}>
-                                            <icon.icon className="text-2xl hover:text-blue-500" />
+                                            <icon.icon className="text-2xl hover:scale-105 transition-all duration-500" />
                                         </Link>
                                     ))
                                 }
