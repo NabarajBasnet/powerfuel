@@ -45,7 +45,6 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
     const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
-
     const { getAllProducts } = useProducts();
 
     const fetchProducts = async () => {
@@ -171,12 +170,16 @@ const Navbar = () => {
                     </div>
                     <div className="flex md:hidden items-center">
                         <FaHeart className="mx-1" />
-                        <IoBagHandleSharp className="mx-1" />
+                        <IoBagHandleSharp
+                            className="mx-1"
+                        />
                         <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                     <div className="hidden md:flex items-center">
                         <FaHeart className="mx-1" />
-                        <IoBagHandleSharp className="mx-1" />
+                        <IoBagHandleSharp
+                            className="mx-1"
+                        />
                         <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                     <Sheet>

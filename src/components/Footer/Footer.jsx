@@ -10,7 +10,6 @@ import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa6";
 import { FaCcPaypal } from "react-icons/fa";
 
-
 const Footer = () => {
 
     const userFulLinks = [

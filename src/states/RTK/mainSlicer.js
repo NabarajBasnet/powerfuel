@@ -10,7 +10,7 @@ const MainRTKSclier = createSlice({
     reducers: {
         ToggleAllDepartmentsState: (state) => {
             state.allDepartmentToggle = !state.allDepartmentToggle
-        }
+        },
     }
 })
 
