@@ -1,5 +1,6 @@
 'use client'
 
+import { IoMdHeart } from "react-icons/io";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
 import { IoMdStar } from "react-icons/io";
@@ -90,7 +91,12 @@ const SingleProduct = (props) => {
                                             <p><span className="text-md font-semibold text-gray-600">Brand:</span> <span className="text-sm text-gray-500">{product.brand}</span></p>
                                             <p><span className="text-md font-semibold text-gray-600">Category: </span> <span className="text-sm text-gray-500">{product.category}</span></p>
 
-                                            <div className="my-4">
+                                            <div className="flex items-center my-2 cursor-pointer">
+                                                <IoMdHeart className="text-2xl" />
+                                                <p className="mx-2 text-semibold">Add to wishlist</p>
+                                            </div>
+
+                                            <div className="mb-4">
                                                 <h2 className="text-gray-700 my-1 font-semibold">Size</h2>
                                                 <div className="flex space-x-2">
                                                     <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>S</Button>
@@ -129,13 +135,14 @@ const SingleProduct = (props) => {
                             </div>
 
                             <div className="w-full flex justify-center my-6">
-                                <Tabs defaultValue="description" className="w-full max-w-7xl">
-                                    <TabsList className="bg-transparent focus:underline focus:underline-offset-2 grid grid-cols-2 md:grid-cols-4 space-y-1">
-                                        <TabsTrigger value="description">DESCRIPTION</TabsTrigger>
-                                        <TabsTrigger value="reviews">REVIEWS</TabsTrigger>
-                                        <TabsTrigger value="shipping">SHIPPING & RETURNS</TabsTrigger>
-                                        <TabsTrigger value="warranty">WARRANTY INFORMATION</TabsTrigger>
+                                <Tabs defaultValue="description" className="w-full focus:shadow-none border-none max-w-7xl">
+                                    <TabsList className="bg-transparent focus:underline focus:shadow-none border-none focus:underline-offset-2 grid grid-cols-2 md:grid-cols-4 space-y-1">
+                                        <TabsTrigger value="description" className='focus:shadow-none border-none'>DESCRIPTION</TabsTrigger>
+                                        <TabsTrigger value="reviews" className='focus:shadow-none border-none'>REVIEWS</TabsTrigger>
+                                        <TabsTrigger value="shipping" className='focus:shadow-none border-none'>SHIPPING & RETURNS</TabsTrigger>
+                                        <TabsTrigger value="warranty" className='focus:shadow-none border-none'>WARRANTY INFORMATION</TabsTrigger>
                                     </TabsList>
+                                    <div className="w-full h-0.5 bg-black"></div>
                                     <div className="my-14 px-4">
                                         <TabsContent value="description">
                                             <div>
