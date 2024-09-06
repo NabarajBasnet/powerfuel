@@ -1,5 +1,6 @@
 'use client'
 
+import Badge from '@mui/material/Badge';
 import {
     Sheet,
     SheetClose,
@@ -169,18 +170,26 @@ const Navbar = () => {
                         ))}
                     </div>
                     <div className="flex md:hidden items-center">
-                        <FaHeart className="mx-1" />
-                        <IoBagHandleSharp
-                            className="mx-1"
-                        />
-                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                        <Badge badgeContent={4} color="success">
+                            <FaHeart className="text-xl mx-1" />
+                        </Badge>
+                        <Badge badgeContent={4} color="success" className='mx-2'>
+                            <Link href={'/cart'}>
+                                <IoBagHandleSharp className="text-xl mx-1" />
+                            </Link>
+                        </Badge>
+                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                     <div className="hidden md:flex items-center">
-                        <FaHeart className="mx-1" />
-                        <IoBagHandleSharp
-                            className="mx-1"
-                        />
-                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                        <Badge badgeContent={4} color="success">
+                            <FaHeart className="text-xl mx-1" />
+                        </Badge>
+                        <Badge badgeContent={4} color="success" className='mx-2'>
+                            <Link href={'/cart'}>
+                                <IoBagHandleSharp className="text-xl mx-1" />
+                            </Link>
+                        </Badge>
+                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                     <Sheet>
                         <SheetTrigger asChild>
@@ -206,14 +215,15 @@ const Navbar = () => {
                                 </div>
                                 <div className="my-3">
                                     <div className="flex md:hidden items-center">
-                                        <FaHeart className="mx-1" />
-                                        <IoBagHandleSharp className="mx-1" />
-                                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
-                                    </div>
-                                    <div className="hidden md:flex items-center">
-                                        <FaHeart className="mx-1" />
-                                        <IoBagHandleSharp className="mx-1" />
-                                        <p className="mx-1 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                                        <Badge badgeContent={4} color="success">
+                                            <FaHeart className="text-xl mx-1" />
+                                        </Badge>
+                                        <Badge badgeContent={4} color="success" className='mx-2'>
+                                            <Link href={'/cart'}>
+                                                <IoBagHandleSharp className="text-xl mx-1" />
+                                            </Link>
+                                        </Badge>
+                                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                                     </div>
                                 </div>
                                 <div className="my-4">

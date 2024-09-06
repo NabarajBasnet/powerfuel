@@ -1,4 +1,5 @@
 'use client'
+
 import {
     Breadcrumb,
     BreadcrumbEllipsis,
@@ -56,13 +57,13 @@ const Shop = () => {
 
     return (
         <div className="w-full my-6">
-            <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/supplements.jpg')] text-black font-semibold flex justify-center">
-                <div className="absolute inset-0 opacity-100"></div>
-                <div className="relative my-16 z-10">
+            <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/kettlebell-protein.png')] text-black font-semibold flex justify-center">
+                <div className="absolute inset-0 bg-black opacity-40"></div>
+                <div className="relative my-10 z-10">
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/" className='text-black'>Home</BreadcrumbLink>
+                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
@@ -73,23 +74,24 @@ const Shop = () => {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="start">
                                         <DropdownMenuItem>
-                                            <BreadcrumbLink href="/blogs" className='text-black'>Blogs</BreadcrumbLink>
+                                            <BreadcrumbLink href="/blogs">Blogs</BreadcrumbLink>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <BreadcrumbLink href="/aboutus" className='text-black'>About Us</BreadcrumbLink>
+                                            <BreadcrumbLink href="/aboutus">About Us</BreadcrumbLink>
                                         </DropdownMenuItem>
-                                        <DropdownMenuItem className='text-black'>GitHub</DropdownMenuItem>
+                                        <DropdownMenuItem>GitHub</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/shop" className='text-black'>Shop</BreadcrumbLink>
+                                <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
             </div>
+
             {isLoading ? (
                 <div className='my-4'>
                     <Loading />
@@ -129,6 +131,7 @@ const Shop = () => {
                     </div>
                 </div>
             )}
+
             <div className="my-4">
                 <Pagination>
                     <PaginationContent>
