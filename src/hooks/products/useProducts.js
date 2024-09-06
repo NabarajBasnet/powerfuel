@@ -2,7 +2,7 @@ const useProducts = () => {
 
     const getAllProducts = async () => {
         try {
-            const response = await fetch(`https://dummyjson.com/products`);
+            const response = await fetch(`https://dummyjson.com/products?limit=9&skip=9`);
             const responseData = await response.json();
             return responseData;
         } catch (error) {
