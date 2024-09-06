@@ -35,6 +35,8 @@ import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
+import useProducts from "@/hooks/products/useProducts";
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar = () => {
 
@@ -43,6 +45,18 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
     const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
+
+    const { getAllProducts } = useProducts();
+
+    const fetchProducts = async () => {
+        const Product = await getAllProducts();
+        return Product.products;
+    };
+
+    const { data: products, isLoading, isError } = useQuery({
+        queryFn: fetchProducts,
+        queryKey: ['products']
+    });
 
     const handleClickAllDepartments = () => {
         dispatch(ToggleAllDepartmentsState());
@@ -275,8 +289,9 @@ const Navbar = () => {
                                     <SelectContent>
                                         <SelectGroup>
                                             <SelectLabel>Select</SelectLabel>
-                                            <SelectItem value="English">English</SelectItem>
-                                            <SelectItem value="Nepali">Nepali</SelectItem>
+                                            {products?.map((product) => (
+                                                <SelectItem value="Nepali">{product.category}</SelectItem>
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -311,8 +326,9 @@ const Navbar = () => {
                                 <SelectContent>
                                     <SelectGroup>
                                         <SelectLabel>Select</SelectLabel>
-                                        <SelectItem value="English">English</SelectItem>
-                                        <SelectItem value="Nepali">Nepali</SelectItem>
+                                        {products?.map((product) => (
+                                            <SelectItem value="Nepali">{product.category}</SelectItem>
+                                        ))}
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>

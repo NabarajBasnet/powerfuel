@@ -4,7 +4,6 @@ import { FaCircle } from "react-icons/fa";
 
 const Sidebar = () => {
     const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
-
     const [priceRange, setPriceRange] = useState([0, 100]);
 
     const handleSliderChange = (value) => {

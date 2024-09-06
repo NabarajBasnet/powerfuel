@@ -57,7 +57,7 @@ const Shop = () => {
     return (
         <div className="w-full my-6">
             <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/supplements.jpg')] text-black font-semibold flex justify-center">
-                <div className="absolute inset-0 bg-green-600 opacity-80"></div>
+                <div className="absolute inset-0 opacity-100"></div>
                 <div className="relative my-16 z-10">
                     <Breadcrumb>
                         <BreadcrumbList>
@@ -106,7 +106,7 @@ const Shop = () => {
                                     onMouseEnter={handleMouseEnter}
                                     onMouseLeave={handleMouseLeave}
                                     key={product.id}
-                                    className='bg-gray-100 shadow-md rounded-sm cursor-pointer p-6'>
+                                    className='bg-gray-50 shadow-md rounded-sm cursor-pointer p-6'>
                                     <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
                                         <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
                                     </Link>
