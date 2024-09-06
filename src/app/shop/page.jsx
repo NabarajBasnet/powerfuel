@@ -28,6 +28,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useProducts from '@/hooks/products/useProducts';
 import Loading from '@/components/Loading/Loading';
 import { useState } from "react";
+import Link from "next/link";
 
 const Shop = () => {
 
@@ -52,8 +53,6 @@ const Shop = () => {
         queryFn: fetchProducts,
         queryKey: ['products']
     });
-
-    console.log('Products: ', products);
 
     return (
         <div className="w-full my-6">
@@ -103,9 +102,9 @@ const Shop = () => {
                             onMouseLeave={handleMouseLeave}
                             key={product.id}
                             className='bg-gray-100 shadow-md rounded-sm cursor-pointer p-6'>
-                            <div className='w-full cursor-pointer flex justify-center'>
+                            <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
                                 <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
-                            </div>
+                            </Link>
                             <div
                                 className="w-full flex justify-center">
                                 <div className={`flex h-8 my-2 transition-all duration-500 ease-in-out ${renderCartButtons ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
@@ -114,11 +113,11 @@ const Shop = () => {
                                     <MdOutlineFavorite className="cursor-pointer text-4xl mx-2 border shadow-sm bg-white hover:bg-green-600 hover:text-white transition-all duration-300 rounded-full p-1" />
                                 </div>
                             </div>
-                            <div className='w-full text-center'>
+                            <Link href={`/shop/${product.id}`} className='w-full text-center'>
                                 <p className='text-sm text-gray-500 font-semibold'>{product.category}</p>
                                 <h1 className='my-1'>{product.title}</h1>
                                 <p className='text-sm font-bold'>$ {product.price}</p>
-                            </div>
+                            </Link>
                         </div>
                     ))}
                 </div>
