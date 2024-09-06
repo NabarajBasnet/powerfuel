@@ -8,6 +8,7 @@ import useProducts from "@/hooks/products/useProducts";
 import Loading from "@/components/Loading/Loading";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { IoStar } from "react-icons/io5";
 
 const SingleProduct = (props) => {
 
@@ -40,11 +41,8 @@ const SingleProduct = (props) => {
         queryKey: ['product']
     });
 
-    console.log('Product: ', product);
-
-
     return (
-        <div className="w-full">
+        <div className="w-full overflow-x-hidden">
             <div className="w-full">
                 <div>
                     {isLoading ? (
@@ -55,35 +53,37 @@ const SingleProduct = (props) => {
                         <div className="w-full">
                             <div className="w-full py-10 flex justify-center items-center">
                                 <div className="w-full max-w-7xl">
-                                    <div className="w-full md:flex justify-around items-start">
+                                    <div className="w-full flex flex-col md:flex-row justify-around items-start">
                                         <div className="w-full md:w-6/12">
                                             <div className="w-full flex justify-center items-center p-5 bg-gray-200">
                                                 <img
                                                     src={product.thumbnail}
                                                     alt="product-thumbnail"
-                                                    className="object-cover max-w-full h-auto"
+                                                    className="object-cover w-full h-auto max-w-xs md:max-w-md"
                                                 />
                                             </div>
-                                            <div className="flex items-center my-4">
+                                            <div className="flex items-center my-4 overflow-x-auto">
                                                 <HiOutlineArrowSmLeft className="text-4xl cursor-pointer" />
-                                                {
-                                                    product?.images.map((image, index) => (
-                                                        <div key={index} className="w-full flex justify-center items-center bg-gray-100 mx-2">
+                                                <div className="w-full flex justify-center">
+                                                    {product?.images.map((image, index) => (
+                                                        <div key={index} className="w-20 h-20 flex-shrink-0 bg-gray-100 mx-2">
                                                             <img
                                                                 src={image}
                                                                 alt={`product-image-${index}`}
-                                                                className="w-20 h-20 object-cover"
+                                                                className="w-full h-full object-cover"
                                                             />
                                                         </div>
-                                                    ))
-                                                }
+                                                    ))}
+                                                </div>
                                                 <HiOutlineArrowSmRight className="text-4xl cursor-pointer" />
                                             </div>
                                         </div>
-                                        <div className="w-full mx-4 md:w-6/12">
+
+                                        <div className="w-full md:w-6/12 px-4">
                                             <h1 className="text-2xl font-bold">{product.title}</h1>
-                                            <div className="my-2">
+                                            <div className="my-2 flex items-center">
                                                 <IoMdStar className="text-yellow-400" />
+                                                <span className="ml-1">{product.rating}</span>
                                             </div>
                                             <h2 className="text-xl font-semibold mb-2">$ {product.price}</h2>
                                             <h2 className="text-md text-gray-600 font-semibold">Discount {product.discountPercentage}%</h2>
@@ -92,9 +92,9 @@ const SingleProduct = (props) => {
 
                                             <div className="my-4">
                                                 <h2 className="text-gray-700 my-1 font-semibold">Size</h2>
-                                                <div>
+                                                <div className="flex space-x-2">
                                                     <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>S</Button>
-                                                    <Button className='w-16 hover:text-white text-black rounded-none mx-2 border border-black bg-transparent'>M</Button>
+                                                    <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>M</Button>
                                                     <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>L</Button>
                                                 </div>
                                             </div>
@@ -119,9 +119,9 @@ const SingleProduct = (props) => {
                                                 </button>
                                             </div>
 
-                                            <div className="w-full my-6 flex justify-center md:space-x-4 items-center">
-                                                <Button className='w-6/12 rounded-full'>ADD TO CART</Button>
-                                                <Button className='my-2 w-6/12 rounded-full'>BUY IT NOW</Button>
+                                            <div className="w-full my-6 flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
+                                                <Button className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
+                                                <Button className='w-full md:w-6/12 rounded-full'>BUY IT NOW</Button>
                                             </div>
                                         </div>
                                     </div>
@@ -130,16 +130,53 @@ const SingleProduct = (props) => {
 
                             <div className="w-full flex justify-center my-6">
                                 <Tabs defaultValue="description" className="w-full max-w-7xl">
-                                    <TabsList>
+                                    <TabsList className="bg-transparent focus:underline focus:underline-offset-2 grid grid-cols-2 md:grid-cols-4 space-y-1">
                                         <TabsTrigger value="description">DESCRIPTION</TabsTrigger>
                                         <TabsTrigger value="reviews">REVIEWS</TabsTrigger>
                                         <TabsTrigger value="shipping">SHIPPING & RETURNS</TabsTrigger>
                                         <TabsTrigger value="warranty">WARRANTY INFORMATION</TabsTrigger>
                                     </TabsList>
-                                    <TabsContent value="description">Product description goes here.</TabsContent>
-                                    <TabsContent value="reviews">Customer reviews go here.</TabsContent>
-                                    <TabsContent value="shipping">Shipping & return policy here.</TabsContent>
-                                    <TabsContent value="warranty">Warranty details here.</TabsContent>
+                                    <div className="my-14 px-4">
+                                        <TabsContent value="description">
+                                            <div>
+                                                <p>
+                                                    {product?.description}
+                                                </p>
+                                            </div>
+                                        </TabsContent>
+                                        <TabsContent value="reviews">
+                                            <div>
+                                                {
+                                                    product?.reviews.map((review) => (
+                                                        <div className="flex items-center my-8">
+                                                            <div>
+                                                                <h1 className="text-gray-500 font-semibold">{review.reviewerName}</h1>
+                                                                <div className="flex">
+                                                                    {[...Array(6)].map((_, index) => (
+                                                                        <IoStar />
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                            <div className="mx-4">
+                                                                <p className="text-sm">{review.comment}</p>
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                        </TabsContent>
+                                        <TabsContent value="shipping">
+                                            <div>
+                                                <h1>{product?.shippingInformation}</h1>
+                                                <p>{product?.returnPolicy}</p>
+                                            </div>
+                                        </TabsContent>
+                                        <TabsContent value="warranty">
+                                            <div>
+                                                <h1>{product?.warrantyInformation}</h1>
+                                            </div>
+                                        </TabsContent>
+                                    </div>
                                 </Tabs>
                             </div>
                         </div>
