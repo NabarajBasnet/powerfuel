@@ -44,8 +44,8 @@ const Shop = () => {
     };
 
     const fetchProducts = async () => {
-        const products = await getAllProducts();
-        return products;
+        const Product = await getAllProducts();
+        return Product.products;
     };
 
     const { data: products, isLoading, isError } = useQuery({
@@ -104,7 +104,7 @@ const Shop = () => {
                             key={product.id}
                             className='bg-gray-100 shadow-md rounded-sm cursor-pointer p-6'>
                             <div className='w-full cursor-pointer flex justify-center'>
-                                <img src={product.image} alt={product.title} className='w-40 h-40 my-2' />
+                                <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
                             </div>
                             <div
                                 className="w-full flex justify-center">

@@ -2,7 +2,7 @@ const useProducts = () => {
 
     const getAllProducts = async () => {
         try {
-            const response = await fetch(`https://fakestoreapi.com/products`);
+            const response = await fetch(`https://dummyjson.com/products`);
             const responseData = await response.json();
             return responseData;
         } catch (error) {
@@ -13,7 +13,7 @@ const useProducts = () => {
 
     const getSingleProduct = async (productId) => {
         try {
-            const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+            const response = await fetch(`https://dummyjson.com/products/${productId}`);
             const responseData = await response.json();
             return responseData;
         } catch (error) {
