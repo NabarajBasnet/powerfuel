@@ -42,6 +42,7 @@ import SideCartAndWishList from '../SideCart/SideCart';
 
 const Navbar = () => {
 
+    const cart = useSelector(state => state.rtkreducers.cartItems);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
     const dispatch = useDispatch();
@@ -205,7 +206,7 @@ const Navbar = () => {
                                         <Badge badgeContent={4} color="success">
                                             <FaHeart className="text-xl mx-1" />
                                         </Badge>
-                                        <Badge badgeContent={4} color="success" className='mx-2'>
+                                        <Badge badgeContent={cart.length} color="success" className='mx-2'>
                                             <Link href={'/cart'}>
                                                 <IoBagHandleSharp className="text-xl mx-1" />
                                             </Link>

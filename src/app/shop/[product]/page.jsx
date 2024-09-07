@@ -10,9 +10,11 @@ import Loading from "@/components/Loading/Loading";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { IoStar } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 
 const SingleProduct = (props) => {
 
+    const dispatch = useDispatch();
     const productId = props.params.product;
     const { getSingleProduct } = useProducts();
     const [quantity, setQuantity] = useState(1);
@@ -26,7 +28,6 @@ const SingleProduct = (props) => {
             setQuantity((prevQuantity) => prevQuantity - 1);
         }
     };
-
 
     const fetchSingleProductDetails = async () => {
         try {
