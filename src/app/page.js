@@ -12,7 +12,7 @@ export default function Home() {
     <div className="w-full">
       <div className="w-full flex justify-center items-center">
 
-        <div className="w-full flex justify-between items-start">
+        <div className="w-full md:w-10/12 flex justify-between items-start">
           <div className="w-full flex justify-between items-start">
             <div className="w-full flex items-start">
               <div className="w-0 md:w-3/12 flex justify-start">

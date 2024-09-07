@@ -30,7 +30,7 @@ export default function ClientRootLayout({ children }) {
                         )
                     }
                     <div className="w-full flex justify-center">
-                        <div className="w-full md:w-10/12">
+                        <div className="w-full">
                             {children}
                         </div>
                     </div>
