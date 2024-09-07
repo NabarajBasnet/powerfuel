@@ -1,3 +1,5 @@
+'use client'
+
 import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import {
@@ -11,8 +13,15 @@ import {
     SheetTrigger,
 } from "./SideCartUI.jsx"
 import { Badge } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+
 
 const SideCartAndWishList = () => {
+
+    const cart = useSelector(state => state.rtkreducers.cartItems);
+    console.log("Cart Items: ", cart);
+    console.log("Cart Length: ", length.cart);
+
     return (
         <div>
             <Badge badgeContent={4} color="success">
