@@ -13,10 +13,12 @@ const Header = () => {
     };
 
     return (
-        <div className='w-full'>
-            <div className='flex justify-center text-center items-center py-6 bg-blue-600'>
-                <IoMenuSharp onClick={handleToggleSidebar} className='text-white text-4xl' />
-                <h1 className='text-white'>Header</h1>
+        <div className="w-full z-20 fixed top-0 bg-white dark:bg-black shadow-md">
+            <div className='w-full'>
+                <div className='flex justify-start text-center items-center py-6 bg-blue-600'>
+                    <IoMenuSharp onClick={handleToggleSidebar} className='text-white cursor-pointer text-4xl' />
+                    <h1 className='text-white'>Header</h1>
+                </div>
             </div>
         </div>
     )
