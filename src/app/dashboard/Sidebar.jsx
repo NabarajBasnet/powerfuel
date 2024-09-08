@@ -1,3 +1,5 @@
+'use client'
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RiDashboard2Line } from "react-icons/ri";
 import Link from 'next/link';
@@ -9,8 +11,13 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/AdminSidebarAccordion/AdminAccordion"
+import { usePathname } from "next/navigation";
+
 
 const Sidebar = () => {
+
+    const pathname = usePathname();
+
     return (
         <div className="fixed top-0 z-50 left-0 h-full bg-gray-100">
             <div className='w-64 h-full'>
@@ -20,7 +27,7 @@ const Sidebar = () => {
                         <div className='w-full py-6'>
                             <Link href={'/dashboard'} className='w-full flex justify-start items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
                                 <RiDashboard2Line className='text-2xl text-blue-600' />
-                                <h1 className='mx-3 font-bold text-lg text-gray-800'>Dashboard</h1>
+                                <h1 className='mx-3 text-blue-600 font-bold text-lg'>Dashboard</h1>
                             </Link>
                         </div>
 
