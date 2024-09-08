@@ -31,7 +31,7 @@ const SideCartAndWishList = () => {
             </Badge>
             <Sheet>
                 <SheetTrigger>
-                    <Badge badgeContent={cart.length} color="success" className='mx-2'>
+                    <Badge badgeContent={10} color="success" className='mx-2'>
                         <IoBagHandleSharp className="text-xl mx-1" />
                     </Badge>
                 </SheetTrigger>

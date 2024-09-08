@@ -1,6 +1,5 @@
 'use client'
 
-import Badge from '@mui/material/Badge';
 import {
     Sheet,
     SheetClose,
@@ -30,8 +29,6 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { FaUser } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { IoBagHandleSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +36,7 @@ import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
 import useProducts from "@/hooks/products/useProducts";
 import { useQuery } from "@tanstack/react-query";
 import SideCartAndWishList from '../SideCart/SideCart';
+import { ToggleCartSheet } from '@/states/RTK/mainSlicer';
 
 const Navbar = () => {
 
@@ -171,6 +169,12 @@ const Navbar = () => {
                             </Link>
                         ))}
                     </div>
+
+                    <div className='flex items-center'>
+                        <SideCartAndWishList />
+                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                    </div>
+
                     <Sheet>
                         <SheetTrigger asChild>
                             <IoMenuSharp className="md:hidden flex text-4xl cursor-pointer" />
@@ -195,14 +199,9 @@ const Navbar = () => {
                                 </div>
                                 <div className="my-3">
                                     <div className="flex md:hidden items-center">
-                                        <Badge badgeContent={4} color="success">
-                                            <FaHeart className="text-xl mx-1" />
-                                        </Badge>
-                                        <Badge badgeContent={cart.length} color="success" className='mx-2'>
-                                            <Link href={'/cart'}>
-                                                <IoBagHandleSharp className="text-xl mx-1" />
-                                            </Link>
-                                        </Badge>
+                                        <div>
+                                            <SideCartAndWishList />
+                                        </div>
                                         <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                                     </div>
                                 </div>
