@@ -15,12 +15,12 @@ const Header = () => {
     };
 
     return (
-        <div className="w-full z-20 fixed top-0 bg-white dark:bg-black shadow-md">
+        <div className="w-full z-20 fixed top-0 shadow-md">
             <div className='w-full'>
-                <div className='flex justify-start px-4 text-center items-center py-6 space-x-4 bg-blue-600'>
-                    <IoMenuSharp onClick={handleToggleSidebar} className='text-white cursor-pointer text-4xl' />
+                <div className='flex justify-start px-4 text-center items-center py-6 space-x-4 bg-gray-100'>
+                    <IoMenuSharp onClick={handleToggleSidebar} className='text-black cursor-pointer text-4xl' />
                     <Link href={'/'}>
-                        <IoHomeSharp className="text-2xl text-white" />
+                        <IoHomeSharp className="text-2xl text-black" />
                     </Link>
                 </div>
             </div>

@@ -246,7 +246,7 @@ const Navbar = () => {
 
             <div className="w-full flex justify-center">
 
-                <div className="w-full md:w-10/12 md:hidden">
+                <div className="w-full md:w-10/12 px-4 md:px-0 md:hidden">
                     <div className="w-full flex justify-start">
                         <div onClick={handleClickAllDepartments} className="w-full my-2 flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
                             <IoMenuSharp className="text-3xl font-bold" />
