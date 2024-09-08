@@ -1,5 +1,6 @@
 'use client'
 
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RiDashboard2Line } from "react-icons/ri";
 import Link from 'next/link';
@@ -12,6 +13,10 @@ import {
     AccordionTrigger,
 } from "@/components/AdminSidebarAccordion/AdminAccordion"
 import { usePathname } from "next/navigation";
+import { FaRegHeart } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { IoChatbubbleOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 
 
 const Sidebar = () => {
@@ -58,6 +63,101 @@ const Sidebar = () => {
                                         <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
                                             <FaRegUser className='text-2xl text-blue-600' />
                                             <h1 className='ml-3 font-bold text-sm text-gray-800'>Customers</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-600'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
+                                            <MdOutlineShoppingCart className='text-2xl text-blue-600' />
+                                            <h1 className='ml-3 font-bold text-sm text-gray-800'>Orders</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-600'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
+                                            <FaRegHeart className='text-2xl text-blue-600' />
+                                            <h1 className='ml-3 font-bold text-sm text-gray-800'>Marketing</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-600'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
+                                            <MdOutlineMailOutline className='text-2xl text-blue-600' />
+                                            <h1 className='ml-3 font-bold text-sm text-gray-800'>Inbox</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-600'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
+                                            <IoChatbubbleOutline className='text-2xl text-blue-600' />
+                                            <h1 className='ml-3 font-bold text-sm text-gray-800'>Chat</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-600'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 hover:bg-gray-200 transition-colors duration-200'>
+                                            <IoSettingsOutline className='text-2xl text-blue-600' />
+                                            <h1 className='ml-3 font-bold text-sm text-gray-800'>Settings</h1>
                                         </div>
                                     </AccordionTrigger>
                                     <AccordionContent>

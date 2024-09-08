@@ -36,7 +36,6 @@ import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
 import useProducts from "@/hooks/products/useProducts";
 import { useQuery } from "@tanstack/react-query";
 import SideCartAndWishList from '../SideCart/SideCart';
-import { ToggleCartSheet } from '@/states/RTK/mainSlicer';
 
 const Navbar = () => {
 
@@ -198,7 +197,7 @@ const Navbar = () => {
                                     ))}
                                 </div>
                                 <div className="my-3">
-                                    <div className="flex md:hidden items-center">
+                                    <div className="md:flex hidden items-center">
                                         <div>
                                             <SideCartAndWishList />
                                         </div>

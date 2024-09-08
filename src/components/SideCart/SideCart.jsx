@@ -27,12 +27,12 @@ const SideCartAndWishList = () => {
     return (
         <div>
             <Badge badgeContent={4} color="success">
-                <FaHeart className="text-xl mx-1" />
+                <FaHeart className="text-xl md:mx-1 mx-0" />
             </Badge>
             <Sheet>
                 <SheetTrigger>
-                    <Badge badgeContent={10} color="success" className='mx-2'>
-                        <IoBagHandleSharp className="text-xl mx-1" />
+                    <Badge badgeContent={10} color="success" className='md:mx-2 mx-0'>
+                        <IoBagHandleSharp className="text-xl md:mx-1 mx-0" />
                     </Badge>
                 </SheetTrigger>
                 <SheetContent>
