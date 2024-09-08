@@ -160,7 +160,7 @@ const Navbar = () => {
             </div>
 
             <div className="w-full flex justify-center">
-                <div className="w-full md:w-10/12 flex justify-between my-4">
+                <div className="w-full md:w-10/12 px-4 md:px-0 flex justify-between items-center my-4">
                     <Link href={'/'} className="text-2xl md:text-3xl font-bold">POWERFUEL</Link>
                     <div className="hidden md:flex items-center">
                         {navPages.map((page, index) => (
@@ -170,14 +170,6 @@ const Navbar = () => {
                                 </div>
                             </Link>
                         ))}
-                    </div>
-                    <div className="flex md:hidden items-center">
-                        <SideCartAndWishList />
-                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
-                    </div>
-                    <div className="hidden md:flex items-center">
-                        <SideCartAndWishList />
-                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
                     <Sheet>
                         <SheetTrigger asChild>
