@@ -36,10 +36,10 @@ const Sidebar = () => {
                 <div className='w-full h-full flex justify-center items-start bg-gray-800'>
                     <ScrollArea className="h-full w-full overflow-y-auto p-1">
 
-                        <div className='w-full py-6'>
+                        <div className={`w-full py-6 ${pathname==='/dashboard'?'bg-green-500':''}`}>
                             <Link href={'/dashboard'} className='w-full flex justify-start items-center px-4 transition-colors duration-200'>
-                                <RiDashboard2Line className='text-2xl text-blue-500' />
-                                <h1 className='mx-3 text-blue-500 font-bold text-lg'>Dashboard</h1>
+                                <RiDashboard2Line className='text-2xl text-white' />
+                                <h1 className='mx-3 font-bold text-xl text-white'>Dashboard</h1>
                             </Link>
                         </div>
 
@@ -49,7 +49,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-1">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <FiDatabase className='text-2xl text-blue-600' />
+                                            <FiDatabase className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Catalogs</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -69,7 +69,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <MdOutlineShoppingCart className='text-2xl text-blue-600' />
+                                            <MdOutlineShoppingCart className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Orders</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -89,7 +89,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <LuCreditCard className='text-2xl text-blue-600' />
+                                            <LuCreditCard className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Purchases</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -108,7 +108,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <FaRegHeart className='text-2xl text-blue-600' />
+                                            <FaRegHeart className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Marketing</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -127,7 +127,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <PiInvoice className='text-2xl text-blue-600' />
+                                            <PiInvoice className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Invoice</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -146,7 +146,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <TbBrandGoogleAnalytics className='text-2xl text-blue-600' />
+                                            <TbBrandGoogleAnalytics className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Analytics</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -166,7 +166,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <IoSettingsOutline className='text-2xl text-blue-600' />
+                                            <IoSettingsOutline className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Settings</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -185,7 +185,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <MdLockOutline className='text-2xl text-blue-600' />
+                                            <MdLockOutline className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Authentication</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -204,7 +204,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <FaUserEdit className='text-2xl text-blue-600' />
+                                            <FaUserEdit className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Roles</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -223,7 +223,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <FaRegUser className='text-2xl text-blue-600' />
+                                            <FaRegUser className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Customers</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -243,7 +243,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <MdOutlineMailOutline className='text-2xl text-blue-600' />
+                                            <MdOutlineMailOutline className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Inbox</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -262,7 +262,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <RiChat3Line className='text-2xl font-bold text-blue-600' />
+                                            <RiChat3Line className='text-2xl font-bold text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Chat</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -282,7 +282,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <FiHelpCircle className='text-2xl text-blue-600' />
+                                            <FiHelpCircle className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Help Center</h1>
                                         </div>
                                     </AccordionTrigger>
@@ -301,7 +301,7 @@ const Sidebar = () => {
                                 <AccordionItem value="item-2">
                                     <AccordionTrigger>
                                         <div className='flex items-center px-4 transition-colors duration-200'>
-                                            <TiDocumentText className='text-2xl text-blue-600' />
+                                            <TiDocumentText className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Privacy Policy</h1>
                                         </div>
                                     </AccordionTrigger>

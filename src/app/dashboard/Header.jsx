@@ -18,9 +18,9 @@ const Header = () => {
         <div className="w-full z-20 fixed top-0 shadow-md">
             <div className='w-full'>
                 <div className='flex justify-start px-4 text-center items-center py-6 space-x-4 bg-gray-100'>
-                    <IoMenuSharp onClick={handleToggleSidebar} className='text-black cursor-pointer text-4xl' />
+                    <IoMenuSharp onClick={handleToggleSidebar} className='cursor-pointer text-4xl text-green-500' />
                     <Link href={'/'}>
-                        <IoHomeSharp className="text-2xl text-black" />
+                        <IoHomeSharp className="text-2xl text-green-500" />
                     </Link>
                 </div>
             </div>
