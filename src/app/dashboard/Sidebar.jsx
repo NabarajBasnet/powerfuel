@@ -24,6 +24,7 @@ import { RiChat3Line } from "react-icons/ri";
 import { TiDocumentText } from "react-icons/ti";
 import { FaUserEdit } from "react-icons/fa";
 import { LuCreditCard } from "react-icons/lu";
+import { AiFillAppstore } from "react-icons/ai";
 
 
 const Sidebar = () => {
@@ -36,7 +37,7 @@ const Sidebar = () => {
                 <div className='w-full h-full flex justify-center items-start bg-gray-800'>
                     <ScrollArea className="h-full w-full overflow-y-auto p-1">
 
-                        <div className={`w-full py-6 ${pathname==='/dashboard'?'bg-green-500':''}`}>
+                        <div className={`w-full py-6 ${pathname === '/dashboard' ? 'bg-green-500' : ''}`}>
                             <Link href={'/dashboard'} className='w-full flex justify-start items-center px-4 transition-colors duration-200'>
                                 <RiDashboard2Line className='text-2xl text-white' />
                                 <h1 className='mx-3 font-bold text-xl text-white'>Dashboard</h1>
@@ -148,6 +149,25 @@ const Sidebar = () => {
                                         <div className='flex items-center px-4 transition-colors duration-200'>
                                             <TbBrandGoogleAnalytics className='text-2xl text-white' />
                                             <h1 className='ml-3 font-bold text-sm text-white'>Analytics</h1>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className='px-8 my-2 text-gray-100'>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer List</h1>
+                                            <h1 className='py-2 hover:text-blue-600 transition-colors duration-200'>Customer Details</h1>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+
+                        <div className='w-full'>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>
+                                        <div className='flex items-center px-4 transition-colors duration-200'>
+                                            <AiFillAppstore className='text-2xl text-white' />
+                                            <h1 className='ml-3 font-bold text-sm text-white'>Content Management</h1>
                                         </div>
                                     </AccordionTrigger>
                                     <AccordionContent>
