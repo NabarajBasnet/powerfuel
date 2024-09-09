@@ -169,7 +169,7 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    <div className='flex items-center'>
+                    <div className='hidden md:flex items-center'>
                         <SideCartAndWishList />
                         <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                     </div>
@@ -197,7 +197,7 @@ const Navbar = () => {
                                     ))}
                                 </div>
                                 <div className="my-3">
-                                    <div className="md:flex hidden items-center">
+                                    <div className="flex items-center">
                                         <div>
                                             <SideCartAndWishList />
                                         </div>

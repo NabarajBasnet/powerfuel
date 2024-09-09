@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { Slider } from "@/components/ui/slider";
+'use client'
+
+import React from 'react';
 import { FaCircle } from "react-icons/fa";
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import { useState } from 'react';
 
 const Sidebar = () => {
-    const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
-    const [priceRange, setPriceRange] = useState([0, 100]);
 
-    const handleSliderChange = (value) => {
-        setPriceRange(value);
+    const [value, setValue] = useState([15, 100]);
+    const departments = ['Protein', 'Creatine', 'Preworkout', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
 
     const filterByColors = [
@@ -43,7 +47,7 @@ const Sidebar = () => {
         <div className='sticky top-0'>
             <div className='w-full flex justify-center items-center'>
                 <div className='w-full flex justify-start items-center'>
-                    <div className='w-full border shadow-md p-4'>
+                    <div className='w-full rounded-lg bg-white border shadow-md p-4'>
                         <div>
                             <h1 className='my-2 font-bold'>Departments</h1>
                             {departments.map((department, index) => (
@@ -55,19 +59,21 @@ const Sidebar = () => {
 
                         <div className='my-4 p-2'>
                             <h1 className='text-2xl font-bold mb-2'>Filter by Price</h1>
-                            <Slider
-                                defaultValue={priceRange}
-                                max={1000}
-                                step={10}
-                                value={priceRange}
-                                onValueChange={handleSliderChange}
-                                className='hover:cursor-pointer'
-                            />
+                            <Box>
+                                <Slider
+                                    value={value}
+                                    onChange={handleChange}
+                                    valueLabelDisplay="auto"
+                                    min={0}
+                                    max={1000}
+                                    className='text-green-500'
+                                />
+                            </Box>
 
                             <div className="flex justify-between mt-2">
-                                <h1 className='font-semibold' >Min: ${priceRange[0]}</h1>
+                                <h1 className='font-semibold' >Min: ${value[0]}</h1>
                                 <p>-</p>
-                                <h1 className='font-semibold'>Max: ${priceRange[1]}</h1>
+                                <h1 className='font-semibold'>Max: ${value[1]}</h1>
                             </div>
                         </div>
 

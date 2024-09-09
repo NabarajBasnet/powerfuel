@@ -21,8 +21,6 @@ import { Separator } from "../ui/separator.jsx";
 const SideCartAndWishList = () => {
 
     const cart = useSelector(state => state.rtkreducers.cartItems);
-    console.log("Cart Items: ", cart);
-    console.log("Cart Length: ", cart.length);
 
     return (
         <div>
@@ -31,8 +29,8 @@ const SideCartAndWishList = () => {
             </Badge>
             <Sheet>
                 <SheetTrigger>
-                    <Badge badgeContent={10} color="success" className='md:mx-2 mx-0'>
-                        <IoBagHandleSharp className="text-xl md:mx-1 mx-0" />
+                    <Badge badgeContent={10} color="success" className='mx-3'>
+                        <IoBagHandleSharp className="text-xl" />
                     </Badge>
                 </SheetTrigger>
                 <SheetContent>

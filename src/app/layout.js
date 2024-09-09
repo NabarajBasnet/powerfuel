@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ClientRootLayout>
           <div className="w-full flex justify-center">
-            <div className="w-full">
+            <div className="w-full mt-2">
               {children}
             </div>
           </div>

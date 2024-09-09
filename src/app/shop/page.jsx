@@ -31,6 +31,7 @@ import Loading from '@/components/Loading/Loading';
 import { useState } from "react";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
+import { Button } from "@/components/ui/button";
 
 const Shop = () => {
 
@@ -56,7 +57,7 @@ const Shop = () => {
     });
 
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex bg-gray-200 justify-center">
             <div className="w-full md:w-10/12">
                 <div className="w-full my-6">
                     <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/kettlebell-protein.png')] text-black font-semibold flex justify-center">
@@ -101,26 +102,25 @@ const Shop = () => {
                     ) : (
                         <div className="w-full flex justify-center">
                             <div className="w-full md:flex justify-start px-4 md:px-0">
-                                <div className="w-full md:w-3/12 md:m-2">
+                                <div className="w-full md:w-3/12 m-3">
                                     <Sidebar />
                                 </div>
-                                <div className="w-full md:w-9/12 my-2 md:my-0 md:m-2">
+                                <div className="w-full md:w-9/12 my-3">
                                     <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                                         {products?.map((product) => (
                                             <div
                                                 onMouseEnter={handleMouseEnter}
                                                 onMouseLeave={handleMouseLeave}
                                                 key={product.id}
-                                                className='bg-gray-50 shadow-md rounded-sm cursor-pointer p-6'>
+                                                className='bg-white shadow-md rounded-md cursor-pointer p-6'>
                                                 <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
                                                     <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
                                                 </Link>
                                                 <div
-                                                    className="w-full flex justify-center">
-                                                    <div className={`flex h-8 my-2 transition-all duration-500 ease-in-out ${renderCartButtons ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
-                                                        <MdOutlineFavorite className="cursor-pointer text-4xl mx-2 border shadow-sm bg-white hover:bg-green-600 hover:text-white transition-all duration-300 rounded-full p-1" />
-                                                        <FaShoppingCart className="cursor-pointer text-4xl mx-2 border shadow-sm bg-white hover:bg-green-600 hover:text-white transition-all duration-300 rounded-full p-1" />
-                                                        <MdOutlineFavorite className="cursor-pointer text-4xl mx-2 border shadow-sm bg-white hover:bg-green-600 hover:text-white transition-all duration-300 rounded-full p-1" />
+                                                    className="w-full flex my-2 justify-center">
+                                                    <div className={`w-full flex justify-between items-center space-x-2}`}>
+                                                        <Button className='w-6/12 rounded-none mx-1'>Add To Cart</Button>
+                                                        <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
                                                     </div>
                                                 </div>
                                                 <Link href={`/shop/${product.id}`} className='w-full text-center'>
