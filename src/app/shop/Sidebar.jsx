@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react';
-import { FaCircle } from "react-icons/fa";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useState } from 'react';
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 const Sidebar = () => {
 
@@ -16,27 +17,27 @@ const Sidebar = () => {
 
     const filterByColors = [
         {
-            color: 'white',
+            color: 'bg-white',
             text: 'White'
         },
         {
-            color: 'yellow-600',
+            color: 'bg-yellow-600',
             text: 'Yellow'
         },
         {
-            color: 'red-600',
+            color: 'bg-red-600',
             text: 'Red'
         },
         {
-            color: 'green-600',
+            color: 'bg-green-600',
             text: 'Green'
         },
         {
-            color: 'blue-600',
+            color: 'bg-blue-600',
             text: 'Blue'
         },
         {
-            color: 'black',
+            color: 'bg-black',
             text: 'Black'
         },
     ];
@@ -77,16 +78,54 @@ const Sidebar = () => {
                             </div>
                         </div>
 
+                        <div className='my-4 p-2'>
+                            <h1 className='text-2xl font-bold mb-2'>Filter by Brand</h1>
+                            <RadioGroup defaultValue="option-one">
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="option-one" id="option-one" />
+                                    <Label htmlFor="option-one">Muscle Blaze</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="option-two" id="option-two" />
+                                    <Label htmlFor="option-two">Muscle Tech</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="option-three" id="option-three" />
+                                    <Label htmlFor="option-three">Optimum Nutrition</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+
+                        <div className='my-4 p-2'>
+                            <h1 className='text-2xl font-bold mb-2'>Filter by Flavor</h1>
+                            <RadioGroup defaultValue="chocklate">
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="chocklate" id="chocklate" />
+                                    <Label htmlFor="chocklate">Chocklate</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="mango" id="mango" />
+                                    <Label htmlFor="mango">Mango</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="cookies&cream" id="cookies&cream" />
+                                    <Label htmlFor="cookies&cream">Cookies & Cream</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+
                         <div>
                             <h1 className='text-2xl font-bold mb-2'>Colors</h1>
                             <div className='grid grid-cols-2'>
                                 {
                                     filterByColors.map((color) => (
-                                        <div className='flex items-center'>
-                                            <div>
-                                                <FaCircle className={`cursor-pointer ${color.color === 'white' ? 'text-white' : ''} ${color.color === 'yellow-600' ? 'text-yellow-600' : ''} ${color.color === 'red-600' ? 'text-red-600' : ''} ${color.color === 'green-600' ? 'text-green-600' : ''} ${color.color === 'blue-600' ? 'text-blue-600' : ''} ${color.color === 'black' ? 'text-black' : ''}`} />
-                                            </div>
-                                            <p className='mx-1'>{color.text}</p>
+                                        <div className='flex items-center my-1'>
+                                            <RadioGroup>
+                                                <div className="flex items-center space-x-2">
+                                                    <RadioGroupItem value="option-none" className={`${color.color} border-none`} id="option-none" />
+                                                    <Label htmlFor="option-none">{color.text}</Label>
+                                                </div>
+                                            </RadioGroup>
                                         </div>
                                     ))
                                 }
