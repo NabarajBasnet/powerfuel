@@ -23,9 +23,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
-import { FaShoppingCart } from "react-icons/fa";
-import { MdOutlineFavorite } from "react-icons/md";
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import useProducts from '@/hooks/products/useProducts';
 import Loading from '@/components/Loading/Loading';
 import { useState } from "react";

@@ -1,5 +1,16 @@
 'use client'
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { MdLocalShipping } from "react-icons/md";
 import {
     Pagination,
@@ -27,6 +38,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
 import ProductReviewForm from "@/components/productReviewForm/productReviewForm";
 import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
+import { IoEyeSharp } from "react-icons/io5";
 
 const SingleProduct = (props) => {
 
@@ -120,6 +132,35 @@ const SingleProduct = (props) => {
                                                 className="w-full flex justify-center items-center p-5 bg-gray-200 group relative overflow-hidden"
                                                 onMouseMove={handleMouseMove}
                                             >
+                                                <AlertDialog>
+                                                    <AlertDialogTrigger>
+                                                        <IoEyeSharp className="absolute top-2 right-2 text-2xl text-gray-700 cursor-pointer" />
+                                                    </AlertDialogTrigger>
+                                                    <AlertDialogContent>
+                                                        <AlertDialogHeader>
+                                                            <AlertDialogTitle></AlertDialogTitle>
+                                                            <AlertDialogDescription>
+                                                                <div>
+                                                                    <img
+                                                                        src={currentProductThumbnail}
+                                                                        alt="product-thumbnail"
+                                                                        className="object-cover cursor-zoom-in w-full h-auto max-w-xs md:max-w-md transition-transform duration-300 ease-in-out group-hover:scale-150"
+                                                                        style={{
+                                                                            transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </AlertDialogDescription>
+                                                        </AlertDialogHeader>
+                                                        <AlertDialogFooter>
+                                                            <AlertDialogCancel>
+                                                                <IoEyeSharp className="text-2xl text-gray-700 cursor-pointer" />
+                                                            </AlertDialogCancel>
+                                                        </AlertDialogFooter>
+                                                    </AlertDialogContent>
+                                                </AlertDialog>
+
+                                                {/* Product Thumbnail */}
                                                 <img
                                                     src={currentProductThumbnail}
                                                     alt="product-thumbnail"
@@ -129,6 +170,8 @@ const SingleProduct = (props) => {
                                                     }}
                                                 />
                                             </div>
+
+                                            {/* Product Thumbnails Carousel */}
                                             <div className="flex items-center my-4 overflow-x-auto">
                                                 <div className="w-full flex justify-center">
                                                     {product?.images.map((image, index) => (
@@ -147,6 +190,7 @@ const SingleProduct = (props) => {
                                                 </div>
                                             </div>
                                         </div>
+
 
                                         <div className="w-full md:w-6/12 px-4">
                                             <h1 className="text-2xl font-bold">{product.title}</h1>
