@@ -15,6 +15,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
+import ProductReviewForm from "@/components/productReviewForm/productReviewForm";
 
 const SingleProduct = (props) => {
 
@@ -175,6 +176,9 @@ const SingleProduct = (props) => {
                                                 </div>
                                             </TabsContent>
                                             <TabsContent value="reviews">
+                                                <div>
+                                                    <ProductReviewForm />
+                                                </div>
                                                 <div>
                                                     {
                                                         product?.reviews.map((review) => (
