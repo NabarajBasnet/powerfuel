@@ -164,6 +164,21 @@ const SingleProduct = (props) => {
                                                 <Button className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
                                                 <Button className='w-full md:w-6/12 rounded-full'>BUY IT NOW</Button>
                                             </div>
+
+                                            <div className="flex my-6 mx-2 items-center">
+                                                <span className="font-semibold">Share:</span>
+                                                <div className="flex mx-4">
+                                                    {shareProuct.map((share) => (
+                                                        <div className="flex items-center cursor-pointer">
+                                                            <div className="flex items-center mx-3">
+                                                                <share.icon />
+                                                                <p className="mx-1 font-semibold">{share.title}</p>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
