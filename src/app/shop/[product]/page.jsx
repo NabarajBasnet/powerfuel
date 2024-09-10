@@ -13,7 +13,6 @@ import {
 import { FaRegStar } from "react-icons/fa6";
 import { IoMdHeart } from "react-icons/io";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
 import { IoMdStar } from "react-icons/io";
 import { useQuery } from "@tanstack/react-query";
 import useProducts from "@/hooks/products/useProducts";
@@ -110,12 +109,11 @@ const SingleProduct = (props) => {
                                                 />
                                             </div>
                                             <div className="flex items-center my-4 overflow-x-auto">
-                                                <HiOutlineArrowSmLeft className="text-4xl cursor-pointer" />
                                                 <div className="w-full flex justify-center">
                                                     {product?.images.map((image, index) => (
                                                         <div
                                                             key={index}
-                                                            className="w-20 h-20 flex-shrink-0 bg-gray-100 mx-2"
+                                                            className="w-20 h-20 flex-shrink-0 bg-gray-200 mx-2"
                                                         >
                                                             <img
                                                                 onClick={() => setCurrentProductThumbnail(image)}
@@ -126,14 +124,17 @@ const SingleProduct = (props) => {
                                                         </div>
                                                     ))}
                                                 </div>
-                                                <HiOutlineArrowSmRight className="text-4xl cursor-pointer" />
                                             </div>
                                         </div>
 
                                         <div className="w-full md:w-6/12 px-4">
                                             <h1 className="text-2xl font-bold">{product.title}</h1>
                                             <div className="my-2 flex items-center">
-                                                <IoMdStar className="text-yellow-400" />
+                                                <div className="flex">
+                                                    {[...Array(6)].map((_, index) => (
+                                                        <IoMdStar className="text-green-500 text-xl" />
+                                                    ))}
+                                                </div>
                                                 <span className="ml-1">{product.rating}</span>
                                             </div>
                                             <h2 className="text-xl font-semibold mb-2">$ {product.price}</h2>
