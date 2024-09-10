@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     toggleAdminSidebar: false,
     allDepartmentToggle: true,
+    toggleProductReviewForm: false,
     cartItems: [],
     totalPrice: 0,
     totalQuantity: 0,
@@ -17,9 +18,12 @@ const MainRTKSclier = createSlice({
         },
         ToggleAdminSidebar: (state) => {
             state.toggleAdminSidebar = !state.toggleAdminSidebar;
+        },
+        ToggleProductReviewForm: (state) => {
+            state.toggleProductReviewForm = !state.toggleProductReviewForm;
         }
     }
 })
 
-export const { ToggleAllDepartmentsState, ToggleAdminSidebar } = MainRTKSclier.actions;
+export const { ToggleAllDepartmentsState, ToggleAdminSidebar, ToggleProductReviewForm } = MainRTKSclier.actions;
 export default MainRTKSclier.reducer

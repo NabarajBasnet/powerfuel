@@ -1,5 +1,6 @@
 'use client'
 
+import { FaRegStar } from "react-icons/fa6";
 import { IoMdHeart } from "react-icons/io";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
@@ -10,19 +11,26 @@ import Loading from "@/components/Loading/Loading";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { IoStar } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
 import ProductReviewForm from "@/components/productReviewForm/productReviewForm";
+import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
 
 const SingleProduct = (props) => {
 
+    const toggleProductReviewForm = useSelector(state => state.rtkreducers.toggleProductReviewForm);
     const dispatch = useDispatch();
     const productId = props.params.product;
     const { getSingleProduct } = useProducts();
     const [quantity, setQuantity] = useState(1);
+
+    const handleToggleProductReviewForm = () => {
+        dispatch(ToggleProductReviewForm());
+    };
+
 
     const handleIncrease = () => {
         setQuantity((prevQuantity) => prevQuantity + 1);
@@ -150,7 +158,9 @@ const SingleProduct = (props) => {
                                                 </button>
                                             </div>
 
-                                            <div className="w-full my-6 flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
+                                            <p className="text-sm font-semibold my-6">{product.stock > 10 ? `${product.stock} in stock` : 'Out of stock'}</p>
+
+                                            <div className="w-full flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
                                                 <Button className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
                                                 <Button className='w-full md:w-6/12 rounded-full'>BUY IT NOW</Button>
                                             </div>
@@ -166,18 +176,46 @@ const SingleProduct = (props) => {
                                             <TabsTrigger value="description" className='focus:shadow-none border-none'>DESCRIPTION</TabsTrigger>
                                             <TabsTrigger value="reviews" className='focus:shadow-none border-none'>REVIEWS</TabsTrigger>
                                         </TabsList>
-                                        <div className="w-full h-0.5 my-4 bg-gray-600"></div>
+                                        <div className="w-full h-0.5 my-4 bg-gray-500"></div>
                                         <div className="my-14 px-4">
                                             <TabsContent value="description">
                                                 <div>
-                                                    <p>
+                                                    <p className="text-sm font-semibold">
                                                         {product?.description}
                                                     </p>
                                                 </div>
                                             </TabsContent>
                                             <TabsContent value="reviews">
                                                 <div>
-                                                    <ProductReviewForm />
+                                                    <h1 className='text-center text-2xl font-semibold'>Customer Reviews</h1>
+                                                    <div className='w-full flex justify-center'>
+                                                        <div className="w-full my-10 flex justify-center items-center">
+                                                            <div className="mx-6">
+                                                                <div className="flex">
+                                                                    {[...Array(6)].map((_, index) => (
+                                                                        <FaRegStar className="text-2xl my-2" />
+                                                                    ))}
+                                                                </div>
+                                                                <p className="text-sm font-semibold">Write a review about this product</p>
+                                                            </div>
+                                                            <div className="mx-6">|</div>
+                                                            <div className="mx-6">
+                                                                <Button className='rounded-none' onClick={handleToggleProductReviewForm}>{toggleProductReviewForm ? "Cancel Review" : "Write a review"}</Button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        {
+                                                            toggleProductReviewForm ? (
+                                                                <div>
+                                                                    <ProductReviewForm />
+                                                                </div>
+                                                            ) : (
+                                                                <>
+                                                                </>
+                                                            )
+                                                        }
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     {

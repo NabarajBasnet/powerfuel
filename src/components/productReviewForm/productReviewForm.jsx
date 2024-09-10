@@ -1,29 +1,24 @@
+'use client'
+
 import { FaRegStar } from "react-icons/fa6";
 import React from 'react'
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { useDispatch, useSelector } from "react-redux";
+import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
 
 const ProductReviewForm = () => {
+    const dispatch = useDispatch();
+    const toggleProductReviewForm = useSelector(state => state.rtkreducers.toggleProductReviewForm);
+
+    const handleToggleProductReviewForm = () => {
+        dispatch(ToggleProductReviewForm());
+    };
+
+    console.log('Props: ', toggleProductReviewForm);
     return (
         <div className='w-full'>
-            <h1 className='text-center text-2xl font-semibold'>Customer Reviews</h1>
-            <div className='w-full flex justify-center'>
-                <div className="w-full my-10 flex justify-center items-center">
-                    <div className="mx-6">
-                        <div className="flex">
-                            {[...Array(6)].map((_, index) => (
-                                <FaRegStar className="text-2xl my-2" />
-                            ))}
-                        </div>
-                        <p className="text-sm font-semibold">Write a review about this product</p>
-                    </div>
-                    <div className="mx-6">|</div>
-                    <div className="mx-6">
-                        <Button className='rounded-none'>Write a review</Button>
-                    </div>
-                </div>
-            </div>
             <div>
                 <h1 className="text-center mt-3 text-sm font-semibold">Write a review about this product</h1>
                 <p className="text-center text-semibold text-sm mt-2">Rating</p>
@@ -33,7 +28,7 @@ const ProductReviewForm = () => {
                     ))}
                 </div>
                 <div className="w-full flex justify-center">
-                    <form className="w-6/12">
+                    <form className="w-11/12 md:w-7/12 p-4 bg-white dark:bg-gray-800">
                         <p className="text-center my-1 font-bold">Review Title</p>
                         <Input
                             type='text'
@@ -69,10 +64,10 @@ const ProductReviewForm = () => {
                             placeholder='Enter your email (private)'
                         />
 
-                        <p className="my-6">How we use your data: We’ll only contact you about the review you left, and only if necessary. By submitting your review, you agree to Judge.me’s terms, privacy and content policies</p>
+                        <p className="my-6 text-sm font-semibold">How we use your data: We’ll only contact you about the review you left, and only if necessary. By submitting your review, you agree to Judge.me’s terms, privacy and content policies</p>
                         <div className="w-full flex justify-around items-center space-x-4">
                             <Button className='w-6/12 rounded-none my-2'>Submit Review</Button>
-                            <Button className='w-6/12 my-2 rounded-none'>Cancel</Button>
+                            <Button className='w-6/12 my-2 rounded-none' onClick={handleToggleProductReviewForm}>{toggleProductReviewForm ? "Cancel Review" : "Write a review"}</Button>
                         </div>
                     </form>
                 </div>
