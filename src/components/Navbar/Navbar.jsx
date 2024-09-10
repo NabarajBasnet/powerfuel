@@ -1,5 +1,6 @@
 'use client'
 
+import { IoIosSettings } from "react-icons/io";
 import {
     Sheet,
     SheetClose,
@@ -28,7 +29,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { FaUser } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,9 +36,31 @@ import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
 import useProducts from "@/hooks/products/useProducts";
 import { useQuery } from "@tanstack/react-query";
 import SideCartAndWishList from '../SideCart/SideCart';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { FaCircleUser } from "react-icons/fa6";
+
 
 const Navbar = () => {
 
+    const { setTheme } = useTheme()
     const cart = useSelector(state => state.rtkreducers.cartItems);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
@@ -121,6 +143,50 @@ const Navbar = () => {
                     </div>
 
                     <div className="w-6/12 flex mx-1 justify-end items-center">
+                        <div className="hidden md:flex items-center">
+                            <AlertDialog>
+                                <AlertDialogTrigger>
+                                    <IoIosSettings className="text-xl" />
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <div>
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger asChild>
+                                                    <Button variant="outline" size="icon">
+                                                        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                                                        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                                                        <span className="sr-only">Toggle theme</span>
+                                                    </Button>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent align="end">
+                                                    <DropdownMenuItem onClick={() => setTheme("light")}>
+                                                        Light
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => setTheme("dark")}>
+                                                        Dark
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => setTheme("system")}>
+                                                        System
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
+                                        </div>
+                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                            This action cannot be undone. This will permanently delete your account
+                                            and remove your data from our servers.
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                        <AlertDialogAction>Continue</AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+                            <div className="mx-1 text-sm font-extralight">|</div>
+                        </div>
+
                         <div className="flex">
                             {
                                 topNavSocialIcons.map((icon, link) => (
@@ -149,7 +215,7 @@ const Navbar = () => {
                         </div>
                         <div className="mx-1 text-sm font-extralight">|</div>
                         <Link href={''} className="mx-1 flex items-center">
-                            <FaUser />
+                            <FaCircleUser />
                             <p className="mx-2 text-sm">Login</p>
                         </Link>
                     </div>
@@ -204,10 +270,75 @@ const Navbar = () => {
                                         <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
                                     </div>
                                 </div>
-                                <div className="my-4">
+                                <div className="my-4 flex items-center">
                                     <Link href={'/account'}>
-                                        <FaUser className="border border-black m-1 rounded-full p-1 text-3xl" />
+                                        <FaCircleUser className="m-1 text-2xl" />
                                     </Link>
+                                    <div className="mx-1 text-sm font-extralight">|</div>
+                                    <div className="flex items-center">
+                                        <AlertDialog>
+                                            <AlertDialogTrigger>
+                                                <IoIosSettings className="text-3xl" />
+                                            </AlertDialogTrigger>
+                                            <AlertDialogContent>
+                                                <AlertDialogHeader>
+                                                    <div>
+                                                        <DropdownMenu>
+                                                            <DropdownMenuTrigger asChild>
+                                                                <Button variant="outline" size="icon">
+                                                                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                                                                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                                                                    <span className="sr-only">Toggle theme</span>
+                                                                </Button>
+                                                            </DropdownMenuTrigger>
+                                                            <DropdownMenuContent align="end">
+                                                                <DropdownMenuItem onClick={() => setTheme("light")}>
+                                                                    Light
+                                                                </DropdownMenuItem>
+                                                                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                                                                    Dark
+                                                                </DropdownMenuItem>
+                                                                <DropdownMenuItem onClick={() => setTheme("system")}>
+                                                                    System
+                                                                </DropdownMenuItem>
+                                                            </DropdownMenuContent>
+                                                        </DropdownMenu>
+                                                    </div>
+                                                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                    <AlertDialogDescription>
+                                                        This action cannot be undone. This will permanently delete your account
+                                                        and remove your data from our servers.
+                                                    </AlertDialogDescription>
+                                                </AlertDialogHeader>
+                                                <AlertDialogFooter>
+                                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                    <AlertDialogAction>Continue</AlertDialogAction>
+                                                </AlertDialogFooter>
+                                            </AlertDialogContent>
+                                        </AlertDialog>
+                                    </div>
+                                    <div className="mx-2">
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button variant="outline" size="icon">
+                                                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                                                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                                                    <span className="sr-only">Toggle theme</span>
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end">
+                                                <DropdownMenuItem onClick={() => setTheme("light")}>
+                                                    Light
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                                                    Dark
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem onClick={() => setTheme("system")}>
+                                                    System
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
                                 </div>
                                 <div className="w-full h-0.5 bg-gray-200"></div>
 

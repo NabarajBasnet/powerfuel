@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import RTKProvider from "@/states/RTK/RTKStateProvider";
 import ReactQueryProvider from "@/Providers/Query/ReactQueryProvider";
 import { usePathname } from "next/navigation";
+import { ThemeProvider } from "next-themes"
 
 export default function ClientRootLayout({ children }) {
 
@@ -16,38 +17,45 @@ export default function ClientRootLayout({ children }) {
     return (
         <RTKProvider>
             <ReactQueryProvider>
-                <div className="w-full">
-                    {
-                        dashboardRoute ? (
-                            <>
-                            </>
-                        ) : (
-                            <div className="w-full">
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <div className="w-full">
+                        {
+                            dashboardRoute ? (
+                                <>
+                                </>
+                            ) : (
                                 <div className="w-full">
-                                    <Navbar />
+                                    <div className="w-full">
+                                        <Navbar />
+                                    </div>
                                 </div>
+                            )
+                        }
+                        <div className="w-full flex justify-center">
+                            <div className="w-full">
+                                {children}
                             </div>
-                        )
-                    }
-                    <div className="w-full flex justify-center">
-                        <div className="w-full">
-                            {children}
                         </div>
-                    </div>
 
-                    {
-                        dashboardRoute ? (
-                            <>
-                            </>
-                        ) : (
-                            <div className="w-full">
+                        {
+                            dashboardRoute ? (
+                                <>
+                                </>
+                            ) : (
                                 <div className="w-full">
-                                    <Footer />
+                                    <div className="w-full">
+                                        <Footer />
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    }
-                </div>
+                            )
+                        }
+                    </div>
+                </ThemeProvider>
             </ReactQueryProvider>
         </RTKProvider>
     );
