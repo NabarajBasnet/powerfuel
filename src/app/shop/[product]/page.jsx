@@ -30,12 +30,19 @@ import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
 
 const SingleProduct = (props) => {
 
+    const [productDiscountedPrice, setProductDiscountedPrice] = useState('');
     const [currentProductThumbnail, setCurrentProductThumbnail] = useState('');
     const toggleProductReviewForm = useSelector(state => state.rtkreducers.toggleProductReviewForm);
     const dispatch = useDispatch();
     const productId = props.params.product;
     const { getSingleProduct } = useProducts();
     const [quantity, setQuantity] = useState(1);
+
+    const handleSetProductDiscountedPrice = (percentage, productPrice) => {
+        const discountPrice = productPrice * percentage / 100;
+        const discountedPrice = productPrice - discountPrice;
+        setProductDiscountedPrice(discountedPrice);
+    };
 
     const handleToggleProductReviewForm = () => {
         dispatch(ToggleProductReviewForm());
@@ -55,6 +62,7 @@ const SingleProduct = (props) => {
         try {
             const product = await getSingleProduct(productId);
             setCurrentProductThumbnail(product.thumbnail);
+            handleSetProductDiscountedPrice(product.discountPercentage, product.price);
             return product
         } catch (error) {
             console.log('Error: ', error);
@@ -150,7 +158,8 @@ const SingleProduct = (props) => {
                                                 </div>
                                                 <span className="ml-1">{product.rating}</span>
                                             </div>
-                                            <h2 className="text-xl font-semibold mb-2">$ {product.price}</h2>
+                                            <h2 className="text-lg font-semibold text-gray-600 mb-2 line-through">$ {product.price}</h2>
+                                            <h2 className="text-xl font-semibold  mb-2">$ {productDiscountedPrice}</h2>
                                             <h2 className="text-md text-gray-600 font-semibold">Discount {product.discountPercentage}%</h2>
                                             <p><span className="text-md font-semibold text-gray-600">Brand:</span> <span className="text-sm text-gray-500">{product.brand}</span></p>
                                             <p><span className="text-md font-semibold text-gray-600">Category: </span> <span className="text-sm text-gray-500">{product.category}</span></p>
