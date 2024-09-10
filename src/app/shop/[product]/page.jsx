@@ -1,5 +1,14 @@
 'use client'
 
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination"
 import { FaRegStar } from "react-icons/fa6";
 import { IoMdHeart } from "react-icons/io";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -179,6 +188,12 @@ const SingleProduct = (props) => {
                                                 </div>
                                             </div>
 
+                                            <div className="mx-4">
+                                                <p className="text-sm font-semibold text-black">Warranty: <span className="text-sm text-gray-700 font-semibold">{product.warrantyInformation}</span></p>
+                                                <p className="text-sm font-semibold text-black">Return policy: <span className="text-sm text-gray-700 font-semibold">{product.returnPolicy}</span></p>
+                                                <p className="text-sm font-semibold text-black">Shipping information: <span className="text-sm text-gray-700 font-semibold">{product.shippingInformation}</span></p>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +250,7 @@ const SingleProduct = (props) => {
                                                 <div>
                                                     {
                                                         product?.reviews.map((review) => (
-                                                            <div className="flex items-center my-8">
+                                                            <div className="flex justify-center items-center my-8">
                                                                 <div>
                                                                     <h1 className="text-gray-500 font-semibold">{review.reviewerName}</h1>
                                                                     <div className="flex">
@@ -250,6 +265,30 @@ const SingleProduct = (props) => {
                                                             </div>
                                                         ))
                                                     }
+                                                    <Pagination>
+                                                        <PaginationContent>
+                                                            <PaginationItem>
+                                                                <PaginationPrevious href="#" />
+                                                            </PaginationItem>
+                                                            <PaginationItem>
+                                                                <PaginationLink href="#">1</PaginationLink>
+                                                            </PaginationItem>
+                                                            <PaginationItem>
+                                                                <PaginationLink href="#" isActive>
+                                                                    2
+                                                                </PaginationLink>
+                                                            </PaginationItem>
+                                                            <PaginationItem>
+                                                                <PaginationLink href="#">3</PaginationLink>
+                                                            </PaginationItem>
+                                                            <PaginationItem>
+                                                                <PaginationEllipsis />
+                                                            </PaginationItem>
+                                                            <PaginationItem>
+                                                                <PaginationNext href="#" />
+                                                            </PaginationItem>
+                                                        </PaginationContent>
+                                                    </Pagination>
                                                 </div>
                                             </TabsContent>
                                         </div>
