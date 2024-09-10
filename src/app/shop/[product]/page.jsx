@@ -11,6 +11,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { IoStar } from "react-icons/io5";
 import { useDispatch } from "react-redux";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaPinterest } from "react-icons/fa";
 
 const SingleProduct = (props) => {
 
@@ -42,6 +46,25 @@ const SingleProduct = (props) => {
         queryFn: fetchSingleProductDetails,
         queryKey: ['product']
     });
+
+    const shareProuct = [
+        {
+            icon: FaFacebook,
+            title: 'Facebook',
+        },
+        {
+            icon: FaXTwitter,
+            title: 'Twitter',
+        },
+        {
+            icon: AiFillInstagram,
+            title: 'Instagram',
+        },
+        {
+            icon: FaPinterest,
+            title: 'Pinterest',
+        }
+    ];
 
     return (
         <div className="w-full overflow-x-hidden">
@@ -136,56 +159,45 @@ const SingleProduct = (props) => {
                             </div>
 
                             <div className="w-full flex justify-center my-6">
-                                <Tabs defaultValue="description" className="w-full focus:shadow-none border-none max-w-7xl">
-                                    <TabsList className="bg-transparent focus:underline focus:shadow-none border-none focus:underline-offset-2 grid grid-cols-2 md:grid-cols-4 space-y-1">
-                                        <TabsTrigger value="description" className='focus:shadow-none border-none'>DESCRIPTION</TabsTrigger>
-                                        <TabsTrigger value="reviews" className='focus:shadow-none border-none'>REVIEWS</TabsTrigger>
-                                        <TabsTrigger value="shipping" className='focus:shadow-none border-none'>SHIPPING & RETURNS</TabsTrigger>
-                                        <TabsTrigger value="warranty" className='focus:shadow-none border-none'>WARRANTY INFORMATION</TabsTrigger>
-                                    </TabsList>
-                                    <div className="w-full h-0.5 bg-black"></div>
-                                    <div className="my-14 px-4">
-                                        <TabsContent value="description">
-                                            <div>
-                                                <p>
-                                                    {product?.description}
-                                                </p>
-                                            </div>
-                                        </TabsContent>
-                                        <TabsContent value="reviews">
-                                            <div>
-                                                {
-                                                    product?.reviews.map((review) => (
-                                                        <div className="flex items-center my-8">
-                                                            <div>
-                                                                <h1 className="text-gray-500 font-semibold">{review.reviewerName}</h1>
-                                                                <div className="flex">
-                                                                    {[...Array(6)].map((_, index) => (
-                                                                        <IoStar />
-                                                                    ))}
+                                <div className="w-10/12">
+                                    <Tabs defaultValue="description" className="w-full focus:shadow-none bg-none shadow-none border-none">
+                                        <TabsList className="bg-transparent focus:shadow-none border-none grid grid-cols-2 md:grid-cols-4 space-y-1">
+                                            <TabsTrigger value="description" className='focus:shadow-none border-none'>DESCRIPTION</TabsTrigger>
+                                            <TabsTrigger value="reviews" className='focus:shadow-none border-none'>REVIEWS</TabsTrigger>
+                                        </TabsList>
+                                        <div className="w-full h-0.5 my-4 bg-gray-600"></div>
+                                        <div className="my-14 px-4">
+                                            <TabsContent value="description">
+                                                <div>
+                                                    <p>
+                                                        {product?.description}
+                                                    </p>
+                                                </div>
+                                            </TabsContent>
+                                            <TabsContent value="reviews">
+                                                <div>
+                                                    {
+                                                        product?.reviews.map((review) => (
+                                                            <div className="flex items-center my-8">
+                                                                <div>
+                                                                    <h1 className="text-gray-500 font-semibold">{review.reviewerName}</h1>
+                                                                    <div className="flex">
+                                                                        {[...Array(6)].map((_, index) => (
+                                                                            <IoStar />
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                                <div className="mx-4">
+                                                                    <p className="text-sm">{review.comment}</p>
                                                                 </div>
                                                             </div>
-                                                            <div className="mx-4">
-                                                                <p className="text-sm">{review.comment}</p>
-                                                            </div>
-                                                        </div>
-                                                    ))
-                                                }
-                                            </div>
-                                        </TabsContent>
-                                        <TabsContent value="shipping">
-                                            <div>
-                                                <h1>{product?.shippingInformation}</h1>
-                                                <p>{product?.returnPolicy}</p>
-                                            </div>
-                                        </TabsContent>
-                                        <TabsContent value="warranty">
-                                            <div>
-                                                <h1>{product?.warrantyInformation}</h1>
-                                            </div>
-                                        </TabsContent>
-                                    </div>
-                                </Tabs>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </TabsContent>
+                                        </div>
+                                    </Tabs>
+                                </div>
                             </div>
                         </div>
                     )}
