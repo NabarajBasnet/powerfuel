@@ -1,5 +1,6 @@
 'use client'
 
+import { MdLocalShipping } from "react-icons/md";
 import {
     Pagination,
     PaginationContent,
@@ -30,6 +31,7 @@ import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
 
 const SingleProduct = (props) => {
 
+    const [currentProductThumbnail, setCurrentProductThumbnail] = useState('');
     const toggleProductReviewForm = useSelector(state => state.rtkreducers.toggleProductReviewForm);
     const dispatch = useDispatch();
     const productId = props.params.product;
@@ -54,6 +56,7 @@ const SingleProduct = (props) => {
     const fetchSingleProductDetails = async () => {
         try {
             const product = await getSingleProduct(productId);
+            setCurrentProductThumbnail(product.thumbnail);
             return product
         } catch (error) {
             console.log('Error: ', error);
@@ -64,6 +67,7 @@ const SingleProduct = (props) => {
         queryFn: fetchSingleProductDetails,
         queryKey: ['product']
     });
+    console.log('Images: ', product);
 
     const shareProuct = [
         {
@@ -100,7 +104,7 @@ const SingleProduct = (props) => {
                                         <div className="w-full md:w-6/12">
                                             <div className="w-full flex justify-center items-center p-5 bg-gray-200">
                                                 <img
-                                                    src={product.thumbnail}
+                                                    src={currentProductThumbnail}
                                                     alt="product-thumbnail"
                                                     className="object-cover w-full h-auto max-w-xs md:max-w-md"
                                                 />
@@ -109,11 +113,15 @@ const SingleProduct = (props) => {
                                                 <HiOutlineArrowSmLeft className="text-4xl cursor-pointer" />
                                                 <div className="w-full flex justify-center">
                                                     {product?.images.map((image, index) => (
-                                                        <div key={index} className="w-20 h-20 flex-shrink-0 bg-gray-100 mx-2">
+                                                        <div
+                                                            key={index}
+                                                            className="w-20 h-20 flex-shrink-0 bg-gray-100 mx-2"
+                                                        >
                                                             <img
+                                                                onClick={() => setCurrentProductThumbnail(image)}
                                                                 src={image}
                                                                 alt={`product-image-${index}`}
-                                                                className="w-full h-full object-cover"
+                                                                className="w-full h-full cursor-pointer object-cover"
                                                             />
                                                         </div>
                                                     ))}
@@ -189,9 +197,9 @@ const SingleProduct = (props) => {
                                             </div>
 
                                             <div className="mx-4">
-                                                <p className="text-sm font-semibold text-black">Warranty: <span className="text-sm text-gray-700 font-semibold">{product.warrantyInformation}</span></p>
-                                                <p className="text-sm font-semibold text-black">Return policy: <span className="text-sm text-gray-700 font-semibold">{product.returnPolicy}</span></p>
-                                                <p className="text-sm font-semibold text-black">Shipping information: <span className="text-sm text-gray-700 font-semibold">{product.shippingInformation}</span></p>
+                                                <p className="text-sm font-semibold text-black">Warranty: <span className="text-sm text-gray-700 mx-2 font-semibold">{product.warrantyInformation}</span></p>
+                                                <p className="text-sm my-1 font-semibold text-black">Return Policy: <span className="text-sm text-gray-700 mx-2 font-semibold">{product.returnPolicy}</span></p>
+                                                <p className="flex items-center text-sm font-semibold text-black">{<MdLocalShipping className="text-2xl mr-1" />} Estimated Delivery Time:  <span className="text-sm mx-2 text-gray-700 font-semibold">{product.shippingInformation}</span></p>
                                             </div>
 
                                         </div>
