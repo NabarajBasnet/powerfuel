@@ -1,5 +1,15 @@
 'use client'
 
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuIndicator,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
 import { IoIosSettings } from "react-icons/io";
 import {
     Sheet,
@@ -225,15 +235,71 @@ const Navbar = () => {
             <div className="w-full flex justify-center">
                 <div className="w-full md:w-10/12 px-4 md:px-0 flex justify-between items-center my-4">
                     <Link href={'/'} className="text-2xl md:text-3xl font-bold">POWERFUEL</Link>
-                    <div className="hidden md:flex items-center">
-                        {navPages.map((page, index) => (
-                            <Link href={page.link} key={index} className="font-bold text-sm mx-3">
-                                <div className={`cursor-pointer ${pathname === page.link ? 'text-green-500' : ''}`}>
-                                    <h1>{page.page}</h1>
-                                </div>
-                            </Link>
-                        ))}
+                    <div className="md:flex items-center hidden">
+                        <Link href={'/'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/' ? 'text-green-500' : ''}`}>
+                                <h1>{'HOME'}</h1>
+                            </div>
+                        </Link>
+                        <Link href={'/shop'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/shop' ? 'text-green-500' : ''}`}>
+                                <h1>{'SHOP'}</h1>
+                            </div>
+                        </Link>
+                        <Link href={'/blogs'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/blogs' ? 'text-green-500' : ''}`}>
+                                <h1>{'BLOGS'}</h1>
+                            </div>
+                        </Link>
+                        <Link href={'/contact'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/contact' ? 'text-green-500' : ''}`}>
+                                <h1>{'CONTACT'}</h1>
+                            </div>
+                        </Link>
+                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                <h1>{'DASHBOARD'}</h1>
+                            </div>
+                        </Link>
+
+                        <NavigationMenu>
+                            <NavigationMenuList>
+                                <NavigationMenuItem>
+                                    <NavigationMenuTrigger>
+                                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                                <h1>{'ALL CATEGORIES'}</h1>
+                                            </div>
+                                        </Link>
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        <NavigationMenuLink>
+                                            <div className="px-8">
+                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                                        <h1>{'Dashboard One'}</h1>
+                                                    </div>
+                                                </Link>
+                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                                        <h1>{'Dashboard Two'}</h1>
+                                                    </div>
+                                                </Link>
+                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                                        <h1>{'Dashboard Three'}</h1>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        </NavigationMenuLink>
+                                    </NavigationMenuContent>
+                                </NavigationMenuItem>
+                            </NavigationMenuList>
+                        </NavigationMenu>
+
                     </div>
+
+
 
                     <div className='hidden md:flex items-center'>
                         <SideCartAndWishList />
