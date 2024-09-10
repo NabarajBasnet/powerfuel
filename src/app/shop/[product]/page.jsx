@@ -41,7 +41,6 @@ const SingleProduct = (props) => {
         dispatch(ToggleProductReviewForm());
     };
 
-
     const handleIncrease = () => {
         setQuantity((prevQuantity) => prevQuantity + 1);
     };
@@ -66,7 +65,15 @@ const SingleProduct = (props) => {
         queryFn: fetchSingleProductDetails,
         queryKey: ['product']
     });
-    console.log('Images: ', product);
+
+    const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+        const { left, top, width, height } = e.target.getBoundingClientRect();
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+        setZoomPosition({ x, y });
+    };
 
     const shareProuct = [
         {
@@ -101,11 +108,17 @@ const SingleProduct = (props) => {
                                 <div className="w-full max-w-7xl">
                                     <div className="w-full flex flex-col md:flex-row justify-around items-start">
                                         <div className="w-full md:w-6/12">
-                                            <div className="w-full flex justify-center items-center p-5 bg-gray-200">
+                                            <div
+                                                className="w-full flex justify-center items-center p-5 bg-gray-200 group relative overflow-hidden"
+                                                onMouseMove={handleMouseMove}
+                                            >
                                                 <img
                                                     src={currentProductThumbnail}
                                                     alt="product-thumbnail"
-                                                    className="object-cover w-full h-auto max-w-xs md:max-w-md"
+                                                    className="object-cover cursor-zoom-in w-full h-auto max-w-xs md:max-w-md transition-transform duration-300 ease-in-out group-hover:scale-150"
+                                                    style={{
+                                                        transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                                                    }}
                                                 />
                                             </div>
                                             <div className="flex items-center my-4 overflow-x-auto">

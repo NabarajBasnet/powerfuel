@@ -65,3 +65,16 @@
   }
 }
 
+.product-thumbnail-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.product-thumbnail {
+  transition: transform 0.3s ease;
+}
+
+.product-thumbnail-container:hover .product-thumbnail {
+  transform: scale(1.5); /* Adjust the zoom level by changing the scale value */
+}
