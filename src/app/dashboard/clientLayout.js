@@ -6,11 +6,6 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
 
-export const metadata = {
-    title: "Dashboard | Power Fuel | Gym Supplements Shop",
-    description: "This website is created for purchasing supplements",
-};
-
 export default function ClientAdminLayout({ children }) {
 
     const toggleAdminSidebar = useSelector(state => state.rtkreducers.toggleAdminSidebar);
@@ -26,7 +21,9 @@ export default function ClientAdminLayout({ children }) {
                     )}
 
                     <div className={`w-full ${toggleAdminSidebar ? 'md:w-10/12' : 'w-full'}`}>
-                        <Header />
+                        <div className="w-full">
+                            <Header />
+                        </div>
                         <main className="w-full">{children}</main>
                     </div>
                 </div>

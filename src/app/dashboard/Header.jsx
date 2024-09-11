@@ -21,9 +21,9 @@ const Header = () => {
     };
 
     return (
-        <div className="w-full z-20 shadow-md">
-            <div className='w-full'>
-                <div className='flex justify-between px-4 text-center items-center py-6 bg-gray-100'>
+        <div className="w-full">
+            <div className='w-full bg-white shadow-md'>
+                <div className='flex justify-between px-4 text-center items-center py-7'>
                     <div className="flex justify-start items-center space-x-4">
                         <IoMenuSharp onClick={handleToggleSidebar} className='cursor-pointer text-4xl flex md:hidden text-green-500' />
                         <FaChevronCircleLeft onClick={handleToggleSidebar} className={`cursor-pointer transition-all duration-500 text-2xl ${toggleAdminSidebar ? 'rotate-180' : ''} hidden md:flex text-green-500`} />

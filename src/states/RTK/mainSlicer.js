@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    toggleAdminSidebar: false,
+    toggleAdminSidebar: true,
     allDepartmentToggle: true,
     toggleProductReviewForm: false,
     cartItems: [],

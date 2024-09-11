@@ -1,7 +1,3 @@
-import RTKProvider from "@/states/RTK/RTKStateProvider";
-import ReactQueryProvider from "@/Providers/Query/ReactQueryProvider";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
 import ClientAdminLayout from "./clientLayout";
 
 export const metadata = {
@@ -11,10 +7,8 @@ export const metadata = {
 
 export default function AdminLayout({ children }) {
     return (
-        <div>
-            <ClientAdminLayout>
-                {children}
-            </ClientAdminLayout>
-        </div>
+        <ClientAdminLayout>
+            {children}
+        </ClientAdminLayout>
     );
 }

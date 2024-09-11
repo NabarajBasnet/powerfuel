@@ -1,6 +1,5 @@
 'use client'
 
-import { FaChevronCircleLeft } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RiDashboard2Line } from "react-icons/ri";
@@ -31,13 +30,12 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
 
     const pathname = usePathname();
-    const toggleAdminSidebar = useSelector(state => state.rtkreducers.toggleAdminSidebar)
 
     return (
         <div className="fixed top-0 z-50 left-0 h-full bg-gray-600">
             <div className='w-full h-full'>
                 <div className='w-full h-full flex justify-center items-start bg-gray-800'>
-                    <ScrollArea className="h-full w-full overflow-y-auto p-1">
+                    <ScrollArea className="h-full w-full overflow-y-auto">
 
                         <div className={`w-full py-6 ${pathname === '/dashboard' ? 'bg-green-500' : ''}`}>
                             <Link href={'/dashboard'} className='w-full flex justify-start items-center px-4 transition-colors duration-200'>
