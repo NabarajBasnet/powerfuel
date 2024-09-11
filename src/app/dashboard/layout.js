@@ -1,7 +1,7 @@
 import RTKProvider from "@/states/RTK/RTKStateProvider";
 import ReactQueryProvider from "@/Providers/Query/ReactQueryProvider";
-import Wrapper from "./Wrapper";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 export const metadata = {
     title: "Dashboard | Power Fuel | Gym Supplements Shop",
@@ -13,21 +13,11 @@ export default function AdminLayout({ children }) {
         <div>
             <RTKProvider>
                 <ReactQueryProvider>
-                    <div className="w-full flex">
-                        <div className="w-full flex">
-                            <div>
-                                <Wrapper />
-                            </div>
-                            <div className="w-full">
-                                <div>
-                                    <Header />
-                                </div>
-                                <div className="w-full flex justify-center">
-                                    <div className="w-full mt-20">
-                                        {children}
-                                    </div>
-                                </div>
-                            </div>
+                    <div className='w-full flex'>
+                        <div className="w-0/12 hidden md:flex md:w-2/12"><Sidebar /></div>
+                        <div className="w-full md:w-10/12">
+                            <div><Header /></div>
+                            <div className="mt-16">{children}</div>
                         </div>
                     </div>
                 </ReactQueryProvider>
