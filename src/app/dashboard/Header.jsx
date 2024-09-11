@@ -15,14 +15,13 @@ import { FaChevronCircleLeft } from "react-icons/fa";
 const Header = () => {
 
     const toggleAdminSidebar = useSelector(state => state.rtkreducers.toggleAdminSidebar)
-    console.log('Toggle: ', toggleAdminSidebar);
     const dispatch = useDispatch();
     const handleToggleSidebar = () => {
         dispatch(ToggleAdminSidebar());
     };
 
     return (
-        <div className="w-full z-20 fixed top-0 shadow-md">
+        <div className="w-full z-20 shadow-md">
             <div className='w-full'>
                 <div className='flex justify-between px-4 text-center items-center py-6 bg-gray-100'>
                     <div className="flex justify-start items-center space-x-4">

@@ -26,11 +26,12 @@ import { TiDocumentText } from "react-icons/ti";
 import { FaUserEdit } from "react-icons/fa";
 import { LuCreditCard } from "react-icons/lu";
 import { AiFillAppstore } from "react-icons/ai";
-
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
 
     const pathname = usePathname();
+    const toggleAdminSidebar = useSelector(state => state.rtkreducers.toggleAdminSidebar)
 
     return (
         <div className="fixed top-0 z-50 left-0 h-full bg-gray-600">
