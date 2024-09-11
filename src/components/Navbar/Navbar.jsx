@@ -256,11 +256,6 @@ const Navbar = () => {
                                 <h1>{'CONTACT'}</h1>
                             </div>
                         </Link>
-                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                <h1>{'DASHBOARD'}</h1>
-                            </div>
-                        </Link>
 
                         <NavigationMenu>
                             <NavigationMenuList>

@@ -23,35 +23,28 @@ export default function ClientRootLayout({ children }) {
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <div className="w-full">
+                    <div className="flex flex-col min-h-screen w-full">
                         {
                             dashboardRoute ? (
-                                <>
-                                </>
+                                <></>
                             ) : (
                                 <div className="w-full">
-                                    <div className="w-full">
-                                        <Navbar />
-                                    </div>
+                                    <Navbar />
                                 </div>
                             )
                         }
-                        <div className="w-full flex justify-center">
+                        <main className="flex-grow w-full flex justify-center">
                             <div className="w-full">
                                 {children}
                             </div>
-                        </div>
-
+                        </main>
                         {
                             dashboardRoute ? (
-                                <>
-                                </>
+                                <></>
                             ) : (
-                                <div className="w-full">
-                                    <div className="w-full">
-                                        <Footer />
-                                    </div>
-                                </div>
+                                <footer className="w-full">
+                                    <Footer />
+                                </footer>
                             )
                         }
                     </div>
