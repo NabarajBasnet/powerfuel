@@ -1,5 +1,19 @@
 'use client'
 
+import { RiDashboard3Fill } from "react-icons/ri";
+import { AiOutlineProduct } from "react-icons/ai";
+import { FaCartArrowDown } from "react-icons/fa";
+import { RiCustomerServiceFill } from "react-icons/ri";
+import { FcSalesPerformance } from "react-icons/fc";
+import { FaShippingFast } from "react-icons/fa";
+import { MdPayments } from "react-icons/md";
+import { HiDocumentReport } from "react-icons/hi";
+import { BiSolidBookContent } from "react-icons/bi";
+import { FaUsers } from "react-icons/fa";
+import { IoPulseOutline } from "react-icons/io5";
+import { IoIosSettings } from "react-icons/io";
+
+
 import { IoHomeSharp } from "react-icons/io5";
 import React from 'react'
 import { IoMenuSharp } from "react-icons/io5";
@@ -11,8 +25,6 @@ import { IoMdNotifications } from "react-icons/io";
 import { RiTimer2Fill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { FaChevronCircleLeft } from "react-icons/fa";
-
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -37,7 +49,7 @@ const Header = () => {
 
     return (
         <div className="w-full">
-            <div className='w-full bg-white shadow-md'>
+            <div className='w-full bg-white shadow-lg'>
                 <div className='flex justify-between px-4 text-center items-center py-7'>
                     <div className="flex justify-start items-center space-x-4">
                         <Sheet>
@@ -72,7 +84,7 @@ const Header = () => {
                                 </SheetFooter>
                             </SheetContent>
                         </Sheet>
-                        <FaChevronCircleLeft onClick={handleToggleSidebar} className={`cursor-pointer transition-all duration-500 text-2xl ${toggleAdminSidebar ? 'rotate-180' : ''} hidden md:flex text-green-500`} />
+                        <FaChevronCircleLeft onClick={handleToggleSidebar} className={`cursor-pointer transition-all duration-500 text-2xl ${toggleAdminSidebar ? '' : 'rotate-180'} hidden md:flex text-green-500`} />
                         <Link href={'/'}>
                             <IoHomeSharp className="text-2xl text-green-500" />
                         </Link>
