@@ -15,8 +15,8 @@ export default function ClientAdminLayout({ children }) {
             <ReactQueryProvider>
                 <div className='w-full flex'>
                     {toggleAdminSidebar && (
-                        <div className="hidden ease-in-out transition-all duration-500 md:flex w-2/12">
-                            <Sidebar className='transition-all ease-in-out duration-500' />
+                        <div className="hidden md:flex w-2/12">
+                            <Sidebar />
                         </div>
                     )}
 

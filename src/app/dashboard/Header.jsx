@@ -4,7 +4,7 @@ import { RiDashboard3Fill } from "react-icons/ri";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FaCartArrowDown } from "react-icons/fa";
 import { RiCustomerServiceFill } from "react-icons/ri";
-import { FcSalesPerformance } from "react-icons/fc";
+import { BsFillFileBarGraphFill } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
 import { MdPayments } from "react-icons/md";
 import { HiDocumentReport } from "react-icons/hi";
@@ -25,9 +25,6 @@ import { IoMdNotifications } from "react-icons/io";
 import { RiTimer2Fill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { FaChevronCircleLeft } from "react-icons/fa";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {
     Sheet,
     SheetClose,
@@ -38,6 +35,13 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/AdminSidebarAccordion/AdminAccordion"
+
 
 const Header = () => {
 
@@ -58,28 +62,243 @@ const Header = () => {
                             </SheetTrigger>
                             <SheetContent>
                                 <SheetHeader>
-                                    <SheetTitle>Edit profile</SheetTitle>
+                                    <SheetTitle>Dashboard Overview</SheetTitle>
                                     <SheetDescription>
-                                        Make changes to your profile here. Click save when you're done.
                                     </SheetDescription>
                                 </SheetHeader>
-                                <div className="grid gap-4 py-4">
-                                    <div className="grid grid-cols-4 items-center gap-4">
-                                        <Label htmlFor="name" className="text-right">
-                                            Name
-                                        </Label>
-                                        <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                                <div className="grid">
+
+                                    <Link href={'/dashboard'} className="flex items-center">
+                                        <RiDashboard3Fill className="text-3xl text-green-500" />
+                                        <h1 className="mx-3 font-semibold text-sm">Dashboard</h1>
+                                    </Link>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <AiOutlineProduct className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Product Management</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
                                     </div>
-                                    <div className="grid grid-cols-4 items-center gap-4">
-                                        <Label htmlFor="username" className="text-right">
-                                            Username
-                                        </Label>
-                                        <Input id="username" value="@peduarte" className="col-span-3" />
+
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <FaCartArrowDown className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Order Management</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
                                     </div>
+
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <RiCustomerServiceFill className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Customer Management</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <BsFillFileBarGraphFill className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Sales & Promotions</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <FaShippingFast className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Shipping & Delivery</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <MdPayments className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Payments & Transactions</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <HiDocumentReport className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Reports & Analytics</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <BiSolidBookContent className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Content Management</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <FaUsers className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">User & Role Management</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <IoPulseOutline className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Marketing & SEO</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+                                    <div>
+                                        <Accordion type="single" collapsible className="w-full">
+                                            <AccordionItem value="item-1">
+                                                <AccordionTrigger>
+                                                    <div className="flex items-center">
+                                                        <IoIosSettings className="text-3xl text-green-500" />
+                                                        <h1 className="mx-3 font-semibold text-md">Settings & Configuration</h1>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <div className="flex flex-col">
+                                                        <Link href={'/dashboard'}>Dashboard</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Management</Link>
+                                                        <Link href={'/dashboard'}>Dashboard Overview</Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+
+
                                 </div>
                                 <SheetFooter>
                                     <SheetClose asChild>
-                                        <Button type="submit">Save changes</Button>
                                     </SheetClose>
                                 </SheetFooter>
                             </SheetContent>
