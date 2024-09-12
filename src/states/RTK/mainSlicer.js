@@ -4,9 +4,7 @@ const initialState = {
     toggleAdminSidebar: true,
     allDepartmentToggle: true,
     toggleProductReviewForm: false,
-    cartItems: [],
-    totalPrice: 0,
-    totalQuantity: 0,
+    cart: [],
 };
 
 const MainRTKSclier = createSlice({
@@ -21,9 +19,33 @@ const MainRTKSclier = createSlice({
         },
         ToggleProductReviewForm: (state) => {
             state.toggleProductReviewForm = !state.toggleProductReviewForm;
+        },
+
+        // Cart Management Logic
+        AddToCart: (state, action) => {
+            const product = action.payload;
+            const existingProduct = state.cart.find(item => item.id === product.id);
+            console.log('Existing Product: ', existingProduct);
+            if (existingProduct) {
+                existingProduct.quantity += product.quantity;
+            } else {
+                state.cart.push({ ...product, quantity: 1 });
+            }
+        },
+        RemoveFromCart: (state, payload) => {
+
+        },
+        ClearCart: (state, payload) => {
+
+        },
+        IncreaseProductQuantityInCart: (state, payload) => {
+
+        },
+        DecreaseProductQuantityInCart: (state, payload) => {
+
         }
     }
 })
 
-export const { ToggleAllDepartmentsState, ToggleAdminSidebar, ToggleProductReviewForm } = MainRTKSclier.actions;
+export const { ToggleAllDepartmentsState, ToggleAdminSidebar, ToggleProductReviewForm, AddToCart, RemoveFromCart, ClearCart, IncreaseProductQuantityInCart, DecreaseProductQuantityInCart } = MainRTKSclier.actions;
 export default MainRTKSclier.reducer

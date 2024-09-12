@@ -20,7 +20,7 @@ import { Separator } from "../ui/separator.jsx";
 
 const SideCartAndWishList = () => {
 
-    const cart = useSelector(state => state.rtkreducers.cartItems);
+    const cart = useSelector(state => state.rtkreducers.cart);
 
     return (
         <div>
@@ -29,7 +29,7 @@ const SideCartAndWishList = () => {
             </Badge>
             <Sheet>
                 <SheetTrigger>
-                    <Badge badgeContent={10} color="success" className='mx-3'>
+                    <Badge badgeContent={cart.length} color="success" className='mx-3'>
                         <IoBagHandleSharp className="text-xl" />
                     </Badge>
                 </SheetTrigger>

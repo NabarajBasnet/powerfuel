@@ -71,13 +71,15 @@ import { FaCircleUser } from "react-icons/fa6";
 const Navbar = () => {
 
     const { setTheme } = useTheme()
-    const cart = useSelector(state => state.rtkreducers.cartItems);
+    const cart = useSelector(state => state.rtkreducers.cart);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
     const dispatch = useDispatch();
     const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
     const departments = ['Protein', 'Creatine', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const { getAllProducts } = useProducts();
+
+    console.log('Cart: ', cart);
 
     const fetchProducts = async () => {
         const Product = await getAllProducts();

@@ -30,9 +30,12 @@ import { useState } from "react";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import { AddToCart } from "@/states/RTK/mainSlicer";
 
 const Shop = () => {
 
+    const dispatch = useDispatch();
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
 
@@ -53,6 +56,10 @@ const Shop = () => {
         queryFn: fetchProducts,
         queryKey: ['products']
     });
+
+    const handleAddToCart = (product) => {
+        dispatch(AddToCart(product))
+    };
 
     return (
         <div className="w-full flex bg-gray-200 justify-center">
@@ -104,7 +111,7 @@ const Shop = () => {
                                     <Sidebar />
                                 </div>
                                 <div className="w-full md:w-9/12 my-3">
-                                    <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+                                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                                         {products?.map((product) => (
                                             <div
                                                 onMouseEnter={handleMouseEnter}
@@ -117,7 +124,7 @@ const Shop = () => {
                                                 <div
                                                     className="w-full flex my-2 justify-center">
                                                     <div className={`w-full flex justify-between items-center space-x-2}`}>
-                                                        <Button className='w-6/12 rounded-none mx-1'>Add To Cart</Button>
+                                                        <Button className='w-6/12 rounded-none mx-1' onClick={() => handleAddToCart(product)}>Add To Cart</Button>
                                                         <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
                                                     </div>
                                                 </div>

@@ -37,7 +37,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
 import ProductReviewForm from "@/components/productReviewForm/productReviewForm";
-import { ToggleProductReviewForm } from "@/states/RTK/mainSlicer";
+import { ToggleProductReviewForm, AddToCart } from "@/states/RTK/mainSlicer";
 import { IoEyeSharp } from "react-icons/io5";
 
 const SingleProduct = (props) => {
@@ -85,6 +85,10 @@ const SingleProduct = (props) => {
         queryFn: fetchSingleProductDetails,
         queryKey: ['product']
     });
+
+    const handleAddToCart = () => {
+        dispatch(AddToCart(product))
+    }
 
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
 
@@ -245,15 +249,15 @@ const SingleProduct = (props) => {
                                             <p className="text-sm font-semibold my-6">{product.stock > 10 ? `${product.stock} in stock` : 'Out of stock'}</p>
 
                                             <div className="w-full flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
-                                                <Button className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
+                                                <Button onClick={handleAddToCart} className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
                                                 <Button className='w-full md:w-6/12 rounded-full'>BUY IT NOW</Button>
                                             </div>
 
                                             <div className="flex my-6 mx-2 items-center">
                                                 <span className="font-semibold">Share:</span>
                                                 <div className="flex mx-4">
-                                                    {shareProuct.map((share) => (
-                                                        <div className="flex items-center cursor-pointer">
+                                                    {shareProuct.map((share, index) => (
+                                                        <div className="flex items-center cursor-pointer" key={index}>
                                                             <div className="flex items-center mx-3">
                                                                 <share.icon />
                                                                 <p className="mx-1 font-semibold">{share.title}</p>
@@ -325,7 +329,7 @@ const SingleProduct = (props) => {
                                                 <div>
                                                     {
                                                         product?.reviews.map((review) => (
-                                                            <div className="flex justify-center items-center my-8">
+                                                            <div className="flex justify-center items-center my-8" key={review.comment}>
                                                                 <div>
                                                                     <h1 className="text-gray-500 font-semibold">{review.reviewerName}</h1>
                                                                     <div className="flex">
