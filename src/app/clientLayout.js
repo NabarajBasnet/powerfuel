@@ -13,6 +13,10 @@ export default function ClientRootLayout({ children }) {
     const pathname = usePathname();
 
     const dashboardRoute = pathname.startsWith('/dashboard');
+    const loginRoute = pathname.startsWith('/account/login');
+    const signupRoute = pathname.startsWith('/account/signup');
+    const forgetPasswordRoute = pathname.startsWith('/account/forgetpassword');
+    const resetPasswordRoute = pathname.startsWith('/account/resetpassword');
 
     return (
         <RTKProvider>
@@ -25,7 +29,7 @@ export default function ClientRootLayout({ children }) {
                 >
                     <div className="flex flex-col min-h-screen w-full">
                         {
-                            dashboardRoute ? (
+                            dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
                                 <></>
                             ) : (
                                 <div className="w-full">
@@ -39,7 +43,7 @@ export default function ClientRootLayout({ children }) {
                             </div>
                         </main>
                         {
-                            dashboardRoute ? (
+                            dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
                                 <></>
                             ) : (
                                 <footer className="w-full">

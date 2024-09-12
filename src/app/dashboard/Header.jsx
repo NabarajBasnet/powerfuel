@@ -13,7 +13,6 @@ import { FaUsers } from "react-icons/fa";
 import { IoPulseOutline } from "react-icons/io5";
 import { IoIosSettings } from "react-icons/io";
 
-
 import { IoHomeSharp } from "react-icons/io5";
 import React from 'react'
 import { IoMenuSharp } from "react-icons/io5";
@@ -93,7 +92,6 @@ const Header = () => {
                                         </Accordion>
                                     </div>
 
-
                                     <div>
                                         <Accordion type="single" collapsible className="w-full">
                                             <AccordionItem value="item-1">
@@ -113,7 +111,6 @@ const Header = () => {
                                             </AccordionItem>
                                         </Accordion>
                                     </div>
-
 
                                     <div>
                                         <Accordion type="single" collapsible className="w-full">
@@ -295,7 +292,6 @@ const Header = () => {
                                         </Accordion>
                                     </div>
 
-
                                 </div>
                                 <SheetFooter>
                                     <SheetClose asChild>
@@ -304,16 +300,13 @@ const Header = () => {
                             </SheetContent>
                         </Sheet>
                         <FaChevronCircleLeft onClick={handleToggleSidebar} className={`cursor-pointer transition-all duration-500 text-2xl ${toggleAdminSidebar ? '' : 'rotate-180'} hidden md:flex text-green-500`} />
-                        <Link href={'/'}>
+                        <Link href={'/'} className="flex items-center space-x-4">
                             <IoHomeSharp className="text-2xl text-green-500" />
+                            <FaUserCircle className="text-2xl text-green-500" />
                         </Link>
                     </div>
                     <div></div>
                     <div className="flex justify-start items-center space-x-4">
-                        <IoMdSettings className="text-2xl text-green-500" />
-                        <IoMdNotifications className="text-2xl text-green-500" />
-                        <RiTimer2Fill className="text-2xl text-green-500" />
-                        <FaUserCircle className="text-2xl text-green-500" />
                     </div>
                 </div>
             </div>

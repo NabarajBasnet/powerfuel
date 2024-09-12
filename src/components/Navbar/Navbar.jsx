@@ -224,7 +224,7 @@ const Navbar = () => {
                             </Select>
                         </div>
                         <div className="mx-1 text-sm font-extralight">|</div>
-                        <Link href={''} className="mx-1 flex items-center">
+                        <Link href={'/account/login'} className="mx-1 flex items-center">
                             <FaCircleUser />
                             <p className="mx-2 text-sm">Login</p>
                         </Link>
@@ -332,7 +332,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
                                 <div className="my-4 flex items-center">
-                                    <Link href={'/account'}>
+                                    <Link href={'/account/login'}>
                                         <FaCircleUser className="m-1 text-2xl" />
                                     </Link>
                                     <div className="mx-1 text-sm font-extralight">|</div>
