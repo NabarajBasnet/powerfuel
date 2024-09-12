@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from "next/navigation.js";
 import { MdOutlineClear } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
@@ -21,6 +22,7 @@ import { Separator } from "../ui/separator.jsx";
 
 const SideCartAndWishList = () => {
 
+    const router = useRouter();
     const cart = useSelector(state => state.rtkreducers.cart);
 
     return (
@@ -56,18 +58,20 @@ const SideCartAndWishList = () => {
                                     <div>
                                         {
                                             cart.map((item) => (
-                                                <div key={item.id} className="flex items-center my-3 border p-1 justify-between">
-                                                    <Link href={`/shop/${item.id}`}>
-                                                        <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
-                                                    </Link>
-                                                    <div className="flex-grow">
-                                                        <Link href={`/shop/${item.id}`} className="font-bold text-sm">
-                                                            {item.title}
+                                                <div key={item.id} className="w-full flex items-center my-3 border p-1 justify-between">
+                                                    <div className="w-4/12 flex justify-start items-center">
+                                                        <Link href={`/shop/${item.id}`} className="mr-4">
+                                                            <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
                                                         </Link>
-                                                        <p className="text-sm">7 × $59.00</p>
                                                     </div>
-                                                    <div className="border cursor-pointer rounded-full p-2 mx-4">
-                                                        <MdOutlineClear />
+                                                    <div className="w-8/12 flex justify-between items-center">
+                                                        <div className="block">
+                                                            <h1 className="font-bold">{item.title}</h1>
+                                                            <p className="text-sm">7 × $59.00</p>
+                                                        </div>
+                                                        <div className="border cursor-pointer rounded-full p-2 mx-4">
+                                                            <MdOutlineClear />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             ))
@@ -78,18 +82,23 @@ const SideCartAndWishList = () => {
                         </div>
                     </SheetDescription>
 
-                    {/* Fixed footer section */}
-                    <div className="flex-shrink-0 p-4 bg-white">
-                        <div className="w-full flex justify-between items-center border p-1 mb-4">
-                            <p className="font-bold">Subtotal:</p>
-                            <p className="font-bold">$413.00</p>
-                        </div>
+                    {
+                        cart.length <= 0 ? (
+                            <></>
+                        ) : (
+                            <div className="flex-shrink-0 p-4 bg-white">
+                                <div className="w-full flex justify-between items-center border p-2 mb-4">
+                                    <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
+                                    <p className="text-sm font-semibold text-gray-600">$413.00</p>
+                                </div>
 
-                        <div className="w-full flex flex-col space-y-2">
-                            <Button className='rounded-none w-full'>VIEW CART</Button>
-                            <Button className='rounded-none w-full'>CHECKOUT</Button>
-                        </div>
-                    </div>
+                                <div className="w-full flex flex-col space-y-2">
+                                    <Button onClick={() => router.push('/cart')} className='rounded-none w-full'>VIEW CART</Button>
+                                    <Button onClick={() => router.push('/checkout')} className='rounded-none w-full'>CHECKOUT</Button>
+                                </div>
+                            </div>
+                        )
+                    }
                 </SheetContent>
             </Sheet>
         </div>
