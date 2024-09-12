@@ -100,7 +100,7 @@ const Shop = () => {
                     ) : (
                         <div className="w-full flex justify-center">
                             <div className="w-full md:flex justify-start px-4 md:px-0">
-                                <div className="w-full md:w-3/12 md:m-3 my-3 md:my-0">
+                                <div className="w-full md:w-3/12 md:m-3 my-3">
                                     <Sidebar />
                                 </div>
                                 <div className="w-full md:w-9/12 my-3">
