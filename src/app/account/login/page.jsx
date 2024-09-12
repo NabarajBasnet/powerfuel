@@ -54,7 +54,7 @@ const Login = () => {
 
                         <div className='w-full flex justify-center mt-8'>
                             <Button
-                                className='w-full py-8 bg-green-600 text-white dark:hover:bg-green-700'
+                                className='w-full rounded-none py-8 bg-green-600 text-white dark:hover:bg-green-700'
                                 type='submit'>{'Log In'}
                             </Button>
                         </div>

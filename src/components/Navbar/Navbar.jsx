@@ -76,7 +76,7 @@ const Navbar = () => {
     const pathname = usePathname();
     const dispatch = useDispatch();
     const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
-    const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
+    const departments = ['Protein', 'Creatine', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const { getAllProducts } = useProducts();
 
     const fetchProducts = async () => {
@@ -102,10 +102,6 @@ const Navbar = () => {
         {
             page: 'SHOP',
             link: '/shop'
-        },
-        {
-            page: 'BLOGS',
-            link: '/blogs'
         },
         {
             page: 'CONTACT',
@@ -246,16 +242,6 @@ const Navbar = () => {
                                 <h1>{'SHOP'}</h1>
                             </div>
                         </Link>
-                        <Link href={'/blogs'} className="font-bold text-sm mx-3">
-                            <div className={`cursor-pointer ${pathname === '/blogs' ? 'text-green-500' : ''}`}>
-                                <h1>{'BLOGS'}</h1>
-                            </div>
-                        </Link>
-                        <Link href={'/contact'} className="font-bold text-sm mx-3">
-                            <div className={`cursor-pointer ${pathname === '/contact' ? 'text-green-500' : ''}`}>
-                                <h1>{'CONTACT'}</h1>
-                            </div>
-                        </Link>
 
                         <NavigationMenu>
                             <NavigationMenuList>
@@ -263,28 +249,22 @@ const Navbar = () => {
                                     <NavigationMenuTrigger>
                                         <Link href={'/dashboard'} className="font-bold text-sm mx-3">
                                             <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                <h1>{'ALL CATEGORIES'}</h1>
+                                                <h1>{'ALL PRODUCTS'}</h1>
                                             </div>
                                         </Link>
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <NavigationMenuLink>
-                                            <div className="px-8">
-                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                        <h1>{'Dashboard One'}</h1>
-                                                    </div>
-                                                </Link>
-                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                        <h1>{'Dashboard Two'}</h1>
-                                                    </div>
-                                                </Link>
-                                                <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                                                    <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                        <h1>{'Dashboard Three'}</h1>
-                                                    </div>
-                                                </Link>
+                                            <div className="w-[200px] px-8">
+                                                {
+                                                    departments.map((category) => (
+                                                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
+                                                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
+                                                                <h1>{category}</h1>
+                                                            </div>
+                                                        </Link>
+                                                    ))
+                                                }
                                             </div>
                                         </NavigationMenuLink>
                                     </NavigationMenuContent>
@@ -292,9 +272,14 @@ const Navbar = () => {
                             </NavigationMenuList>
                         </NavigationMenu>
 
+                        <Link href={'/contact'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/contact' ? 'text-green-500' : ''}`}>
+                                <h1>{'CONTACT'}</h1>
+                            </div>
+                        </Link>
+
+
                     </div>
-
-
 
                     <div className='hidden md:flex items-center'>
                         <SideCartAndWishList />

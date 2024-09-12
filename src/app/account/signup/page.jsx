@@ -78,7 +78,7 @@ const SignUp = () => {
 
                         <div className='w-full flex justify-center my-2'>
                             <Button
-                                className='w-full py-8 bg-green-600 text-white'
+                                className='w-full rounded-none py-8 bg-green-600 text-white'
                                 type='submit'>{'Register'}
                             </Button>
                         </div>
