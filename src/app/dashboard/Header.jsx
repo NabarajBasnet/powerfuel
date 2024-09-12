@@ -1,5 +1,6 @@
 'use client'
 
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { RiDashboard3Fill } from "react-icons/ri";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FaCartArrowDown } from "react-icons/fa";
