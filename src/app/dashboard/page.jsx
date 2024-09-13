@@ -5,7 +5,8 @@ import { BiSolidMedal } from "react-icons/bi";
 import { FaBuilding } from "react-icons/fa6";
 import { HiCurrencyDollar } from "react-icons/hi2";
 import React, { useState } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import dynamic from "next/dynamic";
+const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 import {
     Table,
     TableBody,
@@ -14,7 +15,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 const AdminDashboard = () => {
 
@@ -164,7 +165,6 @@ const AdminDashboard = () => {
                 </div>
                 <div className="w-full md:w-4/12">
                     <div className="w-full flex justify-center mb-16">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4995.643196910726!2d85.33495612118787!3d27.703290814618004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb194487783651%3A0xcbfa6f39863d05f6!2sThe%20Physique%20Workshop!5e0!3m2!1sen!2snp!4v1725649420544!5m2!1sen!2snp" className="w-full h-96 rounded-lg md:mx-2" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div className="w-full md:w-4/12">

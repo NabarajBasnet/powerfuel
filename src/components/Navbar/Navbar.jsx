@@ -56,15 +56,15 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+} from "@/components/ui/alert-dialog";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import { FaCircleUser } from "react-icons/fa6";
 
 
