@@ -24,7 +24,9 @@ export default function ClientAdminLayout({ children }) {
                         <div className="w-full">
                             <Header />
                         </div>
-                        <main className="w-full">{children}</main>
+                        <main className="w-full">
+                            {children}
+                        </main>
                     </div>
                 </div>
             </ReactQueryProvider>

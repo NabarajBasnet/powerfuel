@@ -10,7 +10,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 const Sidebar = () => {
 
     const [value, setValue] = useState([15, 100]);
-    const departments = ['Protein', 'Creatine', 'Preworkout', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -49,14 +48,6 @@ const Sidebar = () => {
             <div className='w-full flex justify-center items-center'>
                 <div className='w-full flex justify-start items-center'>
                     <div className='w-full rounded-lg bg-white dark:bg-gray-800 border dark:border-none shadow-md p-4'>
-                        <div>
-                            <h1 className='my-2 font-bold'>Departments</h1>
-                            {departments.map((department, index) => (
-                                <div key={index}>
-                                    <h1 className="text-sm p-1 cursor-pointer">{department}</h1>
-                                </div>
-                            ))}
-                        </div>
 
                         <div className='my-4 p-2'>
                             <h1 className='text-2xl font-bold mb-2'>Filter by Price</h1>
@@ -72,9 +63,9 @@ const Sidebar = () => {
                             </Box>
 
                             <div className="flex justify-between mt-2">
-                                <h1 className='font-semibold' >Min: ${value[0]}</h1>
-                                <p>-</p>
-                                <h1 className='font-semibold'>Max: ${value[1]}</h1>
+                                <h1 className='text-sm font-semibold' >Min: ${value[0]}</h1>
+                                <p className='text-sm'>-</p>
+                                <h1 className='text-sm font-semibold'>Max: ${value[1]}</h1>
                             </div>
                         </div>
 

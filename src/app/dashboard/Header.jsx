@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { IoLogOutSharp } from "react-icons/io5";
 import { RiDashboard3Fill } from "react-icons/ri";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -53,7 +53,7 @@ const Header = () => {
 
     return (
         <div className="w-full">
-            <div className='w-full bg-white shadow-lg'>
+            <div className='w-full z-50 bg-white shadow-lg'>
                 <div className='flex justify-between px-4 text-center items-center py-7'>
                     <div className="flex justify-start items-center space-x-4">
                         <Sheet>
@@ -406,8 +406,11 @@ const Header = () => {
                             <FaUserCircle className="text-2xl text-green-500" />
                         </Link>
                     </div>
-                    <div></div>
+                    <div>
+                        Hi
+                    </div>
                     <div className="flex justify-start items-center space-x-4">
+                        <IoLogOutSharp className="text-green-500 text-2xl" />
                     </div>
                 </div>
             </div>

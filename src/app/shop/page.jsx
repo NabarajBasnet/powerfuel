@@ -131,7 +131,7 @@ const Shop = () => {
                                                     </div>
                                                 </div>
                                                 <Link href={`/shop/${product.id}`} className='w-full text-center'>
-                                                    <p className='text-sm text-gray-500 font-semibold'>{product.category}</p>
+                                                    <p className='text-sm text-gray-500 dark:text-gray-300 font-semibold'>{product.category}</p>
                                                     <h1 className='my-1'>{product.title}</h1>
                                                     <p className='text-sm font-bold'>$ {product.price}</p>
                                                 </Link>

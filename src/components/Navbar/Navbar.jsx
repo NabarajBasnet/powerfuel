@@ -106,6 +106,10 @@ const Navbar = () => {
             link: '/shop'
         },
         {
+            page: 'BLOGS',
+            link: '/blogs'
+        },
+        {
             page: 'CONTACT',
             link: '/contact'
         },
@@ -245,34 +249,11 @@ const Navbar = () => {
                             </div>
                         </Link>
 
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                <NavigationMenuItem>
-                                    <NavigationMenuTrigger>
-                                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                <h1>{'ALL PRODUCTS'}</h1>
-                                            </div>
-                                        </Link>
-                                    </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <NavigationMenuLink>
-                                            <div className="w-[200px] px-8">
-                                                {
-                                                    departments.map((category) => (
-                                                        <Link href={'/dashboard'} className="font-bold text-sm mx-3">
-                                                            <div className={`cursor-pointer ${pathname === '/dashboard' ? 'text-green-500' : ''}`}>
-                                                                <h1>{category}</h1>
-                                                            </div>
-                                                        </Link>
-                                                    ))
-                                                }
-                                            </div>
-                                        </NavigationMenuLink>
-                                    </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                        <Link href={'/blogs'} className="font-bold text-sm mx-3">
+                            <div className={`cursor-pointer ${pathname === '/blogs' ? 'text-green-500' : ''}`}>
+                                <h1>{'BLOGS'}</h1>
+                            </div>
+                        </Link>
 
                         <Link href={'/contact'} className="font-bold text-sm mx-3">
                             <div className={`cursor-pointer ${pathname === '/contact' ? 'text-green-500' : ''}`}>

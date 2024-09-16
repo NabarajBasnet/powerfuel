@@ -32,7 +32,7 @@ const Sidebar = () => {
     const pathname = usePathname();
 
     return (
-        <div className="fixed top-0 z-50 left-0 h-full bg-gray-600">
+        <div className="h-full fixed top-0 z-50 left-0 bg-gray-600">
             <div className='w-full h-full'>
                 <div className='w-full h-full flex justify-center items-start bg-gray-800'>
                     <ScrollArea className="h-full w-full overflow-y-auto">
