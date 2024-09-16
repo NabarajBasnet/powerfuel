@@ -14,7 +14,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMenuSharp } from "react-icons/io5";
 import { MdPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -29,7 +29,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAllDepartmentsState } from "@/states/RTK/mainSlicer";
@@ -56,15 +56,18 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { FaCircleUser } from "react-icons/fa6";
-
+import { SearchProducts } from "@/states/RTK/mainSlicer";
 
 const Navbar = () => {
 
+    const [searchQuery, setSearchQuery] = useState('');
+    console.log('Search query in navbar: ', searchQuery);
     const { setTheme } = useTheme()
     const cart = useSelector(state => state.rtkreducers.cart);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
     const dispatch = useDispatch();
+    const router = useRouter();
     const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
     const departments = ['Protein', 'Creatine', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const { getAllProducts } = useProducts();
@@ -83,6 +86,15 @@ const Navbar = () => {
         dispatch(ToggleAllDepartmentsState());
         setMdKeyboardArrowDownRotate(!MdKeyboardArrowDownRotate);
     };
+
+    const handleDispatchSearchQuery = () => {
+        dispatch(SearchProducts(searchQuery));
+    };
+
+    useEffect(() => {
+        router.push('/shop');
+        handleDispatchSearchQuery();
+    }, [searchQuery]);
 
     const navPages = [
         {
@@ -437,6 +449,8 @@ const Navbar = () => {
                             </div>
                             <input
                                 type='text'
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                                 className='px-2 border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />
@@ -474,6 +488,8 @@ const Navbar = () => {
 
                             <input
                                 type='text'
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                                 className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />

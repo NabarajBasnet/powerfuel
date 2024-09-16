@@ -146,7 +146,6 @@ const Shop = () => {
                                         {
                                             products?.filter((product) => {
                                                 const matchTitle = product.title.toLowerCase().includes(serachedQueryState.toLowerCase())
-                                                console.log('Match title: ', matchTitle);
                                                 return matchTitle
                                             })
                                                 .map((product) => (
