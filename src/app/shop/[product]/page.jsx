@@ -120,7 +120,7 @@ const SingleProduct = (props) => {
 
     return (
         <div className="w-full overflow-x-hidden">
-            <div className="w-full">
+            <div className="w-full bg-gray-100 dark:bg-gray-900">
                 <div>
                     {isLoading ? (
                         <div className="my-6">
@@ -133,7 +133,7 @@ const SingleProduct = (props) => {
                                     <div className="w-full flex flex-col md:flex-row justify-around items-start">
                                         <div className="w-full md:w-6/12">
                                             <div
-                                                className="w-full flex justify-center items-center p-5 bg-gray-200 group relative overflow-hidden"
+                                                className="w-full flex justify-center items-center p-5 bg-white dark:bg-gray-800 group relative overflow-hidden"
                                                 onMouseMove={handleMouseMove}
                                             >
                                                 <AlertDialog>
@@ -181,7 +181,7 @@ const SingleProduct = (props) => {
                                                     {product?.images.map((image, index) => (
                                                         <div
                                                             key={index}
-                                                            className="w-20 h-20 flex-shrink-0 bg-gray-200 mx-2"
+                                                            className="w-20 h-20 flex-shrink-0 bg-white dark:bg-gray-900 mx-2"
                                                         >
                                                             <img
                                                                 onClick={() => setCurrentProductThumbnail(image)}
@@ -206,11 +206,11 @@ const SingleProduct = (props) => {
                                                 </div>
                                                 <span className="ml-1">{product.rating}</span>
                                             </div>
-                                            <h2 className="text-lg font-semibold text-gray-600 mb-2 line-through">$ {product.price}</h2>
+                                            <h2 className="text-lg font-semibold dark:text-gray-200 text-gray-600 mb-2 line-through">$ {product.price}</h2>
                                             <h2 className="text-xl font-semibold  mb-2">$ {productDiscountedPrice}</h2>
-                                            <h2 className="text-md text-gray-600 font-semibold">Discount {product.discountPercentage}%</h2>
-                                            <p><span className="text-md font-semibold text-gray-600">Brand:</span> <span className="text-sm text-gray-500">{product.brand}</span></p>
-                                            <p><span className="text-md font-semibold text-gray-600">Category: </span> <span className="text-sm text-gray-500">{product.category}</span></p>
+                                            <h2 className="text-md text-gray-600 font-semibold dark:text-gray-200">Discount {product.discountPercentage}%</h2>
+                                            <p><span className="text-md font-semibold text-gray-600 dark:text-gray-200">Brand:</span> <span className="text-sm dark:text-gray-200 text-gray-500">{product.brand}</span></p>
+                                            <p><span className="text-md font-semibold text-gray-600 dark:text-gray-200">Category: </span> <span className="dark:text-gray-200 text-sm text-gray-500">{product.category}</span></p>
 
                                             <div className="flex items-center my-2 cursor-pointer">
                                                 <IoMdHeart className="text-2xl" />
@@ -218,11 +218,11 @@ const SingleProduct = (props) => {
                                             </div>
 
                                             <div className="mb-4">
-                                                <h2 className="text-gray-700 my-1 font-semibold">Size</h2>
+                                                <h2 className="text-gray-700 dark:text-gray-200 my-1 font-semibold">Size</h2>
                                                 <div className="flex space-x-2">
-                                                    <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>S</Button>
-                                                    <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>M</Button>
-                                                    <Button className='w-16 hover:text-white text-black rounded-none border border-black bg-transparent'>L</Button>
+                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>S</Button>
+                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>M</Button>
+                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>L</Button>
                                                 </div>
                                             </div>
 
@@ -268,9 +268,9 @@ const SingleProduct = (props) => {
                                             </div>
 
                                             <div className="mx-4">
-                                                <p className="text-sm font-semibold text-black">Warranty: <span className="text-sm text-gray-700 mx-2 font-semibold">{product.warrantyInformation}</span></p>
-                                                <p className="text-sm my-1 font-semibold text-black">Return Policy: <span className="text-sm text-gray-700 mx-2 font-semibold">{product.returnPolicy}</span></p>
-                                                <p className="flex items-center text-sm font-semibold text-black">{<MdLocalShipping className="text-2xl mr-1" />} Estimated Delivery Time:  <span className="text-sm mx-2 text-gray-700 font-semibold">{product.shippingInformation}</span></p>
+                                                <p className="text-sm font-semibold text-black dark:text-white">Warranty: <span className="text-sm text-gray-700 dark:text-gray-400 mx-2 font-semibold">{product.warrantyInformation}</span></p>
+                                                <p className="text-sm my-1 font-semibold text-black dark:text-white">Return Policy: <span className="text-sm text-gray-700 dark:text-gray-400 mx-2 font-semibold">{product.returnPolicy}</span></p>
+                                                <p className="flex items-center text-sm font-semibold text-black dark:text-white">{<MdLocalShipping className="text-2xl mr-1" />} Estimated Delivery Time:  <span className="text-sm mx-2 text-gray-700 dark:text-gray-400 font-semibold">{product.shippingInformation}</span></p>
                                             </div>
 
                                         </div>
@@ -278,9 +278,9 @@ const SingleProduct = (props) => {
                                 </div>
                             </div>
 
-                            <div className="w-full flex justify-center my-6">
+                            <div className="w-full flex justify-center mt-6">
                                 <div className="w-10/12">
-                                    <Tabs defaultValue="description" className="w-full focus:shadow-none bg-none shadow-none border-none">
+                                    <Tabs defaultValue="description" className="w-full focus:shadow-none bg-transparent shadow-none border-none">
                                         <TabsList className="bg-transparent focus:shadow-none border-none grid grid-cols-2 md:grid-cols-4 space-y-1">
                                             <TabsTrigger value="description" className='focus:shadow-none border-none'>DESCRIPTION</TabsTrigger>
                                             <TabsTrigger value="reviews" className='focus:shadow-none border-none'>REVIEWS</TabsTrigger>

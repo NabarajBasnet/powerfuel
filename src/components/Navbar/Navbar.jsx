@@ -1,15 +1,5 @@
 'use client'
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
 import { IoIosSettings } from "react-icons/io";
 import {
     Sheet,
@@ -468,7 +458,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="w-6/12 flex justify-center items-center border">
+                    <div className="w-6/12 flex justify-center items-center border dark:border-gray-400">
                         <div className="w-full flex justify-between items-center">
                             <Select>
                                 <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
