@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import {
@@ -10,9 +12,23 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-
+import { SearchProducts } from "@/states/RTK/mainSlicer";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 const ShopHeader = () => {
+
+    const dispatch = useDispatch();
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const dispatchSearchQuery = () => {
+        dispatch(SearchProducts(searchQuery))
+    };
+
+    useEffect(() => {
+        dispatchSearchQuery()
+    }, [searchQuery]);
+
     return (
         <div className='w-full bg-white dark:bg-gray-800 p-5 mb-3 sticky top-0 shadow-md rounded-lg'>
             <div className="w-full md:flex justify-between items-center">
@@ -62,6 +78,8 @@ const ShopHeader = () => {
                     <div className="flex items-center border dark:border-gray-200 px-4">
                         <Input
                             type='text'
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                             className='border-none shadow-none focus:border-none focus:outline-none'
                             placeholder='Search products'
                         />

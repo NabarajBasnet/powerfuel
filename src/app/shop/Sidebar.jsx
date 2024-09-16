@@ -109,8 +109,8 @@ const Sidebar = () => {
                             <h1 className='text-2xl font-bold mb-2'>Colors</h1>
                             <div className='grid grid-cols-2'>
                                 {
-                                    filterByColors.map((color) => (
-                                        <div className='flex items-center my-1'>
+                                    filterByColors.map((color, index) => (
+                                        <div className='flex items-center my-1' key={index}>
                                             <RadioGroup>
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="option-none" className={`${color.color} border-none`} id="option-none" />

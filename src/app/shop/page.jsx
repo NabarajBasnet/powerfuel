@@ -33,9 +33,11 @@ import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "@/states/RTK/mainSlicer";
 import ShopHeader from "./Header";
+import { useSelector } from "react-redux";
 
 const Shop = () => {
 
+    const serachedQueryState = useSelector(state => state.rtkreducers.searchProductsQuery);
     const dispatch = useDispatch();
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
@@ -58,8 +60,7 @@ const Shop = () => {
         queryKey: ['products']
     });
 
-    const latestProducts = products.slice(-3);
-    console.log("Products: ", latestProducts);
+    const latestProducts = products?.slice(-3);
 
     const handleAddToCart = (product) => {
         dispatch(AddToCart(product))
@@ -142,29 +143,35 @@ const Shop = () => {
                                     </div>
                                     <ShopHeader />
                                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                                        {products?.map((product) => (
-                                            <div
-                                                onMouseEnter={handleMouseEnter}
-                                                onMouseLeave={handleMouseLeave}
-                                                key={product.id}
-                                                className='bg-white dark:bg-gray-800 shadow-md rounded-md cursor-pointer p-6'>
-                                                <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
-                                                    <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
-                                                </Link>
-                                                <div
-                                                    className="w-full flex my-2 justify-center">
-                                                    <div className={`w-full flex justify-between items-center space-x-2}`}>
-                                                        <Button className='w-6/12 rounded-none mx-1' onClick={() => handleAddToCart(product)}>Add To Cart</Button>
-                                                        <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
+                                        {
+                                            products?.filter((product) => {
+                                                const matchTitle = product.title.toLowerCase().includes(serachedQueryState.toLowerCase())
+                                                console.log('Match title: ', matchTitle);
+                                                return matchTitle
+                                            })
+                                                .map((product) => (
+                                                    <div
+                                                        onMouseEnter={handleMouseEnter}
+                                                        onMouseLeave={handleMouseLeave}
+                                                        key={product.id}
+                                                        className='bg-white dark:bg-gray-800 shadow-md rounded-md cursor-pointer p-6'>
+                                                        <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
+                                                            <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
+                                                        </Link>
+                                                        <div
+                                                            className="w-full flex my-2 justify-center">
+                                                            <div className={`w-full flex justify-between items-center space-x-2}`}>
+                                                                <Button className='w-6/12 rounded-none mx-1' onClick={() => handleAddToCart(product)}>Add To Cart</Button>
+                                                                <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
+                                                            </div>
+                                                        </div>
+                                                        <Link href={`/shop/${product.id}`} className='w-full text-center'>
+                                                            <p className='text-sm text-gray-500 dark:text-gray-300 font-semibold'>{product.category}</p>
+                                                            <h1 className='my-1'>{product.title}</h1>
+                                                            <p className='text-sm font-bold'>$ {product.price}</p>
+                                                        </Link>
                                                     </div>
-                                                </div>
-                                                <Link href={`/shop/${product.id}`} className='w-full text-center'>
-                                                    <p className='text-sm text-gray-500 dark:text-gray-300 font-semibold'>{product.category}</p>
-                                                    <h1 className='my-1'>{product.title}</h1>
-                                                    <p className='text-sm font-bold'>$ {product.price}</p>
-                                                </Link>
-                                            </div>
-                                        ))}
+                                                ))}
                                     </div>
                                 </div>
                             </div>
