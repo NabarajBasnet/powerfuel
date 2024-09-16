@@ -69,8 +69,6 @@ const Navbar = () => {
     const departments = ['Protein', 'Creatine', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const { getAllProducts } = useProducts();
 
-    console.log('Cart: ', cart);
-
     const fetchProducts = async () => {
         const Product = await getAllProducts();
         return Product.products;

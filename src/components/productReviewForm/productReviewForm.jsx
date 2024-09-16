@@ -21,7 +21,7 @@ const ProductReviewForm = () => {
     return (
         <div className='w-full'>
             <div className="w-full flex justify-center">
-                <form className="w-11/12 md:w-7/12 p-4 shadow-md my-4 border bg-white dark:bg-gray-800">
+                <form className="w-11/12 md:w-7/12 p-4 shadow-md my-4 border dark:border-gray-500 bg-white dark:bg-gray-800">
                     {/* Rating Section */}
                     <p className="text-center my-1 font-bold">Rating</p>
                     <div className="flex justify-center my-6">
@@ -52,7 +52,7 @@ const ProductReviewForm = () => {
                     <p className="text-center my-1 font-bold">Review Title</p>
                     <Input
                         type='text'
-                        className='rounded-none h-14'
+                        className='rounded-none dark:border-gray-400 h-14'
                         placeholder='Give your review a title'
                     />
 
@@ -60,7 +60,7 @@ const ProductReviewForm = () => {
                     <p className="text-center my-1 font-bold">Review</p>
                     <Textarea
                         type='text'
-                        className='rounded-none h-28'
+                        className='rounded-none h-28 dark:border-gray-400'
                         placeholder='Write your comments here'
                     ></Textarea>
 
@@ -68,14 +68,14 @@ const ProductReviewForm = () => {
                     <p className="text-center my-1 font-bold">Picture</p>
                     <Input
                         type='file'
-                        className='rounded-none h-14'
+                        className='rounded-none h-14 dark:border-gray-400'
                     />
 
                     {/* Name (Public) */}
                     <p className="text-center my-1 font-bold">Name (Displayed publicly)</p>
                     <Input
                         type='text'
-                        className='rounded-none h-14'
+                        className='rounded-none h-14 dark:border-gray-400'
                         placeholder='Enter your name (public)'
                     />
 
@@ -83,7 +83,7 @@ const ProductReviewForm = () => {
                     <p className="text-center my-1 font-bold">Email (Private)</p>
                     <Input
                         type='email'
-                        className='rounded-none h-14'
+                        className='rounded-none h-14 dark:border-gray-400'
                         placeholder='Enter your email (private)'
                     />
 
