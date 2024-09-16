@@ -63,7 +63,7 @@ const Shop = () => {
     };
 
     return (
-        <div className="w-full flex bg-gray-200 justify-center">
+        <div className="w-full flex bg-gray-200 dark:bg-gray-900 justify-center">
             <div className="w-full md:w-10/12">
                 <div className="w-full my-6">
                     <div className="w-full relative bg-fixed bg-cover bg-center bg-[url('/images/kettlebell-protein.png')] text-black font-semibold flex justify-center">
@@ -119,7 +119,7 @@ const Shop = () => {
                                                 onMouseEnter={handleMouseEnter}
                                                 onMouseLeave={handleMouseLeave}
                                                 key={product.id}
-                                                className='bg-white shadow-md rounded-md cursor-pointer p-6'>
+                                                className='bg-white dark:bg-gray-800 shadow-md rounded-md cursor-pointer p-6'>
                                                 <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>
                                                     <img src={product.thumbnail} alt={product.title} className='w-40 h-40 my-2' />
                                                 </Link>

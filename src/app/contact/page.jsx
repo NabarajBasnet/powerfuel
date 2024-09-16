@@ -48,7 +48,7 @@ const Contact = () => {
     ];
 
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex bg-gray-100 dark:bg-gray-900 justify-center">
             <div className="w-full md:w-10/12">
                 <div className="w-full my-6">
                     <div className="relative w-full bg-fixed bg-cover bg-center bg-[url('/images/kettlebell-protein.png')] text-white flex justify-center">
@@ -96,7 +96,7 @@ const Contact = () => {
                                                 <contact.icon className="text-4xl text-green-600" />
                                                 <div>
                                                     <h1 className="text-xl font-bold text-green-600">{contact.title}</h1>
-                                                    <p className="text-sm text-gray-600 font-semibold">{contact.detail}</p>
+                                                    <p className="text-sm text-gray-600 dark:text-gray-200 font-semibold">{contact.detail}</p>
                                                 </div>
                                             </div>
                                         ))
@@ -116,18 +116,18 @@ const Contact = () => {
                             <div className="w-full md:flex md:space-x-4 my-6">
                                 <Input
                                     type='text'
-                                    className='h-14 rounded-none'
+                                    className='h-14 dark:border-gray-200 rounded-none'
                                     placeholder='Your name'
                                 />
                                 <Input
                                     type='email'
-                                    className='h-14 rounded-none my-2 md:my-0'
+                                    className='h-14 rounded-none dark:border-gray-200 my-2 md:my-0'
                                     placeholder='Your email'
                                 />
                             </div>
                             <Textarea
                                 type='text'
-                                className='h-52 rounded-none'
+                                className='h-52 dark:border-gray-200 rounded-none'
                                 placeholder='Your message'
                             />
                             <div className="w-full flex justify-center my-3">

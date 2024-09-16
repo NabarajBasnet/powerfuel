@@ -48,7 +48,7 @@ const Sidebar = () => {
         <div className='sticky top-0'>
             <div className='w-full flex justify-center items-center'>
                 <div className='w-full flex justify-start items-center'>
-                    <div className='w-full rounded-lg bg-white border shadow-md p-4'>
+                    <div className='w-full rounded-lg bg-white dark:bg-gray-800 border dark:border-none shadow-md p-4'>
                         <div>
                             <h1 className='my-2 font-bold'>Departments</h1>
                             {departments.map((department, index) => (
@@ -137,7 +137,7 @@ const Sidebar = () => {
                             <div className='grid grid-cols-2 gap-2'>
                                 {
                                     popularSize.map((size) => (
-                                        <div className='flex justify-center cursor-pointer bg-gray-100 p-2'>
+                                        <div className='flex justify-center cursor-pointer bg-gray-100 dark:bg-gray-900 p-2'>
                                             <p className='text-sm font-semibold'>{size}</p>
                                         </div>
                                     ))

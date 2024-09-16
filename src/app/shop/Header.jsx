@@ -59,13 +59,13 @@ const ShopHeader = () => {
                 </div>
 
                 <div>
-                    <div className="flex items-center border px-4">
+                    <div className="flex items-center border dark:border-gray-200 px-4">
                         <Input
                             type='text'
                             className='border-none shadow-none focus:border-none focus:outline-none'
                             placeholder='Search products'
                         />
-                        <IoSearchOutline />
+                        <IoSearchOutline className="cursor-pointer" />
                     </div>
                 </div>
 

@@ -84,7 +84,7 @@ const Footer = () => {
     ];
 
     return (
-        <div className='w-full flex bg-gray-100 justify-center'>
+        <div className='w-full flex bg-gray-100 dark:bg-gray-800 border dark:border-gray-500 justify-center'>
             <div className='w-10/12'>
                 <div className="py-10">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
