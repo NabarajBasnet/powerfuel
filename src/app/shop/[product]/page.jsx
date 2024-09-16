@@ -138,7 +138,7 @@ const SingleProduct = (props) => {
                                             >
                                                 <AlertDialog>
                                                     <AlertDialogTrigger>
-                                                        <IoEyeSharp className="absolute top-2 right-2 text-2xl text-gray-700 cursor-pointer" />
+                                                        <IoEyeSharp className="absolute top-2 right-2 text-2xl dark:text-gray-100 text-gray-700 cursor-pointer" />
                                                     </AlertDialogTrigger>
                                                     <AlertDialogContent>
                                                         <AlertDialogHeader>
@@ -158,7 +158,7 @@ const SingleProduct = (props) => {
                                                         </AlertDialogHeader>
                                                         <AlertDialogFooter>
                                                             <AlertDialogCancel>
-                                                                <IoEyeSharp className="text-2xl text-gray-700 cursor-pointer" />
+                                                                <IoEyeSharp className="text-2xl dark:text-gray-100 text-gray-700 cursor-pointer" />
                                                             </AlertDialogCancel>
                                                         </AlertDialogFooter>
                                                     </AlertDialogContent>
@@ -181,7 +181,7 @@ const SingleProduct = (props) => {
                                                     {product?.images.map((image, index) => (
                                                         <div
                                                             key={index}
-                                                            className="w-20 h-20 flex-shrink-0 bg-white dark:bg-gray-900 mx-2"
+                                                            className="w-20 h-20 flex-shrink-0 bg-white dark:bg-gray-800 mx-2"
                                                         >
                                                             <img
                                                                 onClick={() => setCurrentProductThumbnail(image)}
@@ -220,9 +220,9 @@ const SingleProduct = (props) => {
                                             <div className="mb-4">
                                                 <h2 className="text-gray-700 dark:text-gray-200 my-1 font-semibold">Size</h2>
                                                 <div className="flex space-x-2">
-                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>S</Button>
-                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>M</Button>
-                                                    <Button className='w-16 hover:text-white text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>L</Button>
+                                                    <Button className='w-16 hover:text-white dark:hover:text-black text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>S</Button>
+                                                    <Button className='w-16 hover:text-white dark:hover:text-black text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>M</Button>
+                                                    <Button className='w-16 hover:text-white dark:hover:text-black text-black dark:text-gray-200 rounded-none border border-black dark:border-gray-200 bg-transparent'>L</Button>
                                                 </div>
                                             </div>
 

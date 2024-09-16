@@ -405,7 +405,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`w-full px-2 ${AllDepartmentsState ? 'border shadow-md' : ''} mb-2`}>
+                    <div className={`w-full px-2 ${AllDepartmentsState ? 'border dark:border-gray-400 shadow-md' : ''} mb-2`}>
                         {AllDepartmentsState ? (
                             <div className="w-full">
                                 {departments.map((department, index) => (
@@ -420,7 +420,7 @@ const Navbar = () => {
                         )}
                     </div>
 
-                    <div className="w-full flex justify-center items-center border">
+                    <div className="w-full flex justify-center items-center border dark:border-gray-400">
                         <div className="w-full flex justify-between items-center">
                             <div className="hidden">
                                 <Select>
@@ -442,7 +442,7 @@ const Navbar = () => {
                                 className='px-2 border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />
-                            <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
+                            <Button className='rounded-none bg-green-500 p-6 dark:text-gray-200 dark:hover:text-black'>SERACH</Button>
                         </div>
                     </div>
                 </div>
