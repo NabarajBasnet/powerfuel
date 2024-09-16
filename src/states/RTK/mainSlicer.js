@@ -5,6 +5,7 @@ const initialState = {
     allDepartmentToggle: true,
     toggleProductReviewForm: false,
     searchProductsQuery: '',
+    filterByPrice: [],
     cart: [],
 };
 
@@ -26,6 +27,9 @@ const MainRTKSclier = createSlice({
             state.searchProductsQuery = payload.payload;
         },
 
+        FilterProductsByPrice: (state, payload) => {
+            state.filterByPrice = payload.payload;
+        },
         // Cart Management Logic
         AddToCart: (state, action) => {
             const product = action.payload;
@@ -52,5 +56,5 @@ const MainRTKSclier = createSlice({
     }
 })
 
-export const { ToggleAllDepartmentsState, ToggleAdminSidebar, ToggleProductReviewForm, AddToCart, RemoveFromCart, ClearCart, IncreaseProductQuantityInCart, DecreaseProductQuantityInCart, SearchProducts } = MainRTKSclier.actions;
+export const { ToggleAllDepartmentsState, ToggleAdminSidebar, ToggleProductReviewForm, AddToCart, RemoveFromCart, ClearCart, IncreaseProductQuantityInCart, DecreaseProductQuantityInCart, SearchProducts, FilterProductsByPrice } = MainRTKSclier.actions;
 export default MainRTKSclier.reducer

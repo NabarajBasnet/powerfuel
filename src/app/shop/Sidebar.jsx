@@ -1,18 +1,29 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useState } from 'react';
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useDispatch } from 'react-redux';
+import { FilterProductsByPrice } from '@/states/RTK/mainSlicer';
 
 const Sidebar = () => {
 
+    const dispatch = useDispatch();
     const [value, setValue] = useState([15, 100]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    const handleFilterByPrice = () => {
+        dispatch(FilterProductsByPrice(value));
+    };
+
+    useEffect(() => {
+        handleFilterByPrice();
+    }, [value]);
 
     const filterByColors = [
         {

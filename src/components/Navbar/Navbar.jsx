@@ -61,7 +61,6 @@ import { SearchProducts } from "@/states/RTK/mainSlicer";
 const Navbar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
-    console.log('Search query in navbar: ', searchQuery);
     const { setTheme } = useTheme()
     const cart = useSelector(state => state.rtkreducers.cart);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);

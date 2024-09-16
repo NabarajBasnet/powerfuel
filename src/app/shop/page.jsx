@@ -38,6 +38,7 @@ import { useSelector } from "react-redux";
 const Shop = () => {
 
     const serachedQueryState = useSelector(state => state.rtkreducers.searchProductsQuery);
+    const filterByPrice = useSelector(state => state.rtkreducers.filterByPrice);
     const dispatch = useDispatch();
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
@@ -145,8 +146,9 @@ const Shop = () => {
                                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                                         {
                                             products?.filter((product) => {
-                                                const matchTitle = product.title.toLowerCase().includes(serachedQueryState.toLowerCase())
-                                                return matchTitle
+                                                const matchTitle = product.title.toLowerCase().includes(serachedQueryState.toLowerCase());
+                                                const matchPrice = product.price >= filterByPrice[0] && product.price <= filterByPrice[1];
+                                                return matchTitle && matchPrice
                                             })
                                                 .map((product) => (
                                                     <div
