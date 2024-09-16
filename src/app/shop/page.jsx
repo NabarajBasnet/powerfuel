@@ -32,6 +32,7 @@ import Sidebar from "./Sidebar";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "@/states/RTK/mainSlicer";
+import ShopHeader from "./Header";
 
 const Shop = () => {
 
@@ -111,6 +112,7 @@ const Shop = () => {
                                     <Sidebar />
                                 </div>
                                 <div className="w-full md:w-9/12 my-3">
+                                    <ShopHeader />
                                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                                         {products?.map((product) => (
                                             <div
