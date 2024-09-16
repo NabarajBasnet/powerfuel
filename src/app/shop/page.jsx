@@ -39,6 +39,7 @@ const Shop = () => {
 
     const serachedQueryState = useSelector(state => state.rtkreducers.searchProductsQuery);
     const filterByPrice = useSelector(state => state.rtkreducers.filterByPrice);
+    const filterByCategory = useSelector(state => state.rtkreducers.filterByCategory);
     const dispatch = useDispatch();
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
@@ -148,7 +149,8 @@ const Shop = () => {
                                             products?.filter((product) => {
                                                 const matchTitle = product.title.toLowerCase().includes(serachedQueryState.toLowerCase());
                                                 const matchPrice = product.price >= filterByPrice[0] && product.price <= filterByPrice[1];
-                                                return matchTitle && matchPrice
+                                                const matchCategory = product.category.toLowerCase().includes(filterByCategory.toLowerCase());
+                                                return matchTitle && matchPrice && matchCategory
                                             })
                                                 .map((product) => (
                                                     <div

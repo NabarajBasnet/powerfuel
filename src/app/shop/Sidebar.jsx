@@ -12,7 +12,7 @@ import { FilterProductsByPrice } from '@/states/RTK/mainSlicer';
 const Sidebar = () => {
 
     const dispatch = useDispatch();
-    const [value, setValue] = useState([15, 100]);
+    const [value, setValue] = useState([0, 1000]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

@@ -12,18 +12,40 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { SearchProducts } from "@/states/RTK/mainSlicer";
+import { SearchProducts, FilterByCategory } from "@/states/RTK/mainSlicer";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import useCategories from "@/hooks/products/useCategories";
+import { useQuery } from "@tanstack/react-query";
 
 const ShopHeader = () => {
 
+    const { getCategoryList } = useCategories();
     const dispatch = useDispatch();
-    const [searchQuery, setSearchQuery] = useState('')
+    const [searchQuery, setSearchQuery] = useState('');
+    const [category, setCategory] = useState('');
+
+    const fetchCategoryList = async () => {
+        const data = await getCategoryList();
+        return data;
+    }
+
+    const { data: categories, isLoading } = useQuery({
+        queryFn: fetchCategoryList,
+        queryKey: ['categories']
+    });
 
     const dispatchSearchQuery = () => {
         dispatch(SearchProducts(searchQuery))
     };
+
+    const dispatchFilterByCategory = () => {
+        dispatch(FilterByCategory(category));
+    };
+
+    useEffect(() => {
+        dispatchFilterByCategory();
+    }, [category]);
 
     useEffect(() => {
         dispatchSearchQuery()
@@ -33,7 +55,7 @@ const ShopHeader = () => {
         <div className='w-full bg-white dark:bg-gray-800 p-5 mb-3 sticky top-0 shadow-md rounded-lg'>
             <div className="w-full md:flex justify-between items-center">
                 <div className="flex items-center justify-between">
-                    <Select>
+                    <Select onValueChange={(value) => setCategory(value)}>
                         <div className="flex items-center">
                             <h1 className="text-sm font-bold mr-4">Sort By</h1>
                             <SelectTrigger className="w-[160px] border-none shadow-none">
@@ -42,12 +64,12 @@ const ShopHeader = () => {
                         </div>
                         <SelectContent>
                             <SelectGroup>
-                                <SelectLabel>Fruits</SelectLabel>
-                                <SelectItem value="apple">Apple</SelectItem>
-                                <SelectItem value="banana">Banana</SelectItem>
-                                <SelectItem value="blueberry">Blueberry</SelectItem>
-                                <SelectItem value="grapes">Grapes</SelectItem>
-                                <SelectItem value="pineapple">Pineapple</SelectItem>
+                                <SelectLabel>Select</SelectLabel>
+                                {
+                                    categories?.map((category, index) => (
+                                        <SelectItem value={`${category}`} className='cursor-pointer' key={index}>{category}</SelectItem>
+                                    ))
+                                }
                             </SelectGroup>
                         </SelectContent>
                     </Select>
