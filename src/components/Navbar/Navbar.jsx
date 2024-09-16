@@ -136,7 +136,7 @@ const Navbar = () => {
 
     return (
         <div className='w-full'>
-            <div className="w-full hidden md:flex bg-gray-100 justify-center">
+            <div className="w-full hidden md:flex bg-gray-100 dark:bg-gray-900 border justify-center">
                 <div className="w-10/12 py-2 flex justify-between">
 
                     <div className="w-6/12 flex justify-start items-center">
@@ -230,7 +230,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center bg-gray-100 dark:bg-gray-900">
                 <div className="w-full md:w-10/12 px-4 md:px-0 flex justify-between items-center my-4">
                     <Link href={'/'} className="text-2xl md:text-3xl font-bold">POWERFUEL</Link>
                     <div className="md:flex items-center hidden">
@@ -421,7 +421,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center bg-gray-100 dark:bg-gray-900 pb-2">
 
                 <div className="w-full md:w-10/12 px-4 md:px-0 md:hidden">
                     <div className="w-full flex justify-start">
