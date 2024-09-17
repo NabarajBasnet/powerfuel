@@ -2,15 +2,17 @@
 
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
 import useProducts from "@/hooks/products/useProducts";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Link from "next/link";
 import Loading from "@/components/Loading/Loading";
+import { useSelector, useDispatch } from "react-redux";
+import { AddToCart } from "@/states/RTK/mainSlicer";
 
 export default function Home() {
 
+  const dispatch = useDispatch();
   const [latestProductIndex, setLatestProductIndex] = useState(-3);
 
   const { getAllProducts } = useProducts()
@@ -26,6 +28,10 @@ export default function Home() {
     queryKey: ['products'],
     queryFn: fetchLatestProducts,
   });
+
+  const handleAddToCart = (product) => {
+    dispatch(AddToCart(product))
+  };
 
   const handleLatestProductIndex = () => {
     setLatestProductIndex(latestProductIndex * 2);

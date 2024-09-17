@@ -30,10 +30,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import { Button } from "@/components/ui/button";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AddToCart } from "@/states/RTK/mainSlicer";
 import ShopHeader from "./Header";
-import { useSelector } from "react-redux";
 
 const Shop = () => {
 
