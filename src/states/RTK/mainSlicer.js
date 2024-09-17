@@ -17,7 +17,7 @@ const MainRTKSclier = createSlice({
         ToggleAllDepartmentsState: (state) => {
             state.allDepartmentToggle = !state.allDepartmentToggle;
         },
-        ToggleAdminSidebaar: (state) => {
+        ToggleAdminSidebar: (state) => {
             state.toggleAdminSidebar = !state.toggleAdminSidebar;
         },
         ToggleProductReviewForm: (state) => {
