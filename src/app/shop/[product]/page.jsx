@@ -267,9 +267,7 @@ const SingleProduct = (props) => {
                                             <div className="w-full flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
                                                 <Sheet>
                                                     <SheetTrigger>
-                                                        <div className="w-full">
-                                                            <Button className='w-full rounded-none mx-2' onClick={handleAddToCart}>Add To Cart</Button>
-                                                        </div>
+                                                        <Button className='rounded-full mx-2' onClick={handleAddToCart}>Add To Cart</Button>
                                                     </SheetTrigger>
                                                     <SheetContent className="flex flex-col h-full">
                                                         <SheetHeader className="flex-shrink-0">

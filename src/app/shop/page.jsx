@@ -135,79 +135,77 @@ const Shop = () => {
                                                 <div
                                                     className="w-full flex my-2 justify-center">
                                                     <div className={`w-full flex justify-between items-center space-x-2}`}>
-                                                        <div className="w-full rounded-full">
-                                                            <Sheet>
-                                                                <SheetTrigger>
-                                                                    <div className="w-full">
-                                                                        <Button onClick={handleAddToCart} className='w-full rounded-full'>ADD TO CART</Button>
-                                                                    </div>
-                                                                </SheetTrigger>
-                                                                <SheetContent className="flex flex-col h-full">
-                                                                    <SheetHeader className="flex-shrink-0">
-                                                                        <SheetTitle>Cart</SheetTitle>
-                                                                        <Separator className="my-2" />
-                                                                    </SheetHeader>
+                                                        <Sheet>
+                                                            <SheetTrigger>
+                                                                <div className="w-full">
+                                                                    <Button className='w-full rounded-none mx-2' onClick={() => handleAddToCart(latestProduct)}>Add To Cart</Button>
+                                                                </div>
+                                                            </SheetTrigger>
+                                                            <SheetContent className="flex flex-col h-full">
+                                                                <SheetHeader className="flex-shrink-0">
+                                                                    <SheetTitle>Cart</SheetTitle>
+                                                                    <Separator className="my-2" />
+                                                                </SheetHeader>
 
-                                                                    <SheetDescription className="flex-grow overflow-auto">
-                                                                        <div>
-                                                                            {
-                                                                                cart.length <= 0 ? (
-                                                                                    <div className="text-center py-8">
-                                                                                        <h1 className="font-bold">Your cart is currently empty.</h1>
-                                                                                        <Link href={'/shop'}>
-                                                                                            <Button className='my-3 rounded-none'>
-                                                                                                Shop here
-                                                                                            </Button>
-                                                                                        </Link>
-                                                                                    </div>
-                                                                                ) : (
-                                                                                    <div>
-                                                                                        {
-                                                                                            cart.map((item) => (
-                                                                                                <div key={item.id} className="w-full flex items-center my-3 border p-1 justify-between">
-                                                                                                    <div className="w-4/12 flex justify-start items-center">
-                                                                                                        <Link href={`/shop/${item.id}`} className="mr-4">
-                                                                                                            <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
-                                                                                                        </Link>
+                                                                <SheetDescription className="flex-grow overflow-auto">
+                                                                    <div>
+                                                                        {
+                                                                            cart.length <= 0 ? (
+                                                                                <div className="text-center py-8">
+                                                                                    <h1 className="font-bold">Your cart is currently empty.</h1>
+                                                                                    <Link href={'/shop'}>
+                                                                                        <Button className='my-3 rounded-none'>
+                                                                                            Shop here
+                                                                                        </Button>
+                                                                                    </Link>
+                                                                                </div>
+                                                                            ) : (
+                                                                                <div>
+                                                                                    {
+                                                                                        cart.map((item) => (
+                                                                                            <div key={item.id} className="w-full flex items-center my-3 border p-1 justify-between">
+                                                                                                <div className="w-4/12 flex justify-start items-center">
+                                                                                                    <Link href={`/shop/${item.id}`} className="mr-4">
+                                                                                                        <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
+                                                                                                    </Link>
+                                                                                                </div>
+                                                                                                <div className="w-8/12 flex justify-between items-center">
+                                                                                                    <div className="block">
+                                                                                                        <h1 className="font-bold">{item.title}</h1>
+                                                                                                        <p className="text-sm">7 × $59.00</p>
                                                                                                     </div>
-                                                                                                    <div className="w-8/12 flex justify-between items-center">
-                                                                                                        <div className="block">
-                                                                                                            <h1 className="font-bold">{item.title}</h1>
-                                                                                                            <p className="text-sm">7 × $59.00</p>
-                                                                                                        </div>
-                                                                                                        <div className="border cursor-pointer rounded-full p-2 mx-4">
-                                                                                                            <MdOutlineClear />
-                                                                                                        </div>
+                                                                                                    <div className="border cursor-pointer rounded-full p-2 mx-4">
+                                                                                                        <MdOutlineClear />
                                                                                                     </div>
                                                                                                 </div>
-                                                                                            ))
-                                                                                        }
-                                                                                    </div>
-                                                                                )
-                                                                            }
-                                                                        </div>
-                                                                    </SheetDescription>
-
-                                                                    {
-                                                                        cart.length <= 0 ? (
-                                                                            <></>
-                                                                        ) : (
-                                                                            <div className="flex-shrink-0 p-4 bg-white">
-                                                                                <div className="w-full flex justify-between items-center border p-2 mb-4">
-                                                                                    <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
-                                                                                    <p className="text-sm font-semibold text-gray-600">$413.00</p>
+                                                                                            </div>
+                                                                                        ))
+                                                                                    }
                                                                                 </div>
+                                                                            )
+                                                                        }
+                                                                    </div>
+                                                                </SheetDescription>
 
-                                                                                <div className="w-full flex flex-col space-y-2">
-                                                                                    <Button onClick={() => router.push('/cart')} className='rounded-none w-full'>VIEW CART</Button>
-                                                                                    <Button onClick={() => router.push('/checkout')} className='rounded-none w-full'>CHECKOUT</Button>
-                                                                                </div>
+                                                                {
+                                                                    cart.length <= 0 ? (
+                                                                        <></>
+                                                                    ) : (
+                                                                        <div className="flex-shrink-0 p-4 bg-white">
+                                                                            <div className="w-full flex justify-between items-center border p-2 mb-4">
+                                                                                <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
+                                                                                <p className="text-sm font-semibold text-gray-600">$413.00</p>
                                                                             </div>
-                                                                        )
-                                                                    }
-                                                                </SheetContent>
-                                                            </Sheet>
-                                                        </div>
+
+                                                                            <div className="w-full flex flex-col space-y-2">
+                                                                                <Button onClick={() => router.push('/cart')} className='rounded-none w-full'>VIEW CART</Button>
+                                                                                <Button onClick={() => router.push('/checkout')} className='rounded-none w-full'>CHECKOUT</Button>
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            </SheetContent>
+                                                        </Sheet>
                                                         <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
                                                     </div>
                                                 </div>
