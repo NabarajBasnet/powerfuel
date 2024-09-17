@@ -1,9 +1,15 @@
-import React from 'react'
+'use client'
 
-const page = () => {
+const Blogs = () => {
+
+    const numbers = [1, 2, 3];
+    const moreNumbers = [4, 5, 6];
+    const combinedNumber = [...numbers, ...moreNumbers];
+    console.log('Combined Numbers: ', combinedNumber);
+
     return (
         <div>page</div>
     )
 }
 
-export default page
+export default Blogs

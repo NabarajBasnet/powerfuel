@@ -1,3 +1,4 @@
+import { saveCartToLocalStorage } from "@/utils/saveCartItemsInLocalStorage";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -8,6 +9,8 @@ const initialState = {
     filterByPrice: [],
     filterByCategory: '',
     cart: [],
+    totalQuantity: 0,
+    totalPrice: 0,
 };
 
 const MainRTKSclier = createSlice({
@@ -37,14 +40,25 @@ const MainRTKSclier = createSlice({
         },
         // Cart Management Logic
         AddToCart: (state, action) => {
-            const product = action.payload;
-            const existingProduct = state.cart.find(item => item.id === product.id);
-            console.log('Existing Product: ', existingProduct);
-            if (existingProduct) {
-                existingProduct.quantity += product.quantity;
-            } else {
-                state.cart.push({ ...product, quantity: 1 });
+            const newItem = action.payload;
+            const existingItem = state.cart.find(item => item.id === newItem.id);
+            if (!existingItem) {
+                state.cart.push({
+                    newItem,
+                    quantity: 1,
+                    totalPrice: newItem.price,
+                });
+
+                state.totalQuantity++;
+                state.totalPrice += newItem.price
             }
+            else {
+                // If item already exist 
+                existingItem.quantity++,
+                    existingItem.totalPrice += newItem.price;
+                state.totalPrice += newItem.price;
+            }
+            saveCartToLocalStorage(state.cart);
         },
         RemoveFromCart: (state, payload) => {
 
