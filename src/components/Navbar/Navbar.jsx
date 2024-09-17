@@ -91,7 +91,6 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        router.push('/shop');
         handleDispatchSearchQuery();
     }, [searchQuery]);
 

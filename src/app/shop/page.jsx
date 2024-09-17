@@ -44,14 +44,6 @@ const Shop = () => {
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
 
-    const handleMouseEnter = () => {
-        setRenderCartButtons(true);
-    };
-
-    const handleMouseLeave = () => {
-        setRenderCartButtons(false);
-    };
-
     const fetchProducts = async () => {
         const Product = await getAllProducts();
         return Product.products;
@@ -121,8 +113,6 @@ const Shop = () => {
                                     <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-3'>
                                         {latestProducts?.map((latestProduct) => (
                                             <div
-                                                onMouseEnter={handleMouseEnter}
-                                                onMouseLeave={handleMouseLeave}
                                                 key={latestProduct.id}
                                                 className='bg-white dark:bg-gray-800 shadow-md rounded-md cursor-pointer p-6'>
                                                 <Link href={`/shop/${latestProduct.id}`} className='w-full cursor-pointer flex justify-center'>
@@ -154,8 +144,6 @@ const Shop = () => {
                                             })
                                                 .map((product) => (
                                                     <div
-                                                        onMouseEnter={handleMouseEnter}
-                                                        onMouseLeave={handleMouseLeave}
                                                         key={product.id}
                                                         className='bg-white dark:bg-gray-800 shadow-md rounded-md cursor-pointer p-6'>
                                                         <Link href={`/shop/${product.id}`} className='w-full cursor-pointer flex justify-center'>

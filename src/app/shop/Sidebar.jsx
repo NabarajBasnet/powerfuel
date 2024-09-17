@@ -58,10 +58,10 @@ const Sidebar = () => {
         <div className='sticky top-0'>
             <div className='w-full flex justify-center items-center'>
                 <div className='w-full flex justify-start items-center'>
-                    <div className='w-full rounded-lg bg-white dark:bg-gray-800 border dark:border-none shadow-md p-4'>
+                    <div className='w-full rounded-lg bg-white dark:bg-gray-800 border dark:border-none shadow-md px-4 py-2'>
 
                         <div className='my-4 p-2'>
-                            <h1 className='text-2xl font-bold mb-2'>Filter by Price</h1>
+                            <h1 className='text-2xl font-bold mb-1'>Filter by Price</h1>
                             <Box>
                                 <Slider
                                     value={value}
@@ -73,7 +73,7 @@ const Sidebar = () => {
                                 />
                             </Box>
 
-                            <div className="flex justify-between mt-2">
+                            <div className="flex justify-between mt-1">
                                 <h1 className='text-sm font-semibold' >Min: ${value[0]}</h1>
                                 <p className='text-sm'>-</p>
                                 <h1 className='text-sm font-semibold'>Max: ${value[1]}</h1>
