@@ -9,15 +9,27 @@ import Link from "next/link";
 import Loading from "@/components/Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { AddToCart } from "@/states/RTK/mainSlicer";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../components/SideCart/SideCartUI.jsx";
+import { useRouter } from "next/navigation";
+import { Separator } from "@/components/ui/separator.jsx";
+import { MdOutlineClear } from "react-icons/md";
 
 export default function Home() {
 
+  const router = useRouter();
+  const cart = useSelector(state => state.rtkreducers.cart);
   const dispatch = useDispatch();
   const [latestProductIndex, setLatestProductIndex] = useState(-3);
-
   const { getAllProducts } = useProducts()
-  const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
-  const departments = ['Protein', 'Creatine', 'Creatine Monohydrate', 'Creatine Dehydtate', 'Testosterone', 'Growth Hormone', 'Vitamin', 'Vitamin A', 'Vitamin B', 'Vitamin C', 'Vitamin D', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters', 'Carbs'];
 
   const fetchLatestProducts = async () => {
     const products = await getAllProducts();
@@ -30,7 +42,7 @@ export default function Home() {
   });
 
   const handleAddToCart = (product) => {
-    dispatch(AddToCart(product))
+    dispatch(AddToCart(product));
   };
 
   const handleLatestProductIndex = () => {
@@ -83,13 +95,85 @@ export default function Home() {
                       <div
                         className="w-full flex my-2 justify-center">
                         <div className={`w-full flex justify-between items-center space-x-2}`}>
-                          <Button className='w-6/12 rounded-none mx-1' onClick={() => handleAddToCart(latestProduct)}>Add To Cart</Button>
+                          <div className="mx-2">
+                            <Sheet>
+                              <SheetTrigger>
+                                <div className="w-full">
+                                  <Button className='w-full rounded-none mx-2' onClick={() => handleAddToCart(latestProduct)}>Add To Cart</Button>
+                                </div>
+                              </SheetTrigger>
+                              <SheetContent className="flex flex-col h-full">
+                                <SheetHeader className="flex-shrink-0">
+                                  <SheetTitle>Cart</SheetTitle>
+                                  <Separator className="my-2" />
+                                </SheetHeader>
+
+                                <SheetDescription className="flex-grow overflow-auto">
+                                  <div>
+                                    {
+                                      cart.length <= 0 ? (
+                                        <div className="text-center py-8">
+                                          <h1 className="font-bold">Your cart is currently empty.</h1>
+                                          <Link href={'/shop'}>
+                                            <Button className='my-3 rounded-none'>
+                                              Shop here
+                                            </Button>
+                                          </Link>
+                                        </div>
+                                      ) : (
+                                        <div>
+                                          {
+                                            cart.map((item) => (
+                                              <div key={item.id} className="w-full flex items-center my-3 border p-1 justify-between">
+                                                <div className="w-4/12 flex justify-start items-center">
+                                                  <Link href={`/shop/${item.id}`} className="mr-4">
+                                                    <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
+                                                  </Link>
+                                                </div>
+                                                <div className="w-8/12 flex justify-between items-center">
+                                                  <div className="block">
+                                                    <h1 className="font-bold">{item.title}</h1>
+                                                    <p className="text-sm">7 × $59.00</p>
+                                                  </div>
+                                                  <div className="border cursor-pointer rounded-full p-2 mx-4">
+                                                    <MdOutlineClear />
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            ))
+                                          }
+                                        </div>
+                                      )
+                                    }
+                                  </div>
+                                </SheetDescription>
+
+                                {
+                                  cart.length <= 0 ? (
+                                    <></>
+                                  ) : (
+                                    <div className="flex-shrink-0 p-4 bg-white">
+                                      <div className="w-full flex justify-between items-center border p-2 mb-4">
+                                        <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
+                                        <p className="text-sm font-semibold text-gray-600">$413.00</p>
+                                      </div>
+
+                                      <div className="w-full flex flex-col space-y-2">
+                                        <Button onClick={() => router.push('/cart')} className='rounded-none w-full'>VIEW CART</Button>
+                                        <Button onClick={() => router.push('/checkout')} className='rounded-none w-full'>CHECKOUT</Button>
+                                      </div>
+                                    </div>
+                                  )
+                                }
+                              </SheetContent>
+                            </Sheet>
+                          </div>
                           <Button className='w-6/12 rounded-none mx-1 hover:bg-green-500 transition-all duration-500'>Buy Now</Button>
                         </div>
                       </div>
                       <Link href={`/shop/${latestProduct.id}`} className='w-full text-center'>
                         <p className='text-sm text-gray-500 dark:text-gray-300 font-semibold'>{latestProduct.category}</p>
-                        <h1 className='my-1'>{latestProduct.title}</h1>
+                        <h1 className='my-1 font-bold text-xl'>{latestProduct.title}</h1>
                         <p className='text-sm font-bold'>$ {latestProduct.price}</p>
                       </Link>
                     </div>
