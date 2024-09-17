@@ -1,6 +1,16 @@
 'use client'
 
 import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "../../../components/SideCart/SideCartUI.jsx";
+import {
     AlertDialog,
     AlertDialogAction,
     AlertDialogCancel,
@@ -39,9 +49,15 @@ import { FaPinterest } from "react-icons/fa";
 import ProductReviewForm from "@/components/productReviewForm/productReviewForm";
 import { ToggleProductReviewForm, AddToCart } from "@/states/RTK/mainSlicer";
 import { IoEyeSharp } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { Separator } from "@/components/ui/separator.jsx";
+import { MdOutlineClear } from "react-icons/md";
+import Link from "next/link.js";
 
 const SingleProduct = (props) => {
 
+    const router = useRouter();
+    const cart = useSelector(state => state.rtkreducers.cart);
     const [productDiscountedPrice, setProductDiscountedPrice] = useState('');
     const [currentProductThumbnail, setCurrentProductThumbnail] = useState('');
     const toggleProductReviewForm = useSelector(state => state.rtkreducers.toggleProductReviewForm);
@@ -249,7 +265,77 @@ const SingleProduct = (props) => {
                                             <p className="text-sm font-semibold my-6">{product.stock > 10 ? `${product.stock} in stock` : 'Out of stock'}</p>
 
                                             <div className="w-full flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 items-center">
-                                                <Button onClick={handleAddToCart} className='w-full md:w-6/12 rounded-full'>ADD TO CART</Button>
+                                                <Sheet>
+                                                    <SheetTrigger>
+                                                        <div className="w-full">
+                                                            <Button className='w-full rounded-none mx-2' onClick={handleAddToCart}>Add To Cart</Button>
+                                                        </div>
+                                                    </SheetTrigger>
+                                                    <SheetContent className="flex flex-col h-full">
+                                                        <SheetHeader className="flex-shrink-0">
+                                                            <SheetTitle>Cart</SheetTitle>
+                                                            <Separator className="my-2" />
+                                                        </SheetHeader>
+
+                                                        <SheetDescription className="flex-grow overflow-auto">
+                                                            <div>
+                                                                {
+                                                                    cart.length <= 0 ? (
+                                                                        <div className="text-center py-8">
+                                                                            <h1 className="font-bold">Your cart is currently empty.</h1>
+                                                                            <Link href={'/shop'}>
+                                                                                <Button className='my-3 rounded-none'>
+                                                                                    Shop here
+                                                                                </Button>
+                                                                            </Link>
+                                                                        </div>
+                                                                    ) : (
+                                                                        <div>
+                                                                            {
+                                                                                cart.map((item) => (
+                                                                                    <div key={item.id} className="w-full flex items-center my-3 border p-1 justify-between">
+                                                                                        <div className="w-4/12 flex justify-start items-center">
+                                                                                            <Link href={`/shop/${item.id}`} className="mr-4">
+                                                                                                <img src={item.thumbnail} className="shadow-lg mx-3 h-20 w-20" />
+                                                                                            </Link>
+                                                                                        </div>
+                                                                                        <div className="w-8/12 flex justify-between items-center">
+                                                                                            <div className="block">
+                                                                                                <h1 className="font-bold">{item.title}</h1>
+                                                                                                <p className="text-sm">7 × $59.00</p>
+                                                                                            </div>
+                                                                                            <div className="border cursor-pointer rounded-full p-2 mx-4">
+                                                                                                <MdOutlineClear />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                ))
+                                                                            }
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            </div>
+                                                        </SheetDescription>
+
+                                                        {
+                                                            cart.length <= 0 ? (
+                                                                <></>
+                                                            ) : (
+                                                                <div className="flex-shrink-0 p-4 bg-white">
+                                                                    <div className="w-full flex justify-between items-center border p-2 mb-4">
+                                                                        <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
+                                                                        <p className="text-sm font-semibold text-gray-600">$413.00</p>
+                                                                    </div>
+
+                                                                    <div className="w-full flex flex-col space-y-2">
+                                                                        <Button onClick={() => router.push('/cart')} className='rounded-none w-full'>VIEW CART</Button>
+                                                                        <Button onClick={() => router.push('/checkout')} className='rounded-none w-full'>CHECKOUT</Button>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        }
+                                                    </SheetContent>
+                                                </Sheet>
                                                 <Button className='w-full md:w-6/12 rounded-full'>BUY IT NOW</Button>
                                             </div>
 
