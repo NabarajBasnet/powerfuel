@@ -53,8 +53,8 @@ const ShopHeader = () => {
 
     return (
         <div className='w-full bg-white dark:bg-gray-800 p-5 mb-3 sticky top-0 shadow-md rounded-lg'>
-            <div className="w-full md:flex justify-between items-center">
-                <div className="flex items-center justify-between">
+            <div className="w-full md:flex md:justify-between items-center">
+                <div className="md:flex items-center md:justify-center">
                     <Select onValueChange={(value) => setCategory(value)}>
                         <div className="flex items-center">
                             <h1 className="text-sm font-bold mr-4">Sort By</h1>
@@ -74,7 +74,7 @@ const ShopHeader = () => {
                         </SelectContent>
                     </Select>
 
-                    <div className="flex justify-end">
+                    <div className="flex md:justify-end justify-start">
                         <Select>
                             <div className="flex items-center">
                                 <h1 className="text-sm font-bold mr-4">Sort By</h1>

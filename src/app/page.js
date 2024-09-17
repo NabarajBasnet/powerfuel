@@ -66,7 +66,7 @@ export default function Home() {
               isLoading ? (
                 <Loading />
               ) : (
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mx-4 md:mx-0'>
                   {latestProducts?.map((latestProduct) => (
                     <div
                       key={latestProduct.id}
