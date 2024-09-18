@@ -19,13 +19,18 @@ import { useSelector } from "react-redux";
 import Link from "next/link.js";
 import { Button } from "../ui/button.jsx";
 import { Separator } from "../ui/separator.jsx";
+import { useState, useEffect } from 'react';
 
 const SideCartAndWishList = () => {
-
-    const cartItems = localStorage.getItem('cart');
-    const cart = cartItems ? JSON.parse(cartItems) : [];
-    console.log('Cart items: ', cart);
+    const [cart, setCart] = useState([]);
     const router = useRouter();
+
+    useEffect(() => {
+        // This will only run on the client side
+        const cartItems = localStorage.getItem('cart');
+        const parsedCart = cartItems ? JSON.parse(cartItems) : [];
+        setCart(parsedCart);
+    }, []); // empty dependency array ensures this runs only once when the component mounts
 
     return (
         <div>
