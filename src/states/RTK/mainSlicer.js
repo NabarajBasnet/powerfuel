@@ -38,6 +38,7 @@ const MainRTKSclier = createSlice({
         FilterByCategory: (state, payload) => {
             state.filterByCategory = payload.payload;
         },
+        
         // Cart Management Logic
         AddToCart: (state, action) => {
             const newItem = action.payload;
@@ -60,6 +61,23 @@ const MainRTKSclier = createSlice({
             }
             saveCartToLocalStorage(state.cart);
         },
+
+        AddToCart: (state, action) => {
+            const newItem = action.payload;
+            const existingItem = state.cart.find(item => item.id === newItem.id);
+            if (!existingItem) {
+                state.cart.push({
+                    item: newItem,
+                    quantity: 1
+                })
+            }
+            else {
+                existingItem.quantity++
+            }
+            saveCartToLocalStorage(state.cart);
+        },
+
+
         RemoveFromCart: (state, payload) => {
 
         },

@@ -53,10 +53,13 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 import { FaCircleUser } from "react-icons/fa6";
 import { SearchProducts } from "@/states/RTK/mainSlicer";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const Navbar = () => {
 
@@ -224,10 +227,42 @@ const Navbar = () => {
                             </Select>
                         </div>
                         <div className="mx-1 text-sm font-extralight">|</div>
-                        <Link href={'/account/login'} className="mx-1 flex items-center">
-                            <FaCircleUser />
-                            <p className="mx-2 text-sm">Login</p>
-                        </Link>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger>
+                                <div href={'/account/login'} className="mx-1 flex items-center">
+                                    <FaCircleUser />
+                                    <p className="mx-1 text-sm">Account</p>
+                                    <RiArrowDropDownLine className="text-xl" />
+                                </div>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuLabel>
+                                    <div className="flex justify-between items-center">
+                                        <h1>New customer?</h1>
+                                        <Link href={'/account/signup'} className="ml-6 text-green-600">Sign Up</Link>
+                                    </div>
+                                </DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>
+                                    <Link href={'/account'} className='font-bold'>
+                                        My Profile
+                                    </Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>Billing</DropdownMenuItem>
+                                <DropdownMenuItem>Team</DropdownMenuItem>
+                                <DropdownMenuItem>Subscription</DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <div className="flex items-center justify-between font-bold">
+                                        <h1>Already a member?</h1>
+                                        <Link href={'/account/login'} className="ml-4 text-green-600">
+                                            Log In
+                                        </Link>
+                                        {/* <Button>Log Out</Button> */}
+                                    </div>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+
                     </div>
                 </div>
             </div>
