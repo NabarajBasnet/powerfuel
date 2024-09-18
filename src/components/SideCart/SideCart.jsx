@@ -19,11 +19,14 @@ import { useSelector } from "react-redux";
 import Link from "next/link.js";
 import { Button } from "../ui/button.jsx";
 import { Separator } from "../ui/separator.jsx";
+import useCart from "@/hooks/products/useCart.js";
 
 const SideCartAndWishList = () => {
 
+    const { loadCartItemsFromLocalStorage } = useCart();
+    const cart = loadCartItemsFromLocalStorage()
+    console.log('Cart items: ', cart);
     const router = useRouter();
-    const cart = useSelector(state => state.rtkreducers.cart);
 
     return (
         <div>

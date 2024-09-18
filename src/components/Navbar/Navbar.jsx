@@ -10,7 +10,6 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMenuSharp } from "react-icons/io5";
 import { MdPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
@@ -65,15 +64,11 @@ const Navbar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const { setTheme } = useTheme()
-    const cart = useSelector(state => state.rtkreducers.cart);
     const [MdKeyboardArrowDownRotate, setMdKeyboardArrowDownRotate] = useState(true);
     const pathname = usePathname();
     const dispatch = useDispatch();
     const router = useRouter();
-    const AllDepartmentsState = useSelector(state => state.rtkreducers.allDepartmentToggle);
-    const departments = ['Protein', 'Creatine', 'Testosterone', 'Growth Hormone', 'Multi Vitamin', 'Fish Oil', 'Peanut Butters'];
     const { getAllProducts } = useProducts();
-
     const fetchProducts = async () => {
         const Product = await getAllProducts();
         return Product.products;

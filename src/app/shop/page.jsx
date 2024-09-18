@@ -58,15 +58,6 @@ const Shop = () => {
     const [renderCartButtons, setRenderCartButtons] = useState(false);
     const { getAllProducts } = useProducts();
 
-    const loadCartItemsFromLocalStorage = () => {
-        const storedCartItems = localStorage.getItem('cart');
-        const cartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-        console.log('Cart: ', cartItems);
-    }
-
-    loadCartItemsFromLocalStorage();
-
-
     const fetchProducts = async () => {
         const Product = await getAllProducts();
         return Product.products;
