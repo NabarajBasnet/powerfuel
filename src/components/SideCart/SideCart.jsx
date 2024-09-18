@@ -22,7 +22,7 @@ import { Separator } from "../ui/separator.jsx";
 
 const SideCartAndWishList = () => {
 
-    const cartItems = window.localStorage.getItem('cart');
+    const cartItems = localStorage.getItem('cart');
     const cart = cartItems ? JSON.parse(cartItems) : [];
     console.log('Cart items: ', cart);
     const router = useRouter();
