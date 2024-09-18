@@ -262,7 +262,6 @@ const Navbar = () => {
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
-
                     </div>
                 </div>
             </div>
@@ -293,13 +292,23 @@ const Navbar = () => {
                                 <h1>{'CONTACT'}</h1>
                             </div>
                         </Link>
+                    </div>
 
 
+                    <div className='flex md:hidden items-center'>
+                        <SideCartAndWishList />
+                        <p className="flex items-center mx-2 text-sm">
+                            <span>item:</span>
+                            <span className="font-bold">$150.00</span>
+                        </p>
                     </div>
 
                     <div className='hidden md:flex items-center'>
                         <SideCartAndWishList />
-                        <p className="mx-2 text-sm">item:<span className="font-bold"> $150.00</span></p>
+                        <p className="flex items-center mx-2 text-sm">
+                            <span>item:</span>
+                            <span className="font-bold">$150.00</span>
+                        </p>
                     </div>
 
                     <Sheet>
@@ -438,53 +447,13 @@ const Navbar = () => {
             <div className="w-full flex justify-center bg-gray-100 dark:bg-gray-900 pb-2">
 
                 <div className="w-full md:w-10/12 px-4 md:px-0 md:hidden">
-                    <div className="w-full flex justify-start">
-                        <div onClick={handleClickAllDepartments} className="w-full my-2 flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
-                            <IoMenuSharp className="text-3xl font-bold" />
-                            <div className="flex mx-4 items-center">
-                                <h1>All Departments</h1>
-                                <MdKeyboardArrowDown className={`mx-2 ${MdKeyboardArrowDownRotate ? 'rotate-0 transition-all duration-500' : 'rotate-180 transition-all duration-500'}`} />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={`w-full px-2 ${AllDepartmentsState ? 'border dark:border-gray-400 shadow-md' : ''} mb-2`}>
-                        {AllDepartmentsState ? (
-                            <div className="w-full">
-                                {departments.map((department, index) => (
-                                    <div key={index}>
-                                        <h1 className="p-1 cursor-pointer">{department}</h1>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="w-full">
-                            </div>
-                        )}
-                    </div>
-
                     <div className="w-full flex justify-center items-center border dark:border-gray-400">
                         <div className="w-full flex justify-between items-center">
-                            <div className="hidden">
-                                <Select>
-                                    <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
-                                        <SelectValue placeholder="All Categories" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Select</SelectLabel>
-                                            {products?.map((product) => (
-                                                <SelectItem value="Nepali">{product.category}</SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
                             <input
                                 type='text'
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className='px-2 border-none bg-transparent focus:border-none focus:outline-none outline-none'
+                                className='w-full px-4 border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />
                             <Button className='rounded-none bg-green-500 p-6 dark:text-gray-200 dark:hover:text-black'>SERACH</Button>
@@ -493,37 +462,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="w-10/12 hidden md:flex justify-between items-center">
-                    <div className="w-3/12 flex justify-start">
-                        <div onClick={handleClickAllDepartments} className="flex bg-green-500 p-2 cursor-pointer items-center text-white font-bold">
-                            <IoMenuSharp className="text-3xl font-bold" />
-                            <div className="flex mx-4 items-center">
-                                <h1>All Departments</h1>
-                                <MdKeyboardArrowDown className={`mx-2 ${MdKeyboardArrowDownRotate ? 'rotate-0 transition-all duration-500' : 'rotate-180 transition-all duration-500'}`} />
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="w-6/12 flex justify-center items-center border dark:border-gray-400">
+                    <div className="w-9/12 flex justify-center items-center border dark:border-gray-400">
                         <div className="w-full flex justify-between items-center">
-                            <Select>
-                                <SelectTrigger className="w-[180px] shadow-none border-none bg-transparent outline-none focus:border-none focus:outline-none">
-                                    <SelectValue placeholder="All Categories" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Select</SelectLabel>
-                                        {products?.map((product) => (
-                                            <SelectItem value="Nepali">{product.category}</SelectItem>
-                                        ))}
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-
                             <input
                                 type='text'
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className='border-none bg-transparent focus:border-none focus:outline-none outline-none'
+                                className='w-full px-4 border-none bg-transparent focus:border-none focus:outline-none outline-none'
                                 placeholder='What do you need?'
                             />
                             <Button className='rounded-none bg-green-500 p-6'>SERACH</Button>
@@ -531,7 +477,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="w-3/12 flex justify-end items-center">
-                        <div className="rounded-full p-4 mr-2 text-green-500 bg-gray-100">
+                        <div className="rounded-full p-4 mr-2 text-green-500 bg-white">
                             <MdPhone className="3xl" />
                         </div>
                         <div>
