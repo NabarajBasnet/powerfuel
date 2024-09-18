@@ -24,7 +24,7 @@ import { useState, useEffect } from 'react';
 const SideCartAndWishList = () => {
     const [cart, setCart] = useState([]);
     const router = useRouter();
-
+    console.log("Cart items: ", cart);
     useEffect(() => {
         // This will only run on the client side
         const cartItems = localStorage.getItem('cart');

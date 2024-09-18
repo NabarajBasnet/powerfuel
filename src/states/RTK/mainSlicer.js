@@ -44,12 +44,12 @@ const MainRTKSclier = createSlice({
             const existingItem = state.cart.find(item => item.id === newItem.id);
             if (!existingItem) {
                 state.cart.push({
-                    newItem,
+                    ...newItem,
                     quantity: 1,
                 })
             }
             else {
-                existingItem.quantity++;
+                existingItem.quantity+=1;
             }
             saveCartToLocalStorage(state.cart);
         },
