@@ -38,8 +38,7 @@ const MainRTKSclier = createSlice({
         FilterByCategory: (state, payload) => {
             state.filterByCategory = payload.payload;
         },
-        
-        // Cart Management Logic
+
         AddToCart: (state, action) => {
             const newItem = action.payload;
             const existingItem = state.cart.find(item => item.id === newItem.id);
@@ -47,36 +46,13 @@ const MainRTKSclier = createSlice({
                 state.cart.push({
                     newItem,
                     quantity: 1,
-                    totalPrice: newItem.price,
-                });
-
-                state.totalQuantity++;
-                state.totalPrice += newItem.price
-            }
-            else {
-                // If item already exist 
-                existingItem.quantity++,
-                    existingItem.totalPrice += newItem.price;
-                state.totalPrice += newItem.price;
-            }
-            saveCartToLocalStorage(state.cart);
-        },
-
-        AddToCart: (state, action) => {
-            const newItem = action.payload;
-            const existingItem = state.cart.find(item => item.id === newItem.id);
-            if (!existingItem) {
-                state.cart.push({
-                    item: newItem,
-                    quantity: 1
                 })
             }
             else {
-                existingItem.quantity++
+                existingItem.quantity++;
             }
             saveCartToLocalStorage(state.cart);
         },
-
 
         RemoveFromCart: (state, payload) => {
 
