@@ -93,10 +93,10 @@ const SideCartAndWishList = () => {
                         cart.length <= 0 ? (
                             <></>
                         ) : (
-                            <div className="flex-shrink-0 p-4 bg-white">
-                                <div className="w-full flex justify-between items-center border p-2 mb-4">
-                                    <p className="font-semibold text-sm text-gray-600">Subtotal:</p>
-                                    <p className="text-sm font-semibold text-gray-600">$413.00</p>
+                            <div className="flex-shrink-0 p-4 bg-white dark:bg-transparent">
+                                <div className="w-full flex justify-between items-center border dark:border-gray-500 p-2 mb-4">
+                                    <p className="font-semibold text-sm text-gray-600 dark:text-gray-100">Subtotal:</p>
+                                    <p className="text-sm font-semibold text-gray-600 dark:text-gray-100">$413.00</p>
                                 </div>
 
                                 <div className="w-full flex flex-col space-y-2">
