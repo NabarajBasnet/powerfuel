@@ -7,6 +7,7 @@ import RTKProvider from "@/states/RTK/RTKStateProvider";
 import ReactQueryProvider from "@/Providers/Query/ReactQueryProvider";
 import { usePathname } from "next/navigation";
 import { ThemeProvider } from "next-themes"
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export default function ClientRootLayout({ children }) {
 
@@ -27,31 +28,33 @@ export default function ClientRootLayout({ children }) {
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <div className="flex flex-col min-h-screen w-full">
-                        {
-                            dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
-                                <></>
-                            ) : (
+                    <UserProvider>
+                        <div className="flex flex-col min-h-screen w-full">
+                            {
+                                dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
+                                    <></>
+                                ) : (
+                                    <div className="w-full">
+                                        <Navbar />
+                                    </div>
+                                )
+                            }
+                            <main className="flex-grow w-full flex justify-center">
                                 <div className="w-full">
-                                    <Navbar />
+                                    {children}
                                 </div>
-                            )
-                        }
-                        <main className="flex-grow w-full flex justify-center">
-                            <div className="w-full">
-                                {children}
-                            </div>
-                        </main>
-                        {
-                            dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
-                                <></>
-                            ) : (
-                                <footer className="w-full">
-                                    <Footer />
-                                </footer>
-                            )
-                        }
-                    </div>
+                            </main>
+                            {
+                                dashboardRoute || loginRoute || signupRoute || forgetPasswordRoute || resetPasswordRoute ? (
+                                    <></>
+                                ) : (
+                                    <footer className="w-full">
+                                        <Footer />
+                                    </footer>
+                                )
+                            }
+                        </div>
+                    </UserProvider>
                 </ThemeProvider>
             </ReactQueryProvider>
         </RTKProvider>

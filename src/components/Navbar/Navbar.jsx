@@ -252,6 +252,9 @@ const Navbar = () => {
                                         <Link href={'/account/login'} className="ml-4 text-green-600">
                                             Log In
                                         </Link>
+                                        <Link href={'/api/auth/logout'} className="ml-4 text-green-600">
+                                            Log Out
+                                        </Link>
                                         {/* <Button>Log Out</Button> */}
                                     </div>
                                 </DropdownMenuItem>

@@ -1,68 +1,68 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Input } from '@/components/ui/input';
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { FaGithub } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const Login = () => {
+export default function Login() {
 
+    const router = useRouter();
 
     return (
-        <div className='w-full flex justify-center items-center min-h-screen'>
-            <div className='w-10/12 md:w-7/12 lg:w-4/12 border rounded-xl py-20 shadow-xl'>
-                <div className='w-full flex justify-center'>
-                    <Link href={'/'} className='w-full font-semibold hover:text-green-600 text-green-600 text-center text-sm my-2 underline underline-offset-4'>Home</Link>
+        <div className="flex min-h-screen">
+            <div className="hidden lg:flex w-1/2 bg-gradient-to-r from-blue-600 to-purple-600 items-center justify-center">
+                <div className="text-white text-4xl font-bold">
+                    Welcome Back!
                 </div>
-                <h1 className='w-full text-center text-4xl font-semibold my-6'>Log In</h1>
-                <div className='flex justify-center'>
-                    <form className='w-10/12 flex flex-col justify-around items-around'>
-                        <div className='w-full my-2'>
-                            <div class="relative z-0">
-                                <Input
-                                    type="email"
-                                    id="floating_standard"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder="" />
-                                <label htmlFor="floating_standard" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email Address</label>
-                            </div>
+            </div>
 
-                        </div>
+            <div className="flex w-full lg:w-1/2 flex-col justify-center items-center p-8">
+                <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+                    <h1 className="text-2xl font-bold text-center mb-6">Create an account</h1>
+                    <p className="text-center text-gray-600 mb-6">
+                        Enter your email below to create your account
+                    </p>
 
-                        <div className='w-full my-2'>
-                            <div class="relative z-0">
-                                <Input
-                                    type="password"
-                                    id="floating_standard"
-                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder="" />
-                                <label htmlFor="floating_standard" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
-                            </div>
-                        </div>
+                    <div className="mb-4">
+                        <Label htmlFor="email" className="text-sm font-medium">
+                            Email
+                        </Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            className="mt-1"
+                            placeholder="name@example.com"
+                            defaultValue='nabarajbasnet@gmail.com'
+                        />
+                    </div>
 
-                        <div className='w-full flex justify-between mt-6 text-sm'>
-                            <h1>Not Registered yet?</h1>
-                            <Link href='/account/signup' className='hover:underline text-green-600 font-semibold'>
-                                Register
-                            </Link>
-                        </div>
+                    <Link href={'/api/auth/login'} className="w-full text-white font-bold py-2 rounded-md mb-4">
+                        <Button className='w-full bg-blue-600'>
+                            Sign In with Email
+                        </Button>
+                    </Link>
 
-                        <div className='w-full flex justify-between my-2 text-sm'>
-                            <h1>Forget Password?</h1>
-                            <Link href='/account/forgetpassword' className='hover:underline text-green-600 font-semibold'>
-                                Reset
-                            </Link>
-                        </div>
+                    <div className="text-center text-gray-600 mb-4">Or continue with</div>
 
-                        <div className='w-full flex justify-center mt-8'>
-                            <Button
-                                className='w-full rounded-none py-8 bg-green-600 text-white dark:hover:bg-green-700'
-                                type='submit'>{'Log In'}
-                            </Button>
-                        </div>
-                    </form>
+                    <Button className="w-full bg-gray-800 text-white flex items-center justify-center py-2 rounded-md">
+                        <FaGithub className="mr-2" /> GitHub
+                    </Button>
+
+                    <p className="text-center text-xs text-gray-500 mt-4">
+                        By clicking continue, you agree to our{' '}
+                        <a href="#" className="underline">
+                            Terms of Service
+                        </a>{' '}
+                        and{' '}
+                        <a href="#" className="underline">
+                            Privacy Policy
+                        </a>.
+                    </p>
                 </div>
             </div>
         </div>
-    )
-};
-
-export default Login;
+    );
+}

@@ -1,9 +1,15 @@
-import React from 'react'
+import { getSession } from '@auth0/nextjs-auth0';
 
-const page = () => {
+export default async function ProfileServer() {
+    const { user } = await getSession();
+
     return (
-        <div>page</div>
-    )
+        user && (
+            <div>
+                <img src={user.picture} alt={user.name} />
+                <h2>{user.name}</h2>
+                <p>{user.email}</p>
+            </div>
+        )
+    );
 }
-
-export default page
