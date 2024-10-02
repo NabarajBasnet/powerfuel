@@ -1,7 +1,6 @@
 'use client'
 
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -87,19 +86,12 @@ export default function Signup() {
                                     </Link>
                                 </div>
 
-                                <div className='w-full flex justify-center my-2'>
-                                    <Button
-                                        className='w-full rounded-none py-8 bg-green-600 text-white'
-                                        type='submit'>{'Register'}
-                                    </Button>
-                                </div>
-
                             </form>
                         </div>
 
                         <Link href={'/api/auth/login'} className="w-full text-white font-bold py-2 rounded-md mb-4">
                             <Button className='w-full bg-blue-600'>
-                                Sign In with Email
+                                Sign Up with Email
                             </Button>
                         </Link>
 
