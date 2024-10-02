@@ -15,13 +15,12 @@ export default function ClientAdminLayout({ children }) {
             <ReactQueryProvider>
                 <div className='w-full flex'>
                     {toggleAdminSidebar && (
-                        <div className="hidden md:flex w-2/12">
+                        <div className={`hidden md:flex`}>
                             <Sidebar />
                         </div>
                     )}
-
-                    <div className={`w-full ${toggleAdminSidebar ? 'md:w-10/12' : 'w-full'}`}>
-                        <div className="w-full">
+                    <div className={`w-full ${toggleAdminSidebar ? 'md:ml-64' : ''}`}>
+                        <div>
                             <Header />
                         </div>
                         <main className="w-full">
