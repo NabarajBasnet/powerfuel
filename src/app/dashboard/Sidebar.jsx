@@ -33,8 +33,8 @@ const Sidebar = () => {
 
     return (
         <div className="w-64 fixed top-0 z-50 left-0 bg-gray-600">
-            <div className='w-full h-full overflow-y-auto'>
-                <div className='w-full h-full flex justify-center items-start bg-gray-800'>
+            <div className='w-full h-full'>
+                <div className='overflow-y-auto h-full flex justify-center items-start bg-gray-800'>
 
                     <div className={`w-full py-6 ${pathname === '/dashboard' ? 'bg-green-500' : ''}`}>
                         <Link href={'/dashboard'} className='w-full flex justify-start items-center px-4 transition-colors duration-200'>
@@ -333,6 +333,7 @@ const Sidebar = () => {
                             </AccordionItem>
                         </Accordion>
                     </div>
+
                 </div>
             </div>
         </div>
